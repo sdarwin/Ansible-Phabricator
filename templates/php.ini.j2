@@ -7,6 +7,8 @@
 ; is disabled through enable_post_data_reading.
 ; http://php.net/post-max-size
 post_max_size = {{ php_ini_config.post_max_size }}
+upload_max_filesize = {{ php_ini_config.upload_max_filesize }}
+always_populate_raw_post_data = {{ php_ini_config.always_populate_raw_post_data }}
 
 [Date]
 ; Defines the default timezone used by the date functions

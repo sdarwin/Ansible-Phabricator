@@ -1,11 +1,14 @@
 ---
+- debug:
+    msg: "checking {{ dependencies_ubuntu }}"
+
 # tasks file for phabricator
 - name: install packages (Debian)
   apt:
     name: "{{ item }}"
     state: present
     update_cache: yes
-  with_items: dependencies_ubuntu
+  with_items: "{{ dependencies_ubuntu }}"
   when: ansible_os_family == "Debian"
 
 - name: install packages (RHEL)
@@ -13,7 +16,7 @@
     name: "{{ item }}"
     state: present
     update_cache: yes
-  with_items: dependencies_rhel
+  with_items: "{{ dependencies_rhel }}"
   when: ansible_os_family == "RedHat"
 
 - name: install tools for local mysql
@@ -23,7 +26,7 @@
 - name: create phabricator users
   user:
     name: "{{ item.value }}"
-  with_dict: users
+  with_dict: "{{ users }}"
 
 - name: config sudoers file vcs
   lineinfile:
@@ -52,7 +55,7 @@
     repo: "{{ item.value }}"
     dest: "{{ web_root }}/{{ item.key }}"
     accept_hostkey: yes
-  with_dict: repos
+  with_dict: "{{ repos }}"
 
 - name: enable phabricator in nginx
   template:
@@ -71,6 +74,15 @@
     group: root
     mode: 0644
   notify: restart php5-fpm
+
+- name: add mysql.cnf config
+  template:
+    src: mysql.cnf.j2
+    dest: /etc/mysql/conf.d/40-phabricator.cnf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart mysql
 
 - name: add git binarys to path
   file:
@@ -95,7 +107,37 @@
     owner: "{{ users.daemon }}"
     group: "{{ users.daemon }}"
 
-- name: start phabricator daemons
-  command: "{{ web_root }}/phabricator/bin/phd restart"
-  sudo_user: "{{ users.daemon }}"
-  changed_when: False
+#- name: start phabricator daemons
+#  command: "{{ web_root }}/phabricator/bin/phd restart"
+#  sudo_user: "{{ users.daemon }}"
+#  changed_when: False
+
+- name: create local file storage
+  file:
+    path: "{{ phabricator_local_disk_path }}" 
+    state: directory
+    owner: "{{ users.web }}"
+    group: "{{ users.web }}"
+  when: phabricator_file_storage == "local"
+
+- name: add upstart template
+  template:
+    src: upstart.j2
+    dest: /etc/init/phd.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or (ansible_distribution == "Debian" and ansible_distribution_major_version < "8") or (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
+  notify: restart upstart phd
+
+- name: add systemd template
+  template:
+    src: systemd.service.j2
+    dest: /lib/systemd/system/phabricator-phd.service
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
+          (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") or
+          (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
+  notify: restart systemd phd

@@ -1,7 +1,7 @@
 ---
 # defaults file for phabricator
 protocol: http
-server_url: secure.vagrant.dev
+server_url: phab.example.com
 web_root: /var/www
 database_config:
   user: phabricator
@@ -10,7 +10,13 @@ database_config:
 php_ini_config:
   timezone: America/New_York
   post_max_size: 32M
+  upload_max_filesize: 32M
   validate_timestamps: 0
+  always_populate_raw_post_data: -1
+mysql_cnf_config:
+  max_allowed_packet: 32M
+  sql_mode: STRICT_ALL_TABLES
+  innodb_buffer_pool_size: 1000M
 users:
   web: www-data
   vcs: vcs-user
@@ -21,3 +27,15 @@ permissions:
   vcs: "ALL=(daemon-user) SETENV:NOPASSWD: /usr/lib/git-core/git-upload-pack, /usr/lib/git-core/git-receive-pack, /usr/lib/git-core/git-http-backend"
   web: "ALL=(daemon-user) SETENV:NOPASSWD: /usr/lib/git-core/git-http-backend"
 allow_http_auth: "true"
+
+#This is variable optional, but recommended, to restrict who can register.
+#phabricator_auth_email_domains: '[ "example.com","example2.com" ]'
+phabricator_auth_email_domains: ""
+
+#set phabricator_file_storage to "mysql", "local", "s3", "custom". 
+#only "local" is currently supported, although "mysql" will also work because that is the phabricator default setting.
+phabricator_file_storage: local
+phabricator_local_disk_path: /opt/phabfiles
+
+phabricator_metamta_default_address: noreply@phab.example.com
+phabricator_metamta_domain: phab.example.com

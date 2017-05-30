@@ -1,39 +1,31 @@
 Phabricator
 =========
 
+Warning: development in-progress. this note will be removed soon.
+
 Phabricator installer to connect to an existing db or run mysql on the same box.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+to be determined
+
+Instructions
+--------------
+
+Configure the role variables and then run the example playbook.
 
 Role Variables
 --------------
 
-    protocol: http
-    server_url: secure.vagrant.dev
-    web_root: /var/www
-    database_config:
-      user: phabricator
-      pass: secret
-      host: 127.0.0.1
-    php_ini_config:
-      timezone: America/New_York
-      post_max_size: 32M
-      validate_timestamps: 0
+Copy the contents of defaults/main.yml to your local groups_vars/all and modify as necessary. Review each variable.
 
 Example Playbook
 ----------------
 
-Simple playbook that is enabled for use of clustering. Never use the default key in production:
+An example playbook is included at main.yml in the root directory.
 
-    ---
-    - hosts: localhost
-      sudo: yes
-      gather_facts: yes
-      roles:
-        - phabricator
+ansible-playbook main.yml
 
 License
 -------

@@ -9,3 +9,14 @@
   service:
     name: php5-fpm
     state: restarted
+
+- name: restart mysql
+  service:
+    name: mysql
+    state: restarted
+
+- name: restart upstart phd
+  service: state=restarted name=phd 
+
+- name: restart systemd phd
+  systemd: state=started name=phabricator-phd daemon_reload=yes

@@ -2,7 +2,7 @@
 # All phabricator config values
 - name: configure db credentials
   command: "{{ web_root }}/phabricator/bin/config set mysql.{{ item.key }} '{{ item.value }}'"
-  with_dict: database_config
+  with_dict: "{{ database_config }}"
   changed_when: False
 
 - name: run phabricator db migrations
@@ -28,3 +28,23 @@
 - name: configue pygments highlighting
   command: "{{ web_root }}/phabricator/bin/config set pygments.enabled 'true'"
   changed_when: False
+
+- name: auth email domains
+  command: "{{ web_root }}/phabricator/bin/config set auth.email-domains '{{ phabricator_auth_email_domains }}'"
+  changed_when: False
+  when: not((phabricator_auth_email_domains is undefined) or (phabricator_auth_email_domains is none) or (phabricator_auth_email_domains|trim == ''))
+
+- name: file storage
+  command: "{{ web_root }}/phabricator/bin/config set storage.local-disk.path '{{ phabricator_local_disk_path }}'"
+  changed_when: False
+  when: phabricator_file_storage == "local"
+
+- name: set metamta.default-address 
+  command: "{{ web_root }}/phabricator/bin/config set metamta.default-address '{{ phabricator_metamta_default_address }}'"
+  changed_when: False
+  when: not((phabricator_metamta_default_address is undefined) or (phabricator_metamta_default_address is none) or (phabricator_metamta_default_address|trim == ''))
+
+- name: set metamta.domain
+  command: "{{ web_root }}/phabricator/bin/config set metamta.domain '{{ phabricator_metamta_domain }}'"
+  changed_when: False
+  when: not((phabricator_metamta_domain is undefined) or (phabricator_metamta_domain is none) or (phabricator_metamta_domain|trim == ''))

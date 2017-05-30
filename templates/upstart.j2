@@ -1,0 +1,29 @@
+# Phabricator daemons init script
+# You will need to change PHD_HOME to suit your installation
+description     "Phabricator Daemon launcher"
+author          "kaismh"
+
+start on started mysql
+stop on runlevel [!2345]
+
+respawn
+respawn limit 10 5
+oom never
+
+kill timeout 86400 #If it's given a stop order, this is how long it will take to stop.
+
+setuid {{ users.daemon }}
+setgid {{ users.daemon }}
+
+env PHD_HOME={{ web_root }}/phabricator/bin
+
+pre-start script
+    # Start phd
+    exec $PHD_HOME/phd start
+end script
+
+post-stop script
+    # Stop phd
+    exec $PHD_HOME/phd stop
+end script
+

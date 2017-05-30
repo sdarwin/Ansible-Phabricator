@@ -4,7 +4,7 @@
     name: "{{ item }}"
     state: present
     update_cache: yes
-  with_items: dependencies_ubuntu_local
+  with_items: "{{ dependencies_ubuntu_local }}"
   when: ansible_os_family == "Debian"
 
 - name: install packages for mysql (RHEL)
@@ -12,7 +12,7 @@
     name: "{{ item }}"
     state: present
     update_cache: yes
-  with_items: dependencies_rhel_local
+  with_items: "{{ dependencies_rhel_local }}"
   when: ansible_os_family == "RedHat"
 
 - name: install required python module
