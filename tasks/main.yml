@@ -1,15 +1,42 @@
 ---
-- debug:
-    msg: "checking {{ dependencies_ubuntu }}"
-
 # tasks file for phabricator
+- name: set variables (default)
+  set_fact:
+    php_sock: "unix:/var/run/php5-fpm.sock"
+    php_path: /etc/php5
+    mysql_path: /etc/mysql/conf.d
+
+- name: set variables (Ubuntu 16)
+  set_fact:
+    php_sock: "unix:/var/run/php/php7.1-fpm.sock"
+    php_path: /etc/php/7.1
+    mysql_path: /etc/mysql/mysql.conf.d
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
+
+- name: install repo for php7.1
+  apt_repository:
+    repo: 'ppa:ondrej/php'
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
+
 - name: install packages (Debian)
   apt:
     name: "{{ item }}"
     state: present
     update_cache: yes
   with_items: "{{ dependencies_ubuntu }}"
-  when: ansible_os_family == "Debian"
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "16") or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version < "8") 
+
+- name: install packages Ubuntu16
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ dependencies_ubuntu16 }}"
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") 
 
 - name: install packages (RHEL)
   yum:
@@ -69,7 +96,7 @@
 - name: add php.ini config
   template:
     src: php.ini.j2
-    dest: /etc/php5/fpm/conf.d/40-phabricator.ini
+    dest: "{{ php_path }}/fpm/conf.d/40-phabricator.ini"
     owner: root
     group: root
     mode: 0644
@@ -78,7 +105,7 @@
 - name: add mysql.cnf config
   template:
     src: mysql.cnf.j2
-    dest: /etc/mysql/conf.d/40-phabricator.cnf
+    dest: "{{ mysql_path }}/phabricator.cnf"
     owner: root
     group: root
     mode: 0644
@@ -123,7 +150,7 @@
 - name: add upstart template
   template:
     src: upstart.j2
-    dest: /etc/init/phd.conf
+    dest: /etc/init/phabricator-phd.conf
     owner: root
     group: root
     mode: 0644

@@ -7,9 +7,9 @@ Before=nginx.service
 User={{ users.daemon }}
 Group={{ users.daemon }}
 Type=oneshot
-Enviroment="PATH=/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
+Environment="PATH=/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
 ExecStart={{ web_root }}/phabricator/bin/phd start
-ExecStop={{ web_root }}/phabricator/bin/phd stop
+ExecStop={{ web_root }}/phabricator/bin/phd stop --force
 RemainAfterExit=yes
 
 [Install]

@@ -16,7 +16,7 @@
     state: restarted
 
 - name: restart upstart phd
-  service: state=restarted name=phd 
+  service: state=restarted name=phabricator-phd 
 
 - name: restart systemd phd
   systemd: state=started name=phabricator-phd daemon_reload=yes
