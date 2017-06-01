@@ -8,3 +8,5 @@ Version 2.0.0
 - optional feature "auth email domains"
 - add external file storage, which showed as a config issue
 - set metamta.default-address and metamta.domain, which is usually necessary
+- switch from sendmail to exim4
+

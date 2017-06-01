@@ -14,7 +14,7 @@ dependencies_ubuntu:
   - php5-cli
   - php5-json
   - python-pip
-  - sendmail
+  - exim4
   - subversion
   - mercurial
 
@@ -33,7 +33,7 @@ dependencies_ubuntu16:
   - php7.1-mbstring
   - php7.1-apcu
   - python-pip
-  - sendmail
+  - exim4
   - subversion
   - mercurial
 
@@ -57,7 +57,7 @@ dependencies_rhel:
   - php-pecl-json
   - php-mbstring
   - python-pip
-  - sendmail
+  - exim
   - subversion
   - mercurial
 

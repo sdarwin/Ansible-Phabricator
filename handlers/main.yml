@@ -15,6 +15,11 @@
     name: mysql
     state: restarted
 
+- name: restart exim
+  service:
+    name: "{{ exim_service_name }}"
+    state: restarted
+
 - name: restart upstart phd
   service: state=restarted name=phabricator-phd 
 

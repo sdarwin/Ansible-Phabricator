@@ -8,7 +8,7 @@ Phabricator installer to connect to an existing db or run mysql on the same box.
 Requirements
 ------------
 
-to be determined
+Before starting, set the local hostname in /etc/hostname and /etc/hosts, etc.
 
 Instructions
 --------------
