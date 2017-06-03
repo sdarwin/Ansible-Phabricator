@@ -5,14 +5,35 @@
     name: nginx
     state: restarted
 
+#github issue 19898
+#- name: "restart {{ php_service }}"
+#  service:
+#    name: "{{ php_service }}"
+#    state: restarted
+
+- name: restart php-fpm
+  service:
+    name: "{{ php_service }}"
+    state: restarted
+    
 - name: restart php5-fpm
   service:
-    name: php5-fpm
+    name: "{{ php_service }}"
+    state: restarted
+
+- name: restart php7.1-fpm
+  service:
+    name: "{{ php_service }}"
     state: restarted
 
 - name: restart mysql
   service:
     name: mysql
+    state: restarted
+    
+- name: restart mariadb
+  service:
+    name: mariadb
     state: restarted
 
 - name: restart exim
@@ -20,8 +41,8 @@
     name: "{{ exim_service_name }}"
     state: restarted
 
-- name: restart upstart phd
+- name: restart upstart phabricator-phd
   service: state=restarted name=phabricator-phd 
 
-- name: restart systemd phd
-  systemd: state=started name=phabricator-phd daemon_reload=yes
+- name: restart systemd phabricator-phd
+  systemd: state=restarted name=phabricator-phd daemon_reload=yes

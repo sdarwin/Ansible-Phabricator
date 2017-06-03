@@ -13,8 +13,28 @@
     state: present
     update_cache: yes
   with_items: "{{ dependencies_rhel_local }}"
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version < "7"
 
+- name: install packages for mysql (RHEL7)
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ dependencies_rhel7_local }}"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version > "6"
+  
+- name: start mysql
+  service:
+    name: mysql
+    state: started
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version < "7"
+  
+- name: start mariadb
+  service:
+    name: mariadb
+    state: started
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version > "6"
+  
 - name: install required python module
   pip:
     name: MySQL-python

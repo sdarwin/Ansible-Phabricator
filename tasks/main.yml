@@ -1,26 +1,59 @@
 ---
 # tasks file for phabricator
-- name: set variables (default)
+- name: set variables (general defaults for all OS, based on Ubuntu 14. Can be overridden below.)
   set_fact:
+    users:
+      web: www-data
+      vcs: vcs-user
+      daemon: daemon-user
     php_sock: "unix:/var/run/php5-fpm.sock"
-    php_path: /etc/php5
+    php_path: /etc/php5/fpm/conf.d
+    php_service: php5-fpm
+    mysql_service: mysql
     mysql_path: /etc/mysql/conf.d
     exim_service_name: exim4
     exim_config_file: /etc/exim4/update-exim4.conf.conf
+    git_core_path: /usr/lib/git-core
 
 - name: set variables (Ubuntu 16)
   set_fact:
     php_sock: "unix:/var/run/php/php7.1-fpm.sock"
-    php_path: /etc/php/7.1
+    php_path: /etc/php/7.1/fpm/conf.d
+    php_service: php7.1-fpm
     mysql_path: /etc/mysql/mysql.conf.d
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") or
         (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
-
-- name: set variables (Redhat General)
+  
+- name: set variables (Redhat 6)
   set_fact:
+    users:
+      web: apache
+      vcs: vcs-user
+      daemon: daemon-user
+    php_sock: "unix:/var/run/php-main.socket"
+    php_path: /etc/php.d/
+    php_service: php-fpm
+    mysql_path: /etc/my.cnf.d
     exim_config_file: /etc/exim/update-exim.conf.conf
     exim_service_name: exim
-  when: ansible_os_family  == "Redhat" 
+    git_core_path: /usr/libexec/git-core
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version < "7"
+  
+- name: set variables (Redhat 7)
+  set_fact:
+    users:
+      web: apache
+      vcs: vcs-user
+      daemon: daemon-user
+    php_sock: "unix:/var/run/php-main.socket"
+    php_path: /etc/php.d/
+    php_service: php-fpm
+    mysql_service: mariadb
+    mysql_path: /etc/my.cnf.d
+    exim_config_file: /etc/exim/update-exim.conf.conf
+    exim_service_name: exim
+    git_core_path: /usr/libexec/git-core
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version > "6"
 
 - name: install repo for php7.1
   apt_repository:
@@ -91,24 +124,51 @@
     dest: "{{ web_root }}/{{ item.key }}"
     accept_hostkey: yes
   with_dict: "{{ repos }}"
-
-- name: enable phabricator in nginx
+    
+- name: enable phabricator in nginx (Debian)
   template:
     src: phabricator.conf.j2
+    dest: /etc/nginx/sites-available/phabricator.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: ansible_os_family == "Debian" 
+  notify: restart nginx
+
+- file:
+    src: /etc/nginx/sites-available/phabricator.conf
     dest: /etc/nginx/sites-enabled/phabricator.conf
     owner: root
     group: root
-    mode: 0644
+    state: link
+  when: ansible_os_family == "Debian" 
   notify: restart nginx
-
-- name: add php.ini config
+  
+- name: enable phabricator in nginx (Redhat)
   template:
-    src: php.ini.j2
-    dest: "{{ php_path }}/fpm/conf.d/40-phabricator.ini"
+    src: phabricator.conf.j2
+    dest: /etc/nginx/conf.d/phabricator.conf
     owner: root
     group: root
     mode: 0644
-  notify: restart php5-fpm
+  when: ansible_os_family == "RedHat" 
+  notify: restart nginx
+   
+- name: enable php-fpm socket
+  shell: |
+    /bin/sed -i s'/listen = 127.0.0.1:9000/listen = \/var\/run\/php-main.socket/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.owner = nobody/listen.owner = nginx/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.group = nobody/listen.group = nginx/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.mode = 0660/listen.mode = 0660/' /etc/php-fpm.d/www.conf ;
+  when: ansible_os_family == "RedHat" 
+  #notify: "restart {{ php_service }}"
+  changed_when: False
+  
+- name: add php.ini config
+  template:
+    src: php.ini.j2
+    dest: "{{ php_path }}/phabricator.ini"
+    owner: root
+    group: root
+    mode: 0644
+  notify: "restart {{ php_service }}"
 
 - name: add mysql.cnf config
   template:
@@ -117,9 +177,9 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart mysql
+  notify: "restart {{ mysql_service }}"
 
-- name: add git binarys to path
+- name: add git binaries to path
   file:
     src: "{{ git_core_path }}/git-http-backend"
     dest: /usr/bin/git-http-backend
@@ -163,7 +223,7 @@
     group: root
     mode: 0644
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or (ansible_distribution == "Debian" and ansible_distribution_major_version < "8") or (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
-  notify: restart upstart phd
+  notify: restart upstart phabricator-phd
 
 - name: add systemd template
   template:
@@ -175,7 +235,7 @@
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
           (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") or
           (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
-  notify: restart systemd phd
+  notify: restart systemd phabricator-phd
 
 - name: exim internet email
   lineinfile:
@@ -183,5 +243,6 @@
     regexp: "^dc_eximconfig_configtype='local'"
     line: "dc_eximconfig_configtype='internet'"
     backrefs: yes
+  when: ansible_os_family == "Debian"
   notify: restart exim
 

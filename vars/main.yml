@@ -17,6 +17,8 @@ dependencies_ubuntu:
   - exim4
   - subversion
   - mercurial
+  - htop
+  - mlocate
 
 dependencies_ubuntu16:
   - git-core
@@ -36,6 +38,8 @@ dependencies_ubuntu16:
   - exim4
   - subversion
   - mercurial
+  - htop
+  - mlocate
 
 dependencies_ubuntu_local:
   - mysql-server
@@ -57,15 +61,22 @@ dependencies_rhel:
   - php-pecl-json
   - php-mbstring
   - python-pip
-  - exim
   - subversion
   - mercurial
+  - htop
+  - mlocate
 
 dependencies_rhel_local:
   - mysql-server
-  - python-dev
-  - libmysqlclient-dev
+  - python-devel
+  - mysql-devel
 
+dependencies_rhel7_local:
+  - mariadb-server
+  - python-devel
+  - mariadb-devel
+  - gcc
+  
 repos:
   phabricator: https://github.com/phacility/phabricator.git
   arcanist: https://github.com/phacility/arcanist.git
