@@ -5,35 +5,15 @@
     name: nginx
     state: restarted
 
-#github issue 19898
-#- name: "restart {{ php_service }}"
-#  service:
-#    name: "{{ php_service }}"
-#    state: restarted
-
+#note github issue 19898
 - name: restart php-fpm
-  service:
-    name: "{{ php_service }}"
-    state: restarted
-    
-- name: restart php5-fpm
-  service:
-    name: "{{ php_service }}"
-    state: restarted
-
-- name: restart php7.1-fpm
   service:
     name: "{{ php_service }}"
     state: restarted
 
 - name: restart mysql
   service:
-    name: mysql
-    state: restarted
-    
-- name: restart mariadb
-  service:
-    name: mariadb
+    name: "{{ mysql_service }}"
     state: restarted
 
 - name: restart exim

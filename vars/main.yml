@@ -70,6 +70,7 @@ dependencies_rhel_local:
   - mysql-server
   - python-devel
   - mysql-devel
+  - gcc
 
 dependencies_rhel7_local:
   - mariadb-server

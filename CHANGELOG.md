@@ -9,4 +9,5 @@ Version 2.0.0
 - add external file storage, which showed as a config issue
 - set metamta.default-address and metamta.domain, which is usually necessary
 - switch from sendmail to exim4
+- test and add support for Centos 7.3
 

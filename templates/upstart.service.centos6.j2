@@ -12,18 +12,15 @@ oom never
 
 kill timeout 86400 #If it's given a stop order, this is how long it will take to stop.
 
-setuid {{ users.daemon }}
-setgid {{ users.daemon }}
-
 env PHD_HOME={{ web_root }}/phabricator/bin
 
 pre-start script
     # Start phd
-    exec $PHD_HOME/phd start
+    exec su -s /bin/sh -c 'exec "$0" "$@"' {{ users.daemon }} -- $PHD_HOME/phd start
 end script
 
 post-stop script
     # Stop phd
-    exec $PHD_HOME/phd stop --force
+    exec su -s /bin/sh -c 'exec "$0" "$@"' {{ users.daemon }} -- $PHD_HOME/phd stop --force
 end script
 
