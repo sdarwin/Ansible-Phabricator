@@ -1,7 +1,6 @@
 [Unit]
 Description=phabricator-phd
-After=syslog.target network.target
-Before=nginx.service
+After=syslog.target network.target nginx.service
 
 [Service]
 User={{ users.daemon }}

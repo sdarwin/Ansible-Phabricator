@@ -1,6 +1,9 @@
 ---
 # vars file for phabricator
+
 dependencies_ubuntu:
+  - htop
+  - mlocate
   - git-core
   - nginx
   - dpkg-dev
@@ -17,10 +20,11 @@ dependencies_ubuntu:
   - exim4
   - subversion
   - mercurial
-  - htop
-  - mlocate
+  - ssl-cert
 
 dependencies_ubuntu16:
+  - htop
+  - mlocate
   - git-core
   - nginx
   - dpkg-dev
@@ -38,15 +42,16 @@ dependencies_ubuntu16:
   - exim4
   - subversion
   - mercurial
-  - htop
-  - mlocate
-
+  - ssl-cert
+  
 dependencies_ubuntu_local:
   - mysql-server
   - python-dev
   - libmysqlclient-dev
 
 dependencies_rhel:
+  - htop
+  - mlocate
   - epel-release
   - nginx
   - git
@@ -63,8 +68,6 @@ dependencies_rhel:
   - python-pip
   - subversion
   - mercurial
-  - htop
-  - mlocate
 
 dependencies_rhel_local:
   - mysql-server

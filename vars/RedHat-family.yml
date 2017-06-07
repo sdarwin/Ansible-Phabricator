@@ -1,0 +1,12 @@
+---
+default_users:
+  web: apache
+  vcs: vcs-user
+  daemon: phab-daemon
+default_php_sock: "unix:/var/run/php-main.socket"
+default_php_path: /etc/php.d/
+default_php_service: php-fpm
+default_mysql_service: mysqld
+default_mysql_path: /etc/my.cnf.d
+default_git_core_path: /usr/libexec/git-core
+	

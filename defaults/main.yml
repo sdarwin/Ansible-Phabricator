@@ -1,8 +1,13 @@
 ---
 # defaults file for phabricator
-protocol: http
+
+#change phabricator_protocol to http if you prefer not to use ssl. certificate settings are further in this file.
+phabricator_protocol: https
+
 server_url: phab.example.com
+
 web_root: /var/www
+
 database_config:
   user: phabricator
   pass: secret
@@ -34,3 +39,6 @@ phabricator_local_disk_path: /opt/phabfiles
 
 phabricator_metamta_default_address: noreply@phab.example.com
 phabricator_metamta_domain: phab.example.com
+
+phabricator_ssl_cert: /etc/ssl/certs/ssl-cert-snakeoil.pem
+phabricator_ssl_key: /etc/ssl/private/ssl-cert-snakeoil.key

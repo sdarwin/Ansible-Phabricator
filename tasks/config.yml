@@ -10,7 +10,7 @@
   changed_when: False
 
 - name: configure base URI
-  command: "{{ web_root }}/phabricator/bin/config set phabricator.base-uri '{{ protocol }}://{{ server_url }}/'"
+  command: "{{ web_root }}/phabricator/bin/config set phabricator.base-uri '{{ phabricator_protocol }}://{{ server_url }}/'"
   changed_when: False
 
 - name: set daemon user

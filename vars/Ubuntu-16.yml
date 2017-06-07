@@ -1,0 +1,5 @@
+---
+default_php_sock: "unix:/var/run/php/php7.1-fpm.sock"
+default_php_path: /etc/php/7.1/fpm/conf.d
+default_php_service: php7.1-fpm
+default_mysql_path: /etc/mysql/mysql.conf.d

@@ -1,78 +1,55 @@
 ---
 # tasks file for phabricator
-- name: set variables (general defaults for all OS, based on Ubuntu 14. Can be overridden below.)
-  set_fact:
-    users:
-      web: www-data
-      vcs: vcs-user
-      daemon: phab-daemon
-    php_sock: "unix:/var/run/php5-fpm.sock"
-    php_path: /etc/php5/fpm/conf.d
-    php_service: php5-fpm
-    mysql_service: mysql
-    mysql_path: /etc/mysql/conf.d
-    exim_service_name: exim4
-    exim_config_file: /etc/exim4/update-exim4.conf.conf
-    git_core_path: /usr/lib/git-core
 
-- name: set variables (Ubuntu 16)
+# Variables ##########
+
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}-family.yml"
+
+- name: Include Distribution version specific variables
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+
+- name: set facts based on defaults
   set_fact:
-    php_sock: "unix:/var/run/php/php7.1-fpm.sock"
-    php_path: /etc/php/7.1/fpm/conf.d
-    php_service: php7.1-fpm
-    mysql_path: /etc/mysql/mysql.conf.d
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
+    "{{ item[8:] }}": "{{  vars[item[8:]] | default(vars[item]) }}"
+  when: item | match("^default_")
+  with_items:
+    "{{ vars }}"
+   
+##########
+
+#stop all services, in case of upgrade
+
+- name: stop phabricator-phd
+  service:
+    name: phabricator-phd
+    state: stopped
+  ignore_errors: yes
   
-- name: set variables (Redhat 6)
-  set_fact:
-    users:
-      web: apache
-      vcs: vcs-user
-      daemon: phab-daemon
-    php_sock: "unix:/var/run/php-main.socket"
-    php_path: /etc/php.d/
-    php_service: php-fpm
-    mysql_service: mysqld
-    mysql_path: /etc/my.cnf.d
-    exim_config_file: /etc/exim/update-exim.conf.conf
-    exim_service_name: exim
-    git_core_path: /usr/libexec/git-core
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version < "7"
-  
-- name: set variables (Redhat 7)
-  set_fact:
-    users:
-      web: apache
-      vcs: vcs-user
-      daemon: phab-daemon
-    php_sock: "unix:/var/run/php-main.socket"
-    php_path: /etc/php.d/
-    php_service: php-fpm
-    mysql_service: mariadb
-    mysql_path: /etc/my.cnf.d
-    exim_config_file: /etc/exim/update-exim.conf.conf
-    exim_service_name: exim
-    git_core_path: /usr/libexec/git-core
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version > "6"
+- name: stop nginx
+  service:
+    name: nginx
+    state: stopped
+  ignore_errors: yes
 
-#- name: fix test-kitchen
-#  command: "chmod -R ug+w /tmp/kitchen"
-#  changed_when: False
-
+- name: stop php-fpm
+  service:
+    name: "{{ php_service }}"
+    state: stopped
+  ignore_errors: yes
+ 
 - name: fix test-kitchen
   file:
     path: /tmp/kitchen
     state: directory
     recurse: true
     mode: 0775
-    
-- name: install repo for php7.1
+      
+- name: install repo for php7.1 Ubuntu 16
   apt_repository:
     repo: 'ppa:ondrej/php'
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
-
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") 
+      
 - name: install packages (Debian)
   apt:
     name: "{{ item }}"
@@ -80,16 +57,16 @@
     update_cache: yes
   with_items: "{{ dependencies_ubuntu }}"
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "16") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version < "8") 
+        (ansible_distribution == "Debian" and ansible_distribution_major_version < "9") 
 
 - name: install packages Ubuntu16
   apt:
     name: "{{ item }}"
     state: present
     update_cache: yes
+    install_recommends: no
   with_items: "{{ dependencies_ubuntu16 }}"
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") 
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") 
 
 - name: install packages (RHEL)
   yum:
@@ -130,6 +107,13 @@
     state: absent
     line: "Defaults    requiretty"
 
+- name: create web_root
+  file:
+    path: "{{ web_root }}"
+    owner: root
+    group: root
+    state: directory
+  
 - name: download phabricator from git repo
   git:
     repo: "{{ item.value }}"
@@ -276,6 +260,14 @@
           (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
   notify: restart systemd phabricator-phd
 
+- name: add  preamble.php template
+  template:
+    src: preamble.php.j2
+    dest: "{{ web_root }}/phabricator/support/preamble.php"
+    owner: root
+    group: root
+    mode: 0644
+  
 - name: exim internet email
   lineinfile:
     path: "{{ exim_config_file }}"
@@ -314,3 +306,42 @@
      - phabricator-phd.service
      - mariadb.service
   when: (ansible_os_family == "RedHat" and ansible_distribution_major_version  > "6")
+
+- name: enable services on boot Debian
+  file:
+    src: /lib/systemd/system/{{ item }}
+    dest: /etc/systemd/system/multi-user.target.wants/{{ item }}
+    owner: root
+    group: root
+    state: link
+  with_items:
+     - phabricator-phd.service
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
+          (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") 
+          
+# End Section ##########
+  
+#start all services, in case they were stopped during upgrade
+
+- name: notify start nginx
+  command: /bin/true
+  notify: restart nginx
+ 
+- name: notify start php-fpm
+  command: /bin/true
+  notify: restart php-fpm
+   
+- name: notify start upstart phabricator-phd
+  command: /bin/true
+  notify: restart upstart phabricator-phd
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or 
+        (ansible_distribution == "Debian" and ansible_distribution_major_version < "8") or
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
+
+- name: notify start systemd phabricator-phd        
+  command: /bin/true
+  notify: restart systemd phabricator-phd
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") or
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
+          

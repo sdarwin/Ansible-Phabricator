@@ -1,0 +1,8 @@
+<?php
+
+#created by ansible
+
+{% if phabricator_protocol == "https" %}
+	$_SERVER['HTTPS'] = true;
+	{% endif %}
+	
