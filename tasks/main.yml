@@ -150,6 +150,20 @@
   when: ansible_os_family == "RedHat" 
   notify: restart nginx
    
+- name: create cert (Redhat)
+  shell: /etc/ssl/certs/make-dummy-cert {{ phabricator_ssl_cert }} ; chmod 640 {{ phabricator_ssl_cert }} ; chgrp {{ users.web }} {{ phabricator_ssl_cert }}
+  args:
+    creates: "{{ phabricator_ssl_cert }}"
+  when: ansible_os_family == "RedHat" 
+  notify: restart nginx
+  
+- name: create key (Redhat)
+  shell: mkdir -p /etc/ssl/private ; cp -p {{ phabricator_ssl_cert }} {{ phabricator_ssl_key }}
+  args:
+    creates: "{{ phabricator_ssl_key }}"
+  when: ansible_os_family == "RedHat" 
+  notify: restart nginx
+  
 - name: enable php-fpm socket
   shell: |
     /bin/sed -i s'/listen = 127.0.0.1:9000/listen = \/var\/run\/php-main.socket/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.owner = nobody/listen.owner = nginx/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.group = nobody/listen.group = nginx/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.mode = 0660/listen.mode = 0660/' /etc/php-fpm.d/www.conf ;
@@ -318,7 +332,7 @@
      - phabricator-phd.service
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
           (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") 
-          
+      
 # End Section ##########
   
 #start all services, in case they were stopped during upgrade
@@ -330,7 +344,7 @@
 - name: notify start php-fpm
   command: /bin/true
   notify: restart php-fpm
-   
+           
 - name: notify start upstart phabricator-phd
   command: /bin/true
   notify: restart upstart phabricator-phd
@@ -344,4 +358,4 @@
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
         (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") or
         (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
-          
+                  

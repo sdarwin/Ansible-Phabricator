@@ -21,6 +21,8 @@ dependencies_ubuntu:
   - subversion
   - mercurial
   - ssl-cert
+  - wget
+  - net-tools
 
 dependencies_ubuntu16:
   - htop
@@ -43,6 +45,8 @@ dependencies_ubuntu16:
   - subversion
   - mercurial
   - ssl-cert
+  - wget
+  - net-tools
   
 dependencies_ubuntu_local:
   - mysql-server
@@ -68,6 +72,7 @@ dependencies_rhel:
   - python-pip
   - subversion
   - mercurial
+  - wget
 
 dependencies_rhel_local:
   - mysql-server

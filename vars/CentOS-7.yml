@@ -1,8 +1,8 @@
 ---
 default_users:
-      web: apache
-      vcs: vcs-user
-      daemon: phab-daemon
+  web: apache
+  vcs: vcs-user
+  daemon: phab-daemon
 default_php_sock: "unix:/var/run/php-main.socket"
 default_php_path: /etc/php.d/
 default_php_service: php-fpm

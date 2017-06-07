@@ -25,15 +25,8 @@
   
 - name: start mysql
   service:
-    name: mysqld
+    name: "{{ mysql_service }}"
     state: started
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version < "7"
-  
-- name: start mariadb
-  service:
-    name: mariadb
-    state: started
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version > "6"
   
 - name: install required python module
   pip:
