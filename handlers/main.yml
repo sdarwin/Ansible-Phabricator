@@ -13,13 +13,11 @@
     state: restarted
     enabled: yes
 
-#ignore errors for travis-ci
 - name: restart upstart phabricator-phd
   service: 
     name: phabricator-phd 
     state: restarted 
     enabled: yes
-  ignore_errors: yes
     
 - name: restart systemd phabricator-phd
   systemd: 

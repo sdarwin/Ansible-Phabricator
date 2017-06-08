@@ -3,5 +3,5 @@
   become: true
   gather_facts: yes
   roles:
-    - nowait.phabricator
+    - sdarwin.phabricator
 

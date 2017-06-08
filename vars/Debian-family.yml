@@ -1,7 +1,7 @@
 ---
 default_users:
   web: www-data
-  vcs: vcs-user
+  vcs: phab-vcs
   daemon: phab-daemon
 default_php_sock: "unix:/var/run/php5-fpm.sock"
 default_php_path: /etc/php5/fpm/conf.d

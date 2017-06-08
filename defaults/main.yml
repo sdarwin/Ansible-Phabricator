@@ -24,11 +24,11 @@ mysql_cnf_config:
   innodb_buffer_pool_size: 1000M
 sudo_group: root
 permissions:
-  vcs: "ALL=(daemon-user) SETENV:NOPASSWD: /usr/lib/git-core/git-upload-pack, /usr/lib/git-core/git-receive-pack, /usr/lib/git-core/git-http-backend"
-  web: "ALL=(daemon-user) SETENV:NOPASSWD: /usr/lib/git-core/git-http-backend"
+  vcs: "ALL=(phab-daemon) SETENV:NOPASSWD: /usr/lib/git-core/git-upload-pack, /usr/lib/git-core/git-receive-pack, /usr/lib/git-core/git-http-backend"
+  web: "ALL=(phab-daemon) SETENV:NOPASSWD: /usr/lib/git-core/git-http-backend"
 allow_http_auth: "true"
 
-#This is variable optional, but recommended, to restrict who can register.
+#This variable is optional, but recommended, to restrict who can register.
 #phabricator_auth_email_domains: '[ "example.com","example2.com" ]'
 phabricator_auth_email_domains: ""
 

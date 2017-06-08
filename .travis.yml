@@ -66,6 +66,6 @@ after_success:
   # Clean up.
   - 'docker stop "$(cat ${container_id})"'
 
-#notifications:
-#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
   
