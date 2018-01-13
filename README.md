@@ -30,3 +30,5 @@ Author Information
 
 By Sam Darwin, 2017. Feedback and bug reports welcome.
 Based on the original Ansible-Phabricator Role produced by NoWait
+
+[![Analytics](https://ga-beacon.appspot.com/UA-112361697-1/Ansible-Phabricator)](https://github.com/igrigorik/ga-beacon)
