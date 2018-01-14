@@ -1,7 +1,7 @@
 Phabricator
 =========
 
-Phabricator installer running Nginx and MySQL on the same box.
+Phabricator installer running Nginx and MySQL on the same box.  
 
 Requirements
 ------------
