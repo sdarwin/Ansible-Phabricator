@@ -11,15 +11,15 @@ before_install:
   
 env:
   # PHABRICATOR
-  - distro: centos6
-    init: /sbin/init
-    run_opts: "--privileged"
-    playbook: test.yml
   - distro: centos7
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     playbook: test.yml
-  - distro: debian8
+  #- distro: centos6
+  #  init: /sbin/init
+  #  run_opts: "--privileged"
+  #  playbook: test.yml
+  - distro: debian9
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     playbook: test.yml
@@ -33,6 +33,11 @@ env:
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     playbook: test.yml
+  #- distro: bionic
+  #  init: /lib/systemd/systemd
+  #  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  #  playbook: test.yml
+
 
 script:
   - container_id=$(mktemp)

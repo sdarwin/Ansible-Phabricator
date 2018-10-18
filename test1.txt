@@ -1,0 +1,2092 @@
+[0;34mansible-playbook 2.7.0[0m
+[0;34m  config file = None[0m
+[0;34m  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules'][0m
+[0;34m  ansible python module location = /usr/local/lib/python2.7/dist-packages/ansible[0m
+[0;34m  executable location = /usr/local/bin/ansible-playbook[0m
+[0;34m  python version = 2.7.15rc1 (default, Apr 15 2018, 21:51:34) [GCC 7.3.0][0m
+[0;34mNo config file found; using defaults[0m
+[0;34mParsed /etc/ansible/hosts inventory source with ini plugin[0m
+[0;34mstatically imported: /etc/ansible/roles/role_under_test/tasks/local.yml[0m
+[0;34mstatically imported: /etc/ansible/roles/role_under_test/tasks/config.yml[0m
+
+PLAYBOOK: test.yml *************************************************************
+[0;34m1 plays in /etc/ansible/roles/role_under_test/tests/test.yml[0m
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tests/test.yml:2[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035206.95-192746149086149 `" && echo ansible-tmp-1540035206.95-192746149086149="` echo /root/.ansible/tmp/ansible-tmp-1540035206.95-192746149086149 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/system/setup.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmpmbswFE TO /root/.ansible/tmp/ansible-tmp-1540035206.95-192746149086149/AnsiballZ_setup.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035206.95-192746149086149/ /root/.ansible/tmp/ansible-tmp-1540035206.95-192746149086149/AnsiballZ_setup.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035206.95-192746149086149/AnsiballZ_setup.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035206.95-192746149086149/ > /dev/null 2>&1 && sleep 0'[0m
+[0;32mok: [localhost][0m
+
+TASK [Update apt cache.] *******************************************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tests/test.yml:5[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035208.32-243178225092880 `" && echo ansible-tmp-1540035208.32-243178225092880="` echo /root/.ansible/tmp/ansible-tmp-1540035208.32-243178225092880 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/packaging/os/apt.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmp7ixrbO TO /root/.ansible/tmp/ansible-tmp-1540035208.32-243178225092880/AnsiballZ_apt.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035208.32-243178225092880/ /root/.ansible/tmp/ansible-tmp-1540035208.32-243178225092880/AnsiballZ_apt.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035208.32-243178225092880/AnsiballZ_apt.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035208.32-243178225092880/ > /dev/null 2>&1 && sleep 0'[0m
+[0;32mok: [localhost] => {[0m
+[0;32m    "cache_update_time": 1540035210, [0m
+[0;32m    "cache_updated": false, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "invocation": {[0m
+[0;32m        "module_args": {[0m
+[0;32m            "allow_unauthenticated": false, [0m
+[0;32m            "autoclean": false, [0m
+[0;32m            "autoremove": false, [0m
+[0;32m            "cache_valid_time": 0, [0m
+[0;32m            "deb": null, [0m
+[0;32m            "default_release": null, [0m
+[0;32m            "dpkg_options": "force-confdef,force-confold", [0m
+[0;32m            "force": false, [0m
+[0;32m            "force_apt_get": false, [0m
+[0;32m            "install_recommends": null, [0m
+[0;32m            "only_upgrade": false, [0m
+[0;32m            "package": null, [0m
+[0;32m            "purge": false, [0m
+[0;32m            "state": "present", [0m
+[0;32m            "update_cache": true, [0m
+[0;32m            "upgrade": null[0m
+[0;32m        }[0m
+[0;32m    }[0m
+[0;32m}[0m
+[0;34mMETA: ran handlers[0m
+
+TASK [role_under_test : Include OS-specific variables.] ************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:6[0m
+[0;32mok: [localhost] => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "default_exim_config_file": "/etc/exim4/update-exim4.conf.conf", [0m
+[0;32m        "default_exim_service_name": "exim4", [0m
+[0;32m        "default_git_core_path": "/usr/lib/git-core", [0m
+[0;32m        "default_mysql_path": "/etc/mysql/conf.d", [0m
+[0;32m        "default_mysql_service": "mysql", [0m
+[0;32m        "default_phabricator_packages_local": [[0m
+[0;32m            "mysql-server", [0m
+[0;32m            "python-dev", [0m
+[0;32m            "libmysqlclient-dev"[0m
+[0;32m        ], [0m
+[0;32m        "default_php_path": "/etc/php5/fpm/conf.d", [0m
+[0;32m        "default_php_service": "php5-fpm", [0m
+[0;32m        "default_php_sock": "unix:/var/run/php5-fpm.sock", [0m
+[0;32m        "default_users": {[0m
+[0;32m            "daemon": "phab-daemon", [0m
+[0;32m            "vcs": "phab-vcs", [0m
+[0;32m            "web": "www-data"[0m
+[0;32m        }[0m
+[0;32m    }, [0m
+[0;32m    "ansible_included_var_files": [[0m
+[0;32m        "/etc/ansible/roles/role_under_test/vars/Debian-family.yml"[0m
+[0;32m    ], [0m
+[0;32m    "changed": false[0m
+[0;32m}[0m
+
+TASK [role_under_test : Include Distribution version specific variables] *******
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:9[0m
+[0;32mok: [localhost] => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "default_mysql_path": "/etc/mysql/mysql.conf.d", [0m
+[0;32m        "default_phabricator_packages": [[0m
+[0;32m            "apt-utils", [0m
+[0;32m            "htop", [0m
+[0;32m            "mlocate", [0m
+[0;32m            "git-core", [0m
+[0;32m            "nginx", [0m
+[0;32m            "dpkg-dev", [0m
+[0;32m            "php7.2", [0m
+[0;32m            "php7.2-fpm", [0m
+[0;32m            "php7.2-mysql", [0m
+[0;32m            "php7.2-gd", [0m
+[0;32m            "php7.2-dev", [0m
+[0;32m            "php7.2-curl", [0m
+[0;32m            "php7.2-cli", [0m
+[0;32m            "php7.2-json", [0m
+[0;32m            "php7.2-mbstring", [0m
+[0;32m            "php7.2-apcu", [0m
+[0;32m            "python-pip", [0m
+[0;32m            "exim4", [0m
+[0;32m            "subversion", [0m
+[0;32m            "mercurial", [0m
+[0;32m            "ssl-cert", [0m
+[0;32m            "wget", [0m
+[0;32m            "net-tools"[0m
+[0;32m        ], [0m
+[0;32m        "default_phabricator_packages_local": [[0m
+[0;32m            "mysql-server-5.7", [0m
+[0;32m            "python-dev", [0m
+[0;32m            "libmysqlclient-dev"[0m
+[0;32m        ], [0m
+[0;32m        "default_php_path": "/etc/php/7.2/fpm/conf.d", [0m
+[0;32m        "default_php_service": "php7.2-fpm", [0m
+[0;32m        "default_php_sock": "unix:/var/run/php/php7.2-fpm.sock"[0m
+[0;32m    }, [0m
+[0;32m    "ansible_included_var_files": [[0m
+[0;32m        "/etc/ansible/roles/role_under_test/vars/Ubuntu-18.yml"[0m
+[0;32m    ], [0m
+[0;32m    "changed": false[0m
+[0;32m}[0m
+
+TASK [role_under_test : set facts based on defaults] ***************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:12[0m
+[0;36mskipping: [localhost] => (item=ansible_playbook_python)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_playbook_python", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_processor_count)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_processor_count", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=gather_subset)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "gather_subset", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_product_version)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_product_version", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_check_mode)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_check_mode", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_service_mgr)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_service_mgr", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_memory_mb)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_memory_mb", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=module_setup)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "module_setup", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_memtotal_mb)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_memtotal_mb", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_play_hosts)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_play_hosts", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=playbook_dir)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "playbook_dir", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_distribution_version)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_distribution_version", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_forks)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_forks", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_facts)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_facts", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_mysql_service) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "mysql_service": "mysql"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_mysql_service"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_virtualization_role)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_virtualization_role", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_distribution_file_variety)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_distribution_file_variety", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_env)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_env", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_effective_group_id)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_effective_group_id", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=php_ini_config)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "php_ini_config", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=repos)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "repos", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_userspace_bits)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_userspace_bits", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_architecture)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_architecture", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_device_links)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_device_links", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=environment)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "environment", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_swapfree_mb)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_swapfree_mb", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_verbosity)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_verbosity", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_apparmor)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_apparmor", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=group_names)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "group_names", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_cmdline)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_cmdline", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=hostvars)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "hostvars", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_selinux)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_selinux", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_ssl_key)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_ssl_key", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_version)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_version", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_php_service) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "php_service": "php7.2-fpm"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_php_service"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_userspace_architecture)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_userspace_architecture", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_product_uuid)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_product_uuid", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=inventory_file)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "inventory_file", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=dependencies_rhel)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "dependencies_rhel", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_pkg_mgr)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_pkg_mgr", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_memfree_mb)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_memfree_mb", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=server_url)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "server_url", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_distribution)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_distribution", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=role_name)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "role_name", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_user_dir)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_user_dir", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_iscsi_iqn)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_iscsi_iqn", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_hostname)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_hostname", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=role_uuid)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "role_uuid", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=permissions)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "permissions", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_inventory_sources)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_inventory_sources", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_uptime_seconds)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_uptime_seconds", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=inventory_dir)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "inventory_dir", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_mysql_path) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "mysql_path": "/etc/mysql/mysql.conf.d"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_mysql_path"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_kernel)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_kernel", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_git_core_path) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "git_core_path": "/usr/lib/git-core"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_git_core_path"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_python)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_python", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_protocol)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_protocol", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_is_chroot)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_is_chroot", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_mounts)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_mounts", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=web_root)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "web_root", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_user_shell)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_user_shell", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=play_hosts)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "play_hosts", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=allow_http_auth)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "allow_http_auth", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_nodename)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_nodename", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_product_serial)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_product_serial", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_form_factor)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_form_factor", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_distribution_file_parsed)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_distribution_file_parsed", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_fips)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_fips", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_user_id)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_user_id", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_selinux_python_present)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_selinux_python_present", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_php_sock) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "php_sock": "unix:/var/run/php/php7.2-fpm.sock"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_php_sock"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_connection)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_connection", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_local)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_local", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_php_path) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "php_path": "/etc/php/7.2/fpm/conf.d"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_php_path"[0m
+[0;32m}[0m
+[0;32mok: [localhost] => (item=default_phabricator_packages) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "phabricator_packages": [[0m
+[0;32m            "apt-utils", [0m
+[0;32m            "htop", [0m
+[0;32m            "mlocate", [0m
+[0;32m            "git-core", [0m
+[0;32m            "nginx", [0m
+[0;32m            "dpkg-dev", [0m
+[0;32m            "php7.2", [0m
+[0;32m            "php7.2-fpm", [0m
+[0;32m            "php7.2-mysql", [0m
+[0;32m            "php7.2-gd", [0m
+[0;32m            "php7.2-dev", [0m
+[0;32m            "php7.2-curl", [0m
+[0;32m            "php7.2-cli", [0m
+[0;32m            "php7.2-json", [0m
+[0;32m            "php7.2-mbstring", [0m
+[0;32m            "php7.2-apcu", [0m
+[0;32m            "python-pip", [0m
+[0;32m            "exim4", [0m
+[0;32m            "subversion", [0m
+[0;32m            "mercurial", [0m
+[0;32m            "ssl-cert", [0m
+[0;32m            "wget", [0m
+[0;32m            "net-tools"[0m
+[0;32m        ][0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_phabricator_packages"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_distribution_file_path)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_distribution_file_path", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_skip_tags)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_skip_tags", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_virtualization_type)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_virtualization_type", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_exim_service_name) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "exim_service_name": "exim4"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_exim_service_name"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_processor_cores)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_processor_cores", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=inventory_hostname)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "inventory_hostname", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_play_hosts_all)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_play_hosts_all", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_processor_vcpus)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_processor_vcpus", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_bios_version)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_bios_version", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_processor)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_processor", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_date_time)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_date_time", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_fqdn)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_fqdn", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_real_user_id)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_real_user_id", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_distribution_release)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_distribution_release", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_system_vendor)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_system_vendor", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_os_family)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_os_family", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_effective_user_id)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_effective_user_id", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_user_gid)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_user_gid", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_domain)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_domain", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_exim_config_file) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "exim_config_file": "/etc/exim4/update-exim4.conf.conf"[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_exim_config_file"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_swaptotal_mb)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_swaptotal_mb", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_devices)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_devices", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_product_name)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_product_name", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=role_path)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "role_path", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_users) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "users": {[0m
+[0;32m            "daemon": "phab-daemon", [0m
+[0;32m            "vcs": "phab-vcs", [0m
+[0;32m            "web": "www-data"[0m
+[0;32m        }[0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_users"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=sudo_group)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "sudo_group", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;32mok: [localhost] => (item=default_phabricator_packages_local) => {[0m
+[0;32m    "ansible_facts": {[0m
+[0;32m        "phabricator_packages_local": [[0m
+[0;32m            "mysql-server-5.7", [0m
+[0;32m            "python-dev", [0m
+[0;32m            "libmysqlclient-dev"[0m
+[0;32m        ][0m
+[0;32m    }, [0m
+[0;32m    "changed": false, [0m
+[0;32m    "item": "default_phabricator_packages_local"[0m
+[0;32m}[0m
+[0;36mskipping: [localhost] => (item=ansible_user_uid)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_user_uid", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_file_storage)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_file_storage", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_dns)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_dns", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_distribution_major_version)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_distribution_major_version", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=groups)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "groups", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_ssl_cert)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_ssl_cert", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_auth_email_domains)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_auth_email_domains", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_real_group_id)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_real_group_id", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_lsb)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_lsb", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_machine_id)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_machine_id", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_bios_date)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_bios_date", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_metamta_default_address)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_metamta_default_address", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_metamta_domain)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_metamta_domain", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=inventory_hostname_short)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "inventory_hostname_short", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_machine)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_machine", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_play_batch)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_play_batch", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=omit)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "omit", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_user_gecos)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_user_gecos", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_diff_mode)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_diff_mode", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=phabricator_local_disk_path)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "phabricator_local_disk_path", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_processor_threads_per_core)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_processor_threads_per_core", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_system)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_system", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=role_names)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "role_names", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=mysql_cnf_config)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "mysql_cnf_config", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_run_tags)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_run_tags", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=ansible_python_version)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "ansible_python_version", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+[0;36mskipping: [localhost] => (item=database_config)  => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "item": "database_config", [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : stop phabricator-phd] **********************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:23[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035217.98-166631772745682 `" && echo ansible-tmp-1540035217.98-166631772745682="` echo /root/.ansible/tmp/ansible-tmp-1540035217.98-166631772745682 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/system/systemd.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmpdil52D TO /root/.ansible/tmp/ansible-tmp-1540035217.98-166631772745682/AnsiballZ_systemd.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035217.98-166631772745682/ /root/.ansible/tmp/ansible-tmp-1540035217.98-166631772745682/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035217.98-166631772745682/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035217.98-166631772745682/ > /dev/null 2>&1 && sleep 0'[0m
+[0;31mfatal: [localhost]: FAILED! => {[0m
+[0;31m    "changed": false, [0m
+[0;31m    "invocation": {[0m
+[0;31m        "module_args": {[0m
+[0;31m            "daemon_reload": false, [0m
+[0;31m            "enabled": null, [0m
+[0;31m            "force": null, [0m
+[0;31m            "masked": null, [0m
+[0;31m            "name": "phabricator-phd", [0m
+[0;31m            "no_block": false, [0m
+[0;31m            "scope": null, [0m
+[0;31m            "state": "stopped", [0m
+[0;31m            "user": null[0m
+[0;31m        }[0m
+[0;31m    }, [0m
+[0;31m    "msg": "Could not find the requested service phabricator-phd: host"[0m
+[0;31m}[0m
+[0;36m...ignoring[0m
+
+TASK [role_under_test : stop nginx] ********************************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:29[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035218.49-85190897474654 `" && echo ansible-tmp-1540035218.49-85190897474654="` echo /root/.ansible/tmp/ansible-tmp-1540035218.49-85190897474654 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/system/systemd.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmpa6KdH4 TO /root/.ansible/tmp/ansible-tmp-1540035218.49-85190897474654/AnsiballZ_systemd.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035218.49-85190897474654/ /root/.ansible/tmp/ansible-tmp-1540035218.49-85190897474654/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035218.49-85190897474654/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035218.49-85190897474654/ > /dev/null 2>&1 && sleep 0'[0m
+[0;31mfatal: [localhost]: FAILED! => {[0m
+[0;31m    "changed": false, [0m
+[0;31m    "invocation": {[0m
+[0;31m        "module_args": {[0m
+[0;31m            "daemon_reload": false, [0m
+[0;31m            "enabled": null, [0m
+[0;31m            "force": null, [0m
+[0;31m            "masked": null, [0m
+[0;31m            "name": "nginx", [0m
+[0;31m            "no_block": false, [0m
+[0;31m            "scope": null, [0m
+[0;31m            "state": "stopped", [0m
+[0;31m            "user": null[0m
+[0;31m        }[0m
+[0;31m    }, [0m
+[0;31m    "msg": "Could not find the requested service nginx: host"[0m
+[0;31m}[0m
+[0;36m...ignoring[0m
+
+TASK [role_under_test : stop php-fpm] ******************************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:35[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035218.92-57004735788507 `" && echo ansible-tmp-1540035218.92-57004735788507="` echo /root/.ansible/tmp/ansible-tmp-1540035218.92-57004735788507 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/system/systemd.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmp3Ez0sz TO /root/.ansible/tmp/ansible-tmp-1540035218.92-57004735788507/AnsiballZ_systemd.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035218.92-57004735788507/ /root/.ansible/tmp/ansible-tmp-1540035218.92-57004735788507/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035218.92-57004735788507/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035218.92-57004735788507/ > /dev/null 2>&1 && sleep 0'[0m
+[0;31mfatal: [localhost]: FAILED! => {[0m
+[0;31m    "changed": false, [0m
+[0;31m    "invocation": {[0m
+[0;31m        "module_args": {[0m
+[0;31m            "daemon_reload": false, [0m
+[0;31m            "enabled": null, [0m
+[0;31m            "force": null, [0m
+[0;31m            "masked": null, [0m
+[0;31m            "name": "php7.2-fpm", [0m
+[0;31m            "no_block": false, [0m
+[0;31m            "scope": null, [0m
+[0;31m            "state": "stopped", [0m
+[0;31m            "user": null[0m
+[0;31m        }[0m
+[0;31m    }, [0m
+[0;31m    "msg": "Could not find the requested service php7.2-fpm: host"[0m
+[0;31m}[0m
+[0;36m...ignoring[0m
+
+TASK [role_under_test : fix test-kitchen] **************************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:41[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035219.34-17219717763426 `" && echo ansible-tmp-1540035219.34-17219717763426="` echo /root/.ansible/tmp/ansible-tmp-1540035219.34-17219717763426 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/files/file.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmpfOghBv TO /root/.ansible/tmp/ansible-tmp-1540035219.34-17219717763426/AnsiballZ_file.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035219.34-17219717763426/ /root/.ansible/tmp/ansible-tmp-1540035219.34-17219717763426/AnsiballZ_file.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035219.34-17219717763426/AnsiballZ_file.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035219.34-17219717763426/ > /dev/null 2>&1 && sleep 0'[0m
+[0;33mchanged: [localhost] => {[0m
+[0;33m    "changed": true, [0m
+[0;33m    "diff": {[0m
+[0;33m        "after": {[0m
+[0;33m            "mode": "0775", [0m
+[0;33m            "path": "/tmp/kitchen", [0m
+[0;33m            "state": "directory"[0m
+[0;33m        }, [0m
+[0;33m        "before": {[0m
+[0;33m            "mode": "0755", [0m
+[0;33m            "path": "/tmp/kitchen", [0m
+[0;33m            "state": "absent"[0m
+[0;33m        }[0m
+[0;33m    }, [0m
+[0;33m    "gid": 0, [0m
+[0;33m    "group": "root", [0m
+[0;33m    "invocation": {[0m
+[0;33m        "module_args": {[0m
+[0;33m            "_diff_peek": null, [0m
+[0;33m            "_original_basename": null, [0m
+[0;33m            "access_time": null, [0m
+[0;33m            "access_time_format": "%Y%m%d%H%M.%S", [0m
+[0;33m            "attributes": null, [0m
+[0;33m            "backup": null, [0m
+[0;33m            "content": null, [0m
+[0;33m            "delimiter": null, [0m
+[0;33m            "directory_mode": null, [0m
+[0;33m            "follow": true, [0m
+[0;33m            "force": false, [0m
+[0;33m            "group": null, [0m
+[0;33m            "mode": 509, [0m
+[0;33m            "modification_time": null, [0m
+[0;33m            "modification_time_format": "%Y%m%d%H%M.%S", [0m
+[0;33m            "owner": null, [0m
+[0;33m            "path": "/tmp/kitchen", [0m
+[0;33m            "recurse": true, [0m
+[0;33m            "regexp": null, [0m
+[0;33m            "remote_src": null, [0m
+[0;33m            "selevel": null, [0m
+[0;33m            "serole": null, [0m
+[0;33m            "setype": null, [0m
+[0;33m            "seuser": null, [0m
+[0;33m            "src": null, [0m
+[0;33m            "state": "directory", [0m
+[0;33m            "unsafe_writes": null[0m
+[0;33m        }[0m
+[0;33m    }, [0m
+[0;33m    "mode": "0775", [0m
+[0;33m    "owner": "root", [0m
+[0;33m    "path": "/tmp/kitchen", [0m
+[0;33m    "size": 4096, [0m
+[0;33m    "state": "directory", [0m
+[0;33m    "uid": 0[0m
+[0;33m}[0m
+
+TASK [role_under_test : install repo for php7.1 Ubuntu 16] *********************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:48[0m
+[0;36mskipping: [localhost] => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : Add an Apt signing key, uses whichever key is at the URL] ***
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:53[0m
+[0;36mskipping: [localhost] => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : install package (Debian 9)] ****************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:59[0m
+[0;36mskipping: [localhost] => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : install repo for php7.2 Debian 9] **********************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:68[0m
+[0;36mskipping: [localhost] => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : install packages (Debian)] *****************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:73[0m
+[0;36mskipping: [localhost] => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : install packages Ubuntu16] *****************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:81[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035219.73-52609951270739 `" && echo ansible-tmp-1540035219.73-52609951270739="` echo /root/.ansible/tmp/ansible-tmp-1540035219.73-52609951270739 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/packaging/os/apt.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmpUgQYqZ TO /root/.ansible/tmp/ansible-tmp-1540035219.73-52609951270739/AnsiballZ_apt.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035219.73-52609951270739/ /root/.ansible/tmp/ansible-tmp-1540035219.73-52609951270739/AnsiballZ_apt.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035219.73-52609951270739/AnsiballZ_apt.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035219.73-52609951270739/ > /dev/null 2>&1 && sleep 0'[0m
+[0;33mchanged: [localhost] => {[0m
+[0;33m    "cache_update_time": 1540035210, [0m
+[0;33m    "cache_updated": false, [0m
+[0;33m    "changed": true, [0m
+[0;33m    "diff": {}, [0m
+[0;33m    "invocation": {[0m
+[0;33m        "module_args": {[0m
+[0;33m            "allow_unauthenticated": false, [0m
+[0;33m            "autoclean": false, [0m
+[0;33m            "autoremove": false, [0m
+[0;33m            "cache_valid_time": 0, [0m
+[0;33m            "deb": null, [0m
+[0;33m            "default_release": null, [0m
+[0;33m            "dpkg_options": "force-confdef,force-confold", [0m
+[0;33m            "force": false, [0m
+[0;33m            "force_apt_get": false, [0m
+[0;33m            "install_recommends": false, [0m
+[0;33m            "name": [[0m
+[0;33m                "apt-utils", [0m
+[0;33m                "htop", [0m
+[0;33m                "mlocate", [0m
+[0;33m                "git-core", [0m
+[0;33m                "nginx", [0m
+[0;33m                "dpkg-dev", [0m
+[0;33m                "php7.2", [0m
+[0;33m                "php7.2-fpm", [0m
+[0;33m                "php7.2-mysql", [0m
+[0;33m                "php7.2-gd", [0m
+[0;33m                "php7.2-dev", [0m
+[0;33m                "php7.2-curl", [0m
+[0;33m                "php7.2-cli", [0m
+[0;33m                "php7.2-json", [0m
+[0;33m                "php7.2-mbstring", [0m
+[0;33m                "php7.2-apcu", [0m
+[0;33m                "python-pip", [0m
+[0;33m                "exim4", [0m
+[0;33m                "subversion", [0m
+[0;33m                "mercurial", [0m
+[0;33m                "ssl-cert", [0m
+[0;33m                "wget", [0m
+[0;33m                "net-tools"[0m
+[0;33m            ], [0m
+[0;33m            "only_upgrade": false, [0m
+[0;33m            "package": [[0m
+[0;33m                "apt-utils", [0m
+[0;33m                "htop", [0m
+[0;33m                "mlocate", [0m
+[0;33m                "git-core", [0m
+[0;33m                "nginx", [0m
+[0;33m                "dpkg-dev", [0m
+[0;33m                "php7.2", [0m
+[0;33m                "php7.2-fpm", [0m
+[0;33m                "php7.2-mysql", [0m
+[0;33m                "php7.2-gd", [0m
+[0;33m                "php7.2-dev", [0m
+[0;33m                "php7.2-curl", [0m
+[0;33m                "php7.2-cli", [0m
+[0;33m                "php7.2-json", [0m
+[0;33m                "php7.2-mbstring", [0m
+[0;33m                "php7.2-apcu", [0m
+[0;33m                "python-pip", [0m
+[0;33m                "exim4", [0m
+[0;33m                "subversion", [0m
+[0;33m                "mercurial", [0m
+[0;33m                "ssl-cert", [0m
+[0;33m                "wget", [0m
+[0;33m                "net-tools"[0m
+[0;33m            ], [0m
+[0;33m            "purge": false, [0m
+[0;33m            "state": "present", [0m
+[0;33m            "update_cache": true, [0m
+[0;33m            "upgrade": null[0m
+[0;33m        }[0m
+[0;33m    }, [0m
+[0;33m    "stderr": "debconf: delaying package configuration, since apt-utils is not installed\n", [0m
+[0;33m    "stderr_lines": [[0m
+[0;33m        "debconf: delaying package configuration, since apt-utils is not installed"[0m
+[0;33m    ], [0m
+[0;33m    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following additional packages will be installed:\n  autoconf automake autotools-dev exim4-base exim4-config exim4-daemon-light\n  file fontconfig-config fonts-dejavu-core git-man iproute2 libapr1\n  libaprutil1 libbsd0 libcurl3-gnutls libcurl4 libedit2 libelf1 liberror-perl\n  libfontconfig1 libfreetype6 libgd3 libgeoip1 libgssapi-krb5-2 libicu60\n  libjbig0 libjpeg-turbo8 libjpeg8 libk5crypto3 libkeyutils1 libkrb5-3\n  libkrb5support0 libmagic-mgc libmagic1 libmnl0 libnghttp2-14\n  libnginx-mod-http-geoip libnginx-mod-http-image-filter\n  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream\n  libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libpng16-16 libpsl5\n  librtmp1 libserf-1-1 libsigsegv2 libsodium23 libsvn1 libtiff5 libtool\n  libwebp6 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4\n  libxslt1.1 m4 mercurial-common multiarch-support nginx-common nginx-core\n  php-common php7.2-common php7.2-opcache php7.2-readline psmisc shtool tzdata\nSuggested packages:\n  autoconf-archive gnu-standards autoconf-doc gettext mail-reader eximon4\n  exim4-doc-html | exim4-doc-info spf-tools-perl swaks gettext-base\n  git-daemon-run | git-daemon-sysvinit git-doc git-el git-email git-gui gitk\n  gitweb git-cvs git-mediawiki git-svn lsof strace iproute2-doc libgd-tools\n  geoip-bin krb5-doc krb5-user libtool-doc gfortran | fortran95-compiler\n  gcj-jdk m4-doc kdiff3 | kdiff3-qt | kompare | meld | tkcvs | mgdiff qct\n  python-mysqldb python-openssl python-pygments wish fcgiwrap nginx-doc\n  php-pear dh-php openssl-blacklist db5.3-util libapache2-mod-svn\n  subversion-tools\nRecommended packages:\n  mailx less ssh-client libatm1 libxtables12 geoip-database krb5-locales\n  publicsuffix libltdl-dev openssh-client php-apcu-bc pkg-php-tools\nThe following NEW packages will be installed:\n  apt-utils autoconf automake autotools-dev exim4 exim4-base exim4-config\n  exim4-daemon-light file fontconfig-config fonts-dejavu-core git git-man htop\n  iproute2 libapr1 libaprutil1 libbsd0 libcurl3-gnutls libcurl4 libedit2\n  libelf1 liberror-perl libfontconfig1 libfreetype6 libgd3 libgeoip1\n  libgssapi-krb5-2 libicu60 libjbig0 libjpeg-turbo8 libjpeg8 libk5crypto3\n  libkeyutils1 libkrb5-3 libkrb5support0 libmagic-mgc libmagic1 libmnl0\n  libnghttp2-14 libnginx-mod-http-geoip libnginx-mod-http-image-filter\n  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream\n  libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libpng16-16 libpsl5\n  librtmp1 libserf-1-1 libsigsegv2 libsodium23 libsvn1 libtiff5 libtool\n  libwebp6 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4\n  libxslt1.1 m4 mercurial mercurial-common mlocate multiarch-support net-tools\n  nginx nginx-common nginx-core php-apcu php-common php7.2 php7.2-cli\n  php7.2-common php7.2-curl php7.2-dev php7.2-fpm php7.2-gd php7.2-json\n  php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline psmisc shtool\n  ssl-cert subversion tzdata wget\n0 upgraded, 96 newly installed, 0 to remove and 10 not upgraded.\nNeed to get 34.6 MB of archives.\nAfter this operation, 161 MB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 multiarch-support amd64 2.27-3ubuntu1 [6916 B]\nGet:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxau6 amd64 1:1.0.8-1 [8376 B]\nGet:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libjpeg-turbo8 amd64 1.5.2-0ubuntu5.18.04.1 [110 kB]\nGet:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 apt-utils amd64 1.6.3ubuntu0.1 [208 kB]\nGet:5 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmagic-mgc amd64 1:5.32-2ubuntu0.1 [184 kB]\nGet:6 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmagic1 amd64 1:5.32-2ubuntu0.1 [68.4 kB]\nGet:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 file amd64 1:5.32-2ubuntu0.1 [22.1 kB]\nGet:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libelf1 amd64 0.170-0.4 [44.1 kB]\nGet:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 libmnl0 amd64 1.0.4-2 [12.3 kB]\nGet:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 iproute2 amd64 4.15.0-2ubuntu1 [721 kB]\nGet:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 libbsd0 amd64 0.8.7-1 [41.5 kB]\nGet:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 libicu60 amd64 60.2-3ubuntu3 [8054 kB]\nGet:13 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxml2 amd64 2.9.4+dfsg1-6.1ubuntu1.2 [663 kB]\nGet:14 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 tzdata all 2018e-0ubuntu0.18.04 [188 kB]\nGet:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 libedit2 amd64 3.1-20170329-1 [76.9 kB]\nGet:16 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgeoip1 amd64 1.6.12-1 [71.8 kB]\nGet:17 http://archive.ubuntu.com/ubuntu bionic/main amd64 libkrb5support0 amd64 1.16-2build1 [31.1 kB]\nGet:18 http://archive.ubuntu.com/ubuntu bionic/main amd64 libk5crypto3 amd64 1.16-2build1 [85.6 kB]\nGet:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 libkeyutils1 amd64 1.5.9-9.2ubuntu2 [8720 B]\nGet:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libkrb5-3 amd64 1.16-2build1 [279 kB]\nGet:21 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgssapi-krb5-2 amd64 1.16-2build1 [122 kB]\nGet:22 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpng16-16 amd64 1.6.34-1ubuntu0.18.04.1 [176 kB]\nGet:23 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpsl5 amd64 0.19.1-5build1 [41.8 kB]\nGet:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdmcp6 amd64 1:1.1.2-3 [10.7 kB]\nGet:25 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb1 amd64 1.13-1 [45.6 kB]\nGet:26 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-data all 2:1.6.4-3ubuntu0.1 [113 kB]\nGet:27 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-6 amd64 2:1.6.4-3ubuntu0.1 [571 kB]\nGet:28 http://archive.ubuntu.com/ubuntu bionic/main amd64 mlocate amd64 0.26-2ubuntu3.1 [49.0 kB]\nGet:29 http://archive.ubuntu.com/ubuntu bionic/main amd64 psmisc amd64 23.1-1 [51.5 kB]\nGet:30 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 wget amd64 1.19.4-1ubuntu2.1 [316 kB]\nGet:31 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]\nGet:32 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]\nGet:33 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]\nGet:34 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]\nGet:35 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]\nGet:36 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4-config all 4.90.1-1ubuntu1 [240 kB]\nGet:37 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4-base amd64 4.90.1-1ubuntu1 [897 kB]\nGet:38 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4-daemon-light amd64 4.90.1-1ubuntu1 [476 kB]\nGet:39 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4 all 4.90.1-1ubuntu1 [7212 B]\nGet:40 http://archive.ubuntu.com/ubuntu bionic/main amd64 fonts-dejavu-core all 2.37-1 [1041 kB]\nGet:41 http://archive.ubuntu.com/ubuntu bionic/main amd64 fontconfig-config all 2.12.6-0ubuntu2 [55.8 kB]\nGet:42 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnghttp2-14 amd64 1.30.0-1ubuntu1 [77.8 kB]\nGet:43 http://archive.ubuntu.com/ubuntu bionic/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-1 [54.2 kB]\nGet:44 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl3-gnutls amd64 7.58.0-2ubuntu3.3 [212 kB]\nGet:45 http://archive.ubuntu.com/ubuntu bionic/main amd64 liberror-perl all 0.17025-1 [22.8 kB]\nGet:46 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git-man all 1:2.17.1-1ubuntu0.3 [803 kB]\nGet:47 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git amd64 1:2.17.1-1ubuntu0.3 [3898 kB]\nGet:48 http://archive.ubuntu.com/ubuntu bionic/main amd64 htop amd64 2.1.0-3 [80.0 kB]\nGet:49 http://archive.ubuntu.com/ubuntu bionic/main amd64 libapr1 amd64 1.6.3-2 [90.9 kB]\nGet:50 http://archive.ubuntu.com/ubuntu bionic/main amd64 libaprutil1 amd64 1.6.1-2 [84.4 kB]\nGet:51 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl4 amd64 7.58.0-2ubuntu3.3 [214 kB]\nGet:52 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfreetype6 amd64 2.8.1-2ubuntu2 [335 kB]\nGet:53 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfontconfig1 amd64 2.12.6-0ubuntu2 [137 kB]\nGet:54 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2194 B]\nGet:55 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjbig0 amd64 2.1-3.1build1 [26.7 kB]\nGet:56 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtiff5 amd64 4.0.9-5 [152 kB]\nGet:57 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwebp6 amd64 0.6.1-2 [185 kB]\nGet:58 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxpm4 amd64 1:3.5.12-1 [34.0 kB]\nGet:59 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgd3 amd64 2.2.5-4ubuntu0.2 [119 kB]\nGet:60 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx-common all 1.14.0-0ubuntu1.1 [37.3 kB]\nGet:61 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-geoip amd64 1.14.0-0ubuntu1.1 [11.1 kB]\nGet:62 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-image-filter amd64 1.14.0-0ubuntu1.1 [14.4 kB]\nGet:63 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxslt1.1 amd64 1.1.29-5 [150 kB]\nGet:64 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-xslt-filter amd64 1.14.0-0ubuntu1.1 [12.9 kB]\nGet:65 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-mail amd64 1.14.0-0ubuntu1.1 [41.7 kB]\nGet:66 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-stream amd64 1.14.0-0ubuntu1.1 [63.5 kB]\nGet:67 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcre16-3 amd64 2:8.39-9 [147 kB]\nGet:68 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcre32-3 amd64 2:8.39-9 [138 kB]\nGet:69 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcrecpp0v5 amd64 2:8.39-9 [15.3 kB]\nGet:70 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcre3-dev amd64 2:8.39-9 [537 kB]\nGet:71 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libserf-1-1 amd64 1.3.9-6 [44.4 kB]\nGet:72 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsodium23 amd64 1.0.16-2 [143 kB]\nGet:73 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libsvn1 amd64 1.9.7-4ubuntu1 [1183 kB]\nGet:74 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]\nGet:75 http://archive.ubuntu.com/ubuntu bionic/universe amd64 mercurial-common all 4.5.3-1ubuntu2 [2198 kB]\nGet:76 http://archive.ubuntu.com/ubuntu bionic/universe amd64 mercurial amd64 4.5.3-1ubuntu2 [189 kB]\nGet:77 http://archive.ubuntu.com/ubuntu bionic/main amd64 net-tools amd64 1.60+git20161116.90da8a0-1ubuntu1 [194 kB]\nGet:78 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx-core amd64 1.14.0-0ubuntu1.1 [413 kB]\nGet:79 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx all 1.14.0-0ubuntu1.1 [3588 B]\nGet:80 http://archive.ubuntu.com/ubuntu bionic/main amd64 php-common all 1:60ubuntu1 [12.1 kB]\nGet:81 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-common amd64 7.2.10-0ubuntu0.18.04.1 [878 kB]\nGet:82 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-json amd64 7.2.10-0ubuntu0.18.04.1 [18.8 kB]\nGet:83 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-opcache amd64 7.2.10-0ubuntu0.18.04.1 [165 kB]\nGet:84 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-readline amd64 7.2.10-0ubuntu0.18.04.1 [12.1 kB]\nGet:85 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-cli amd64 7.2.10-0ubuntu0.18.04.1 [1405 kB]\nGet:86 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 php7.2-fpm amd64 7.2.10-0ubuntu0.18.04.1 [1409 kB]\nGet:87 http://archive.ubuntu.com/ubuntu bionic/universe amd64 php-apcu amd64 5.1.9+4.0.11-1build1 [48.1 kB]\nGet:88 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2 all 7.2.10-0ubuntu0.18.04.1 [9248 B]\nGet:89 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-curl amd64 7.2.10-0ubuntu0.18.04.1 [28.9 kB]\nGet:90 http://archive.ubuntu.com/ubuntu bionic/main amd64 shtool all 2.0.8-9 [121 kB]\nGet:91 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-dev amd64 7.2.10-0ubuntu0.18.04.1 [555 kB]\nGet:92 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-gd amd64 7.2.10-0ubuntu0.18.04.1 [27.1 kB]\nGet:93 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 php7.2-mbstring amd64 7.2.10-0ubuntu0.18.04.1 [483 kB]\nGet:94 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-mysql amd64 7.2.10-0ubuntu0.18.04.1 [118 kB]\nGet:95 http://archive.ubuntu.com/ubuntu bionic/main amd64 ssl-cert all 1.0.39 [17.0 kB]\nGet:96 http://archive.ubuntu.com/ubuntu bionic/universe amd64 subversion amd64 1.9.7-4ubuntu1 [834 kB]\nFetched 34.6 MB in 3s (13.5 MB/s)\nSelecting previously unselected package multiarch-support.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 20702 files and directories currently installed.)\r\nPreparing to unpack .../multiarch-support_2.27-3ubuntu1_amd64.deb ...\r\nUnpacking multiarch-support (2.27-3ubuntu1) ...\r\nSetting up multiarch-support (2.27-3ubuntu1) ...\r\nSelecting previously unselected package libxau6:amd64.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 20705 files and directories currently installed.)\r\nPreparing to unpack .../00-libxau6_1%3a1.0.8-1_amd64.deb ...\r\nUnpacking libxau6:amd64 (1:1.0.8-1) ...\r\nSelecting previously unselected package libjpeg-turbo8:amd64.\r\nPreparing to unpack .../01-libjpeg-turbo8_1.5.2-0ubuntu5.18.04.1_amd64.deb ...\r\nUnpacking libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...\r\nSelecting previously unselected package apt-utils.\r\nPreparing to unpack .../02-apt-utils_1.6.3ubuntu0.1_amd64.deb ...\r\nUnpacking apt-utils (1.6.3ubuntu0.1) ...\r\nSelecting previously unselected package libmagic-mgc.\r\nPreparing to unpack .../03-libmagic-mgc_1%3a5.32-2ubuntu0.1_amd64.deb ...\r\nUnpacking libmagic-mgc (1:5.32-2ubuntu0.1) ...\r\nSelecting previously unselected package libmagic1:amd64.\r\nPreparing to unpack .../04-libmagic1_1%3a5.32-2ubuntu0.1_amd64.deb ...\r\nUnpacking libmagic1:amd64 (1:5.32-2ubuntu0.1) ...\r\nSelecting previously unselected package file.\r\nPreparing to unpack .../05-file_1%3a5.32-2ubuntu0.1_amd64.deb ...\r\nUnpacking file (1:5.32-2ubuntu0.1) ...\r\nSelecting previously unselected package libelf1:amd64.\r\nPreparing to unpack .../06-libelf1_0.170-0.4_amd64.deb ...\r\nUnpacking libelf1:amd64 (0.170-0.4) ...\r\nSelecting previously unselected package libmnl0:amd64.\r\nPreparing to unpack .../07-libmnl0_1.0.4-2_amd64.deb ...\r\nUnpacking libmnl0:amd64 (1.0.4-2) ...\r\nSelecting previously unselected package iproute2.\r\nPreparing to unpack .../08-iproute2_4.15.0-2ubuntu1_amd64.deb ...\r\nUnpacking iproute2 (4.15.0-2ubuntu1) ...\r\nSelecting previously unselected package libbsd0:amd64.\r\nPreparing to unpack .../09-libbsd0_0.8.7-1_amd64.deb ...\r\nUnpacking libbsd0:amd64 (0.8.7-1) ...\r\nSelecting previously unselected package libicu60:amd64.\r\nPreparing to unpack .../10-libicu60_60.2-3ubuntu3_amd64.deb ...\r\nUnpacking libicu60:amd64 (60.2-3ubuntu3) ...\r\nSelecting previously unselected package libxml2:amd64.\r\nPreparing to unpack .../11-libxml2_2.9.4+dfsg1-6.1ubuntu1.2_amd64.deb ...\r\nUnpacking libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.2) ...\r\nSelecting previously unselected package tzdata.\r\nPreparing to unpack .../12-tzdata_2018e-0ubuntu0.18.04_all.deb ...\r\nUnpacking tzdata (2018e-0ubuntu0.18.04) ...\r\nSelecting previously unselected package libedit2:amd64.\r\nPreparing to unpack .../13-libedit2_3.1-20170329-1_amd64.deb ...\r\nUnpacking libedit2:amd64 (3.1-20170329-1) ...\r\nSelecting previously unselected package libgeoip1:amd64.\r\nPreparing to unpack .../14-libgeoip1_1.6.12-1_amd64.deb ...\r\nUnpacking libgeoip1:amd64 (1.6.12-1) ...\r\nSelecting previously unselected package libkrb5support0:amd64.\r\nPreparing to unpack .../15-libkrb5support0_1.16-2build1_amd64.deb ...\r\nUnpacking libkrb5support0:amd64 (1.16-2build1) ...\r\nSelecting previously unselected package libk5crypto3:amd64.\r\nPreparing to unpack .../16-libk5crypto3_1.16-2build1_amd64.deb ...\r\nUnpacking libk5crypto3:amd64 (1.16-2build1) ...\r\nSelecting previously unselected package libkeyutils1:amd64.\r\nPreparing to unpack .../17-libkeyutils1_1.5.9-9.2ubuntu2_amd64.deb ...\r\nUnpacking libkeyutils1:amd64 (1.5.9-9.2ubuntu2) ...\r\nSelecting previously unselected package libkrb5-3:amd64.\r\nPreparing to unpack .../18-libkrb5-3_1.16-2build1_amd64.deb ...\r\nUnpacking libkrb5-3:amd64 (1.16-2build1) ...\r\nSelecting previously unselected package libgssapi-krb5-2:amd64.\r\nPreparing to unpack .../19-libgssapi-krb5-2_1.16-2build1_amd64.deb ...\r\nUnpacking libgssapi-krb5-2:amd64 (1.16-2build1) ...\r\nSelecting previously unselected package libpng16-16:amd64.\r\nPreparing to unpack .../20-libpng16-16_1.6.34-1ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.1) ...\r\nSelecting previously unselected package libpsl5:amd64.\r\nPreparing to unpack .../21-libpsl5_0.19.1-5build1_amd64.deb ...\r\nUnpacking libpsl5:amd64 (0.19.1-5build1) ...\r\nSelecting previously unselected package libxdmcp6:amd64.\r\nPreparing to unpack .../22-libxdmcp6_1%3a1.1.2-3_amd64.deb ...\r\nUnpacking libxdmcp6:amd64 (1:1.1.2-3) ...\r\nSelecting previously unselected package libxcb1:amd64.\r\nPreparing to unpack .../23-libxcb1_1.13-1_amd64.deb ...\r\nUnpacking libxcb1:amd64 (1.13-1) ...\r\nSelecting previously unselected package libx11-data.\r\nPreparing to unpack .../24-libx11-data_2%3a1.6.4-3ubuntu0.1_all.deb ...\r\nUnpacking libx11-data (2:1.6.4-3ubuntu0.1) ...\r\nSelecting previously unselected package libx11-6:amd64.\r\nPreparing to unpack .../25-libx11-6_2%3a1.6.4-3ubuntu0.1_amd64.deb ...\r\nUnpacking libx11-6:amd64 (2:1.6.4-3ubuntu0.1) ...\r\nSelecting previously unselected package mlocate.\r\nPreparing to unpack .../26-mlocate_0.26-2ubuntu3.1_amd64.deb ...\r\nUnpacking mlocate (0.26-2ubuntu3.1) ...\r\nSelecting previously unselected package psmisc.\r\nPreparing to unpack .../27-psmisc_23.1-1_amd64.deb ...\r\nUnpacking psmisc (23.1-1) ...\r\nSelecting previously unselected package wget.\r\nPreparing to unpack .../28-wget_1.19.4-1ubuntu2.1_amd64.deb ...\r\nUnpacking wget (1.19.4-1ubuntu2.1) ...\r\nSelecting previously unselected package libsigsegv2:amd64.\r\nPreparing to unpack .../29-libsigsegv2_2.12-1_amd64.deb ...\r\nUnpacking libsigsegv2:amd64 (2.12-1) ...\r\nSelecting previously unselected package m4.\r\nPreparing to unpack .../30-m4_1.4.18-1_amd64.deb ...\r\nUnpacking m4 (1.4.18-1) ...\r\nSelecting previously unselected package autoconf.\r\nPreparing to unpack .../31-autoconf_2.69-11_all.deb ...\r\nUnpacking autoconf (2.69-11) ...\r\nSelecting previously unselected package autotools-dev.\r\nPreparing to unpack .../32-autotools-dev_20180224.1_all.deb ...\r\nUnpacking autotools-dev (20180224.1) ...\r\nSelecting previously unselected package automake.\r\nPreparing to unpack .../33-automake_1%3a1.15.1-3ubuntu2_all.deb ...\r\nUnpacking automake (1:1.15.1-3ubuntu2) ...\r\nSelecting previously unselected package exim4-config.\r\nPreparing to unpack .../34-exim4-config_4.90.1-1ubuntu1_all.deb ...\r\nUnpacking exim4-config (4.90.1-1ubuntu1) ...\r\nSelecting previously unselected package exim4-base.\r\nPreparing to unpack .../35-exim4-base_4.90.1-1ubuntu1_amd64.deb ...\r\nUnpacking exim4-base (4.90.1-1ubuntu1) ...\r\nSelecting previously unselected package exim4-daemon-light.\r\nPreparing to unpack .../36-exim4-daemon-light_4.90.1-1ubuntu1_amd64.deb ...\r\nUnpacking exim4-daemon-light (4.90.1-1ubuntu1) ...\r\nSelecting previously unselected package exim4.\r\nPreparing to unpack .../37-exim4_4.90.1-1ubuntu1_all.deb ...\r\nUnpacking exim4 (4.90.1-1ubuntu1) ...\r\nSelecting previously unselected package fonts-dejavu-core.\r\nPreparing to unpack .../38-fonts-dejavu-core_2.37-1_all.deb ...\r\nUnpacking fonts-dejavu-core (2.37-1) ...\r\nSelecting previously unselected package fontconfig-config.\r\nPreparing to unpack .../39-fontconfig-config_2.12.6-0ubuntu2_all.deb ...\r\nUnpacking fontconfig-config (2.12.6-0ubuntu2) ...\r\nSelecting previously unselected package libnghttp2-14:amd64.\r\nPreparing to unpack .../40-libnghttp2-14_1.30.0-1ubuntu1_amd64.deb ...\r\nUnpacking libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...\r\nSelecting previously unselected package librtmp1:amd64.\r\nPreparing to unpack .../41-librtmp1_2.4+20151223.gitfa8646d.1-1_amd64.deb ...\r\nUnpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...\r\nSelecting previously unselected package libcurl3-gnutls:amd64.\r\nPreparing to unpack .../42-libcurl3-gnutls_7.58.0-2ubuntu3.3_amd64.deb ...\r\nUnpacking libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.3) ...\r\nSelecting previously unselected package liberror-perl.\r\nPreparing to unpack .../43-liberror-perl_0.17025-1_all.deb ...\r\nUnpacking liberror-perl (0.17025-1) ...\r\nSelecting previously unselected package git-man.\r\nPreparing to unpack .../44-git-man_1%3a2.17.1-1ubuntu0.3_all.deb ...\r\nUnpacking git-man (1:2.17.1-1ubuntu0.3) ...\r\nSelecting previously unselected package git.\r\nPreparing to unpack .../45-git_1%3a2.17.1-1ubuntu0.3_amd64.deb ...\r\nUnpacking git (1:2.17.1-1ubuntu0.3) ...\r\nSelecting previously unselected package htop.\r\nPreparing to unpack .../46-htop_2.1.0-3_amd64.deb ...\r\nUnpacking htop (2.1.0-3) ...\r\nSelecting previously unselected package libapr1:amd64.\r\nPreparing to unpack .../47-libapr1_1.6.3-2_amd64.deb ...\r\nUnpacking libapr1:amd64 (1.6.3-2) ...\r\nSelecting previously unselected package libaprutil1:amd64.\r\nPreparing to unpack .../48-libaprutil1_1.6.1-2_amd64.deb ...\r\nUnpacking libaprutil1:amd64 (1.6.1-2) ...\r\nSelecting previously unselected package libcurl4:amd64.\r\nPreparing to unpack .../49-libcurl4_7.58.0-2ubuntu3.3_amd64.deb ...\r\nUnpacking libcurl4:amd64 (7.58.0-2ubuntu3.3) ...\r\nSelecting previously unselected package libfreetype6:amd64.\r\nPreparing to unpack .../50-libfreetype6_2.8.1-2ubuntu2_amd64.deb ...\r\nUnpacking libfreetype6:amd64 (2.8.1-2ubuntu2) ...\r\nSelecting previously unselected package libfontconfig1:amd64.\r\nPreparing to unpack .../51-libfontconfig1_2.12.6-0ubuntu2_amd64.deb ...\r\nUnpacking libfontconfig1:amd64 (2.12.6-0ubuntu2) ...\r\nSelecting previously unselected package libjpeg8:amd64.\r\nPreparing to unpack .../52-libjpeg8_8c-2ubuntu8_amd64.deb ...\r\nUnpacking libjpeg8:amd64 (8c-2ubuntu8) ...\r\nSelecting previously unselected package libjbig0:amd64.\r\nPreparing to unpack .../53-libjbig0_2.1-3.1build1_amd64.deb ...\r\nUnpacking libjbig0:amd64 (2.1-3.1build1) ...\r\nSelecting previously unselected package libtiff5:amd64.\r\nPreparing to unpack .../54-libtiff5_4.0.9-5_amd64.deb ...\r\nUnpacking libtiff5:amd64 (4.0.9-5) ...\r\nSelecting previously unselected package libwebp6:amd64.\r\nPreparing to unpack .../55-libwebp6_0.6.1-2_amd64.deb ...\r\nUnpacking libwebp6:amd64 (0.6.1-2) ...\r\nSelecting previously unselected package libxpm4:amd64.\r\nPreparing to unpack .../56-libxpm4_1%3a3.5.12-1_amd64.deb ...\r\nUnpacking libxpm4:amd64 (1:3.5.12-1) ...\r\nSelecting previously unselected package libgd3:amd64.\r\nPreparing to unpack .../57-libgd3_2.2.5-4ubuntu0.2_amd64.deb ...\r\nUnpacking libgd3:amd64 (2.2.5-4ubuntu0.2) ...\r\nSelecting previously unselected package nginx-common.\r\nPreparing to unpack .../58-nginx-common_1.14.0-0ubuntu1.1_all.deb ...\r\nUnpacking nginx-common (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package libnginx-mod-http-geoip.\r\nPreparing to unpack .../59-libnginx-mod-http-geoip_1.14.0-0ubuntu1.1_amd64.deb ...\r\nUnpacking libnginx-mod-http-geoip (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package libnginx-mod-http-image-filter.\r\nPreparing to unpack .../60-libnginx-mod-http-image-filter_1.14.0-0ubuntu1.1_amd64.deb ...\r\nUnpacking libnginx-mod-http-image-filter (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package libxslt1.1:amd64.\r\nPreparing to unpack .../61-libxslt1.1_1.1.29-5_amd64.deb ...\r\nUnpacking libxslt1.1:amd64 (1.1.29-5) ...\r\nSelecting previously unselected package libnginx-mod-http-xslt-filter.\r\nPreparing to unpack .../62-libnginx-mod-http-xslt-filter_1.14.0-0ubuntu1.1_amd64.deb ...\r\nUnpacking libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package libnginx-mod-mail.\r\nPreparing to unpack .../63-libnginx-mod-mail_1.14.0-0ubuntu1.1_amd64.deb ...\r\nUnpacking libnginx-mod-mail (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package libnginx-mod-stream.\r\nPreparing to unpack .../64-libnginx-mod-stream_1.14.0-0ubuntu1.1_amd64.deb ...\r\nUnpacking libnginx-mod-stream (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package libpcre16-3:amd64.\r\nPreparing to unpack .../65-libpcre16-3_2%3a8.39-9_amd64.deb ...\r\nUnpacking libpcre16-3:amd64 (2:8.39-9) ...\r\nSelecting previously unselected package libpcre32-3:amd64.\r\nPreparing to unpack .../66-libpcre32-3_2%3a8.39-9_amd64.deb ...\r\nUnpacking libpcre32-3:amd64 (2:8.39-9) ...\r\nSelecting previously unselected package libpcrecpp0v5:amd64.\r\nPreparing to unpack .../67-libpcrecpp0v5_2%3a8.39-9_amd64.deb ...\r\nUnpacking libpcrecpp0v5:amd64 (2:8.39-9) ...\r\nSelecting previously unselected package libpcre3-dev:amd64.\r\nPreparing to unpack .../68-libpcre3-dev_2%3a8.39-9_amd64.deb ...\r\nUnpacking libpcre3-dev:amd64 (2:8.39-9) ...\r\nSelecting previously unselected package libserf-1-1:amd64.\r\nPreparing to unpack .../69-libserf-1-1_1.3.9-6_amd64.deb ...\r\nUnpacking libserf-1-1:amd64 (1.3.9-6) ...\r\nSelecting previously unselected package libsodium23:amd64.\r\nPreparing to unpack .../70-libsodium23_1.0.16-2_amd64.deb ...\r\nUnpacking libsodium23:amd64 (1.0.16-2) ...\r\nSelecting previously unselected package libsvn1:amd64.\r\nPreparing to unpack .../71-libsvn1_1.9.7-4ubuntu1_amd64.deb ...\r\nUnpacking libsvn1:amd64 (1.9.7-4ubuntu1) ...\r\nSelecting previously unselected package libtool.\r\nPreparing to unpack .../72-libtool_2.4.6-2_all.deb ...\r\nUnpacking libtool (2.4.6-2) ...\r\nSelecting previously unselected package mercurial-common.\r\nPreparing to unpack .../73-mercurial-common_4.5.3-1ubuntu2_all.deb ...\r\nUnpacking mercurial-common (4.5.3-1ubuntu2) ...\r\nSelecting previously unselected package mercurial.\r\nPreparing to unpack .../74-mercurial_4.5.3-1ubuntu2_amd64.deb ...\r\nUnpacking mercurial (4.5.3-1ubuntu2) ...\r\nSelecting previously unselected package net-tools.\r\nPreparing to unpack .../75-net-tools_1.60+git20161116.90da8a0-1ubuntu1_amd64.deb ...\r\nUnpacking net-tools (1.60+git20161116.90da8a0-1ubuntu1) ...\r\nSelecting previously unselected package nginx-core.\r\nPreparing to unpack .../76-nginx-core_1.14.0-0ubuntu1.1_amd64.deb ...\r\nUnpacking nginx-core (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package nginx.\r\nPreparing to unpack .../77-nginx_1.14.0-0ubuntu1.1_all.deb ...\r\nUnpacking nginx (1.14.0-0ubuntu1.1) ...\r\nSelecting previously unselected package php-common.\r\nPreparing to unpack .../78-php-common_1%3a60ubuntu1_all.deb ...\r\nUnpacking php-common (1:60ubuntu1) ...\r\nSelecting previously unselected package php7.2-common.\r\nPreparing to unpack .../79-php7.2-common_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-common (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-json.\r\nPreparing to unpack .../80-php7.2-json_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-json (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-opcache.\r\nPreparing to unpack .../81-php7.2-opcache_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-opcache (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-readline.\r\nPreparing to unpack .../82-php7.2-readline_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-readline (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-cli.\r\nPreparing to unpack .../83-php7.2-cli_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-cli (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-fpm.\r\nPreparing to unpack .../84-php7.2-fpm_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-fpm (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php-apcu.\r\nPreparing to unpack .../85-php-apcu_5.1.9+4.0.11-1build1_amd64.deb ...\r\nUnpacking php-apcu (5.1.9+4.0.11-1build1) ...\r\nSelecting previously unselected package php7.2.\r\nPreparing to unpack .../86-php7.2_7.2.10-0ubuntu0.18.04.1_all.deb ...\r\nUnpacking php7.2 (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-curl.\r\nPreparing to unpack .../87-php7.2-curl_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-curl (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package shtool.\r\nPreparing to unpack .../88-shtool_2.0.8-9_all.deb ...\r\nUnpacking shtool (2.0.8-9) ...\r\nSelecting previously unselected package php7.2-dev.\r\nPreparing to unpack .../89-php7.2-dev_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-dev (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-gd.\r\nPreparing to unpack .../90-php7.2-gd_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-gd (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-mbstring.\r\nPreparing to unpack .../91-php7.2-mbstring_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-mbstring (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package php7.2-mysql.\r\nPreparing to unpack .../92-php7.2-mysql_7.2.10-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking php7.2-mysql (7.2.10-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package ssl-cert.\r\nPreparing to unpack .../93-ssl-cert_1.0.39_all.deb ...\r\nUnpacking ssl-cert (1.0.39) ...\r\nSelecting previously unselected package subversion.\r\nPreparing to unpack .../94-subversion_1.9.7-4ubuntu1_amd64.deb ...\r\nUnpacking subversion (1.9.7-4ubuntu1) ...\r\nSetting up libedit2:amd64 (3.1-20170329-1) ...\r\nSetting up libapr1:amd64 (1.6.3-2) ...\r\nSetting up git-man (1:2.17.1-1ubuntu0.3) ...\r\nSetting up libicu60:amd64 (60.2-3ubuntu3) ...\r\nSetting up psmisc (23.1-1) ...\r\nSetting up libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...\r\nSetting up exim4-config (4.90.1-1ubuntu1) ...\r\nAdding system-user for exim (v4)\r\nProcessing triggers for mime-support (3.60ubuntu1) ...\r\nSetting up libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.1) ...\r\nSetting up liberror-perl (0.17025-1) ...\r\nSetting up libjbig0:amd64 (2.1-3.1build1) ...\r\nSetting up libsigsegv2:amd64 (2.12-1) ...\r\nSetting up fonts-dejavu-core (2.37-1) ...\r\nSetting up apt-utils (1.6.3ubuntu0.1) ...\r\nSetting up libpsl5:amd64 (0.19.1-5build1) ...\r\nSetting up tzdata (2018e-0ubuntu0.18.04) ...\r\n\r\nCurrent default time zone: 'Etc/UTC'\r\nLocal time is now:      Sat Oct 20 11:33:55 UTC 2018.\r\nUniversal Time is now:  Sat Oct 20 11:33:55 UTC 2018.\r\nRun 'dpkg-reconfigure tzdata' if you wish to change it.\r\n\r\nSetting up libelf1:amd64 (0.170-0.4) ...\r\nSetting up shtool (2.0.8-9) ...\r\nSetting up nginx-common (1.14.0-0ubuntu1.1) ...\r\nCreated symlink /etc/systemd/system/multi-user.target.wants/nginx.service -> /lib/systemd/system/nginx.service.\r\nSetting up mlocate (0.26-2ubuntu3.1) ...\r\nupdate-alternatives: using /usr/bin/mlocate to provide /usr/bin/locate (locate) in auto mode\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/locate.1.gz because associated file /usr/share/man/man1/mlocate.1.gz (of link group locate) doesn't exist\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man8/updatedb.8.gz because associated file /usr/share/man/man8/updatedb.mlocate.8.gz (of link group locate) doesn't exist\r\nAdding group `mlocate' (GID 108) ...\r\nDone.\r\nSetting up ssl-cert (1.0.39) ...\r\nSetting up libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...\r\nSetting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...\r\nSetting up m4 (1.4.18-1) ...\r\nSetting up libgeoip1:amd64 (1.6.12-1) ...\r\nSetting up exim4-base (4.90.1-1ubuntu1) ...\r\nexim: DB upgrade, deleting hints-db\r\nSetting up libbsd0:amd64 (0.8.7-1) ...\r\nSetting up libkrb5support0:amd64 (1.16-2build1) ...\r\nSetting up libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.2) ...\r\nSetting up libfreetype6:amd64 (2.8.1-2ubuntu2) ...\r\nSetting up libmagic-mgc (1:5.32-2ubuntu0.1) ...\r\nSetting up libmagic1:amd64 (1:5.32-2ubuntu0.1) ...\r\nSetting up libxslt1.1:amd64 (1.1.29-5) ...\r\nSetting up libsodium23:amd64 (1.0.16-2) ...\r\nSetting up mercurial-common (4.5.3-1ubuntu2) ...\r\nSetting up mercurial (4.5.3-1ubuntu2) ...\r\n\r\nCreating config file /etc/mercurial/hgrc.d/hgext.rc with new version\r\nProcessing triggers for libc-bin (2.27-3ubuntu1) ...\r\nSetting up autotools-dev (20180224.1) ...\r\nSetting up libaprutil1:amd64 (1.6.1-2) ...\r\nSetting up php-common (1:60ubuntu1) ...\r\nCreated symlink /etc/systemd/system/timers.target.wants/phpsessionclean.timer -> /lib/systemd/system/phpsessionclean.timer.\r\n/usr/sbin/policy-rc.d returned 101, not running 'start phpsessionclean.timer'\r\nProcessing triggers for systemd (237-3ubuntu10.3) ...\r\nSetting up wget (1.19.4-1ubuntu2.1) ...\r\nSetting up libnginx-mod-mail (1.14.0-0ubuntu1.1) ...\r\nSetting up libpcrecpp0v5:amd64 (2:8.39-9) ...\r\nSetting up libpcre32-3:amd64 (2:8.39-9) ...\r\nSetting up libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.1) ...\r\nSetting up exim4-daemon-light (4.90.1-1ubuntu1) ...\r\ninvoke-rc.d: policy-rc.d denied execution of start.\r\nInitializing GnuTLS DH parameter file\r\nSetting up libpcre16-3:amd64 (2:8.39-9) ...\r\nSetting up libxdmcp6:amd64 (1:1.1.2-3) ...\r\nSetting up libkeyutils1:amd64 (1.5.9-9.2ubuntu2) ...\r\nSetting up htop (2.1.0-3) ...\r\nSetting up net-tools (1.60+git20161116.90da8a0-1ubuntu1) ...\r\nSetting up libmnl0:amd64 (1.0.4-2) ...\r\nSetting up libnginx-mod-http-geoip (1.14.0-0ubuntu1.1) ...\r\nSetting up libx11-data (2:1.6.4-3ubuntu0.1) ...\r\nSetting up libxau6:amd64 (1:1.0.8-1) ...\r\nSetting up libwebp6:amd64 (0.6.1-2) ...\r\nSetting up libjpeg8:amd64 (8c-2ubuntu8) ...\r\nSetting up libk5crypto3:amd64 (1.16-2build1) ...\r\nSetting up libpcre3-dev:amd64 (2:8.39-9) ...\r\nSetting up fontconfig-config (2.12.6-0ubuntu2) ...\r\nSetting up php7.2-common (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/calendar.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/ctype.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/exif.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/fileinfo.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/ftp.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/gettext.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/iconv.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/pdo.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/phar.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/posix.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/shmop.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/sockets.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/sysvmsg.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/sysvsem.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/sysvshm.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/tokenizer.ini with new version\r\nSetting up libnginx-mod-stream (1.14.0-0ubuntu1.1) ...\r\nSetting up libtiff5:amd64 (4.0.9-5) ...\r\nSetting up autoconf (2.69-11) ...\r\nSetting up file (1:5.32-2ubuntu0.1) ...\r\nSetting up iproute2 (4.15.0-2ubuntu1) ...\r\nSetting up php7.2-mbstring (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/mbstring.ini with new version\r\nSetting up php7.2-readline (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/readline.ini with new version\r\nSetting up exim4 (4.90.1-1ubuntu1) ...\r\nSetting up automake (1:1.15.1-3ubuntu2) ...\r\nupdate-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist\r\nSetting up php7.2-json (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/json.ini with new version\r\nSetting up libkrb5-3:amd64 (1.16-2build1) ...\r\nSetting up libxcb1:amd64 (1.13-1) ...\r\nSetting up php7.2-opcache (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/opcache.ini with new version\r\nSetting up libtool (2.4.6-2) ...\r\nSetting up php7.2-mysql (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/mysqlnd.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/mysqli.ini with new version\r\n\r\nCreating config file /etc/php/7.2/mods-available/pdo_mysql.ini with new version\r\nSetting up libfontconfig1:amd64 (2.12.6-0ubuntu2) ...\r\nSetting up libx11-6:amd64 (2:1.6.4-3ubuntu0.1) ...\r\nSetting up libgssapi-krb5-2:amd64 (1.16-2build1) ...\r\nSetting up libserf-1-1:amd64 (1.3.9-6) ...\r\nSetting up php7.2-cli (7.2.10-0ubuntu0.18.04.1) ...\r\nupdate-alternatives: using /usr/bin/php7.2 to provide /usr/bin/php (php) in auto mode\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/php.1.gz because associated file /usr/share/man/man1/php7.2.1.gz (of link group php) doesn't exist\r\nupdate-alternatives: using /usr/bin/phar7.2 to provide /usr/bin/phar (phar) in auto mode\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/phar.1.gz because associated file /usr/share/man/man1/phar7.2.1.gz (of link group phar) doesn't exist\r\nupdate-alternatives: using /usr/bin/phar.phar7.2 to provide /usr/bin/phar.phar (phar.phar) in auto mode\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/phar.phar.1.gz because associated file /usr/share/man/man1/phar.phar7.2.1.gz (of link group phar.phar) doesn't exist\r\n\r\nCreating config file /etc/php/7.2/cli/php.ini with new version\r\nSetting up libxpm4:amd64 (1:3.5.12-1) ...\r\nSetting up libsvn1:amd64 (1.9.7-4ubuntu1) ...\r\nSetting up php7.2-dev (7.2.10-0ubuntu0.18.04.1) ...\r\nupdate-alternatives: using /usr/bin/php-config7.2 to provide /usr/bin/php-config (php-config) in auto mode\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/php-config.1.gz because associated file /usr/share/man/man1/php-config7.2.1.gz (of link group php-config) doesn't exist\r\nupdate-alternatives: using /usr/bin/phpize7.2 to provide /usr/bin/phpize (phpize) in auto mode\r\nupdate-alternatives: warning: skip creation of /usr/share/man/man1/phpize.1.gz because associated file /usr/share/man/man1/phpize7.2.1.gz (of link group phpize) doesn't exist\r\nSetting up php-apcu (5.1.9+4.0.11-1build1) ...\r\nSetting up php7.2-fpm (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/fpm/php.ini with new version\r\nCreated symlink /etc/systemd/system/multi-user.target.wants/php7.2-fpm.service -> /lib/systemd/system/php7.2-fpm.service.\r\ninvoke-rc.d: policy-rc.d denied execution of start.\r\nSetting up libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.3) ...\r\nSetting up libcurl4:amd64 (7.58.0-2ubuntu3.3) ...\r\nSetting up libgd3:amd64 (2.2.5-4ubuntu0.2) ...\r\nSetting up php7.2 (7.2.10-0ubuntu0.18.04.1) ...\r\nSetting up subversion (1.9.7-4ubuntu1) ...\r\nSetting up git (1:2.17.1-1ubuntu0.3) ...\r\nSetting up php7.2-gd (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/gd.ini with new version\r\nSetting up php7.2-curl (7.2.10-0ubuntu0.18.04.1) ...\r\n\r\nCreating config file /etc/php/7.2/mods-available/curl.ini with new version\r\nSetting up libnginx-mod-http-image-filter (1.14.0-0ubuntu1.1) ...\r\nSetting up nginx-core (1.14.0-0ubuntu1.1) ...\r\ninvoke-rc.d: policy-rc.d denied execution of start.\r\nSetting up nginx (1.14.0-0ubuntu1.1) ...\r\nProcessing triggers for libc-bin (2.27-3ubuntu1) ...\r\nProcessing triggers for systemd (237-3ubuntu10.3) ...\r\nProcessing triggers for php7.2-fpm (7.2.10-0ubuntu0.18.04.1) ...\r\ninvoke-rc.d: policy-rc.d denied execution of restart.\r\n", [0m
+[0;33m    "stdout_lines": [[0m
+[0;33m        "Reading package lists...", [0m
+[0;33m        "Building dependency tree...", [0m
+[0;33m        "Reading state information...", [0m
+[0;33m        "The following additional packages will be installed:", [0m
+[0;33m        "  autoconf automake autotools-dev exim4-base exim4-config exim4-daemon-light", [0m
+[0;33m        "  file fontconfig-config fonts-dejavu-core git-man iproute2 libapr1", [0m
+[0;33m        "  libaprutil1 libbsd0 libcurl3-gnutls libcurl4 libedit2 libelf1 liberror-perl", [0m
+[0;33m        "  libfontconfig1 libfreetype6 libgd3 libgeoip1 libgssapi-krb5-2 libicu60", [0m
+[0;33m        "  libjbig0 libjpeg-turbo8 libjpeg8 libk5crypto3 libkeyutils1 libkrb5-3", [0m
+[0;33m        "  libkrb5support0 libmagic-mgc libmagic1 libmnl0 libnghttp2-14", [0m
+[0;33m        "  libnginx-mod-http-geoip libnginx-mod-http-image-filter", [0m
+[0;33m        "  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream", [0m
+[0;33m        "  libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libpng16-16 libpsl5", [0m
+[0;33m        "  librtmp1 libserf-1-1 libsigsegv2 libsodium23 libsvn1 libtiff5 libtool", [0m
+[0;33m        "  libwebp6 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4", [0m
+[0;33m        "  libxslt1.1 m4 mercurial-common multiarch-support nginx-common nginx-core", [0m
+[0;33m        "  php-common php7.2-common php7.2-opcache php7.2-readline psmisc shtool tzdata", [0m
+[0;33m        "Suggested packages:", [0m
+[0;33m        "  autoconf-archive gnu-standards autoconf-doc gettext mail-reader eximon4", [0m
+[0;33m        "  exim4-doc-html | exim4-doc-info spf-tools-perl swaks gettext-base", [0m
+[0;33m        "  git-daemon-run | git-daemon-sysvinit git-doc git-el git-email git-gui gitk", [0m
+[0;33m        "  gitweb git-cvs git-mediawiki git-svn lsof strace iproute2-doc libgd-tools", [0m
+[0;33m        "  geoip-bin krb5-doc krb5-user libtool-doc gfortran | fortran95-compiler", [0m
+[0;33m        "  gcj-jdk m4-doc kdiff3 | kdiff3-qt | kompare | meld | tkcvs | mgdiff qct", [0m
+[0;33m        "  python-mysqldb python-openssl python-pygments wish fcgiwrap nginx-doc", [0m
+[0;33m        "  php-pear dh-php openssl-blacklist db5.3-util libapache2-mod-svn", [0m
+[0;33m        "  subversion-tools", [0m
+[0;33m        "Recommended packages:", [0m
+[0;33m        "  mailx less ssh-client libatm1 libxtables12 geoip-database krb5-locales", [0m
+[0;33m        "  publicsuffix libltdl-dev openssh-client php-apcu-bc pkg-php-tools", [0m
+[0;33m        "The following NEW packages will be installed:", [0m
+[0;33m        "  apt-utils autoconf automake autotools-dev exim4 exim4-base exim4-config", [0m
+[0;33m        "  exim4-daemon-light file fontconfig-config fonts-dejavu-core git git-man htop", [0m
+[0;33m        "  iproute2 libapr1 libaprutil1 libbsd0 libcurl3-gnutls libcurl4 libedit2", [0m
+[0;33m        "  libelf1 liberror-perl libfontconfig1 libfreetype6 libgd3 libgeoip1", [0m
+[0;33m        "  libgssapi-krb5-2 libicu60 libjbig0 libjpeg-turbo8 libjpeg8 libk5crypto3", [0m
+[0;33m        "  libkeyutils1 libkrb5-3 libkrb5support0 libmagic-mgc libmagic1 libmnl0", [0m
+[0;33m        "  libnghttp2-14 libnginx-mod-http-geoip libnginx-mod-http-image-filter", [0m
+[0;33m        "  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream", [0m
+[0;33m        "  libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libpng16-16 libpsl5", [0m
+[0;33m        "  librtmp1 libserf-1-1 libsigsegv2 libsodium23 libsvn1 libtiff5 libtool", [0m
+[0;33m        "  libwebp6 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4", [0m
+[0;33m        "  libxslt1.1 m4 mercurial mercurial-common mlocate multiarch-support net-tools", [0m
+[0;33m        "  nginx nginx-common nginx-core php-apcu php-common php7.2 php7.2-cli", [0m
+[0;33m        "  php7.2-common php7.2-curl php7.2-dev php7.2-fpm php7.2-gd php7.2-json", [0m
+[0;33m        "  php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline psmisc shtool", [0m
+[0;33m        "  ssl-cert subversion tzdata wget", [0m
+[0;33m        "0 upgraded, 96 newly installed, 0 to remove and 10 not upgraded.", [0m
+[0;33m        "Need to get 34.6 MB of archives.", [0m
+[0;33m        "After this operation, 161 MB of additional disk space will be used.", [0m
+[0;33m        "Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 multiarch-support amd64 2.27-3ubuntu1 [6916 B]", [0m
+[0;33m        "Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxau6 amd64 1:1.0.8-1 [8376 B]", [0m
+[0;33m        "Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libjpeg-turbo8 amd64 1.5.2-0ubuntu5.18.04.1 [110 kB]", [0m
+[0;33m        "Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 apt-utils amd64 1.6.3ubuntu0.1 [208 kB]", [0m
+[0;33m        "Get:5 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmagic-mgc amd64 1:5.32-2ubuntu0.1 [184 kB]", [0m
+[0;33m        "Get:6 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmagic1 amd64 1:5.32-2ubuntu0.1 [68.4 kB]", [0m
+[0;33m        "Get:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 file amd64 1:5.32-2ubuntu0.1 [22.1 kB]", [0m
+[0;33m        "Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libelf1 amd64 0.170-0.4 [44.1 kB]", [0m
+[0;33m        "Get:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 libmnl0 amd64 1.0.4-2 [12.3 kB]", [0m
+[0;33m        "Get:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 iproute2 amd64 4.15.0-2ubuntu1 [721 kB]", [0m
+[0;33m        "Get:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 libbsd0 amd64 0.8.7-1 [41.5 kB]", [0m
+[0;33m        "Get:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 libicu60 amd64 60.2-3ubuntu3 [8054 kB]", [0m
+[0;33m        "Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxml2 amd64 2.9.4+dfsg1-6.1ubuntu1.2 [663 kB]", [0m
+[0;33m        "Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 tzdata all 2018e-0ubuntu0.18.04 [188 kB]", [0m
+[0;33m        "Get:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 libedit2 amd64 3.1-20170329-1 [76.9 kB]", [0m
+[0;33m        "Get:16 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgeoip1 amd64 1.6.12-1 [71.8 kB]", [0m
+[0;33m        "Get:17 http://archive.ubuntu.com/ubuntu bionic/main amd64 libkrb5support0 amd64 1.16-2build1 [31.1 kB]", [0m
+[0;33m        "Get:18 http://archive.ubuntu.com/ubuntu bionic/main amd64 libk5crypto3 amd64 1.16-2build1 [85.6 kB]", [0m
+[0;33m        "Get:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 libkeyutils1 amd64 1.5.9-9.2ubuntu2 [8720 B]", [0m
+[0;33m        "Get:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libkrb5-3 amd64 1.16-2build1 [279 kB]", [0m
+[0;33m        "Get:21 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgssapi-krb5-2 amd64 1.16-2build1 [122 kB]", [0m
+[0;33m        "Get:22 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpng16-16 amd64 1.6.34-1ubuntu0.18.04.1 [176 kB]", [0m
+[0;33m        "Get:23 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpsl5 amd64 0.19.1-5build1 [41.8 kB]", [0m
+[0;33m        "Get:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdmcp6 amd64 1:1.1.2-3 [10.7 kB]", [0m
+[0;33m        "Get:25 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxcb1 amd64 1.13-1 [45.6 kB]", [0m
+[0;33m        "Get:26 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-data all 2:1.6.4-3ubuntu0.1 [113 kB]", [0m
+[0;33m        "Get:27 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-6 amd64 2:1.6.4-3ubuntu0.1 [571 kB]", [0m
+[0;33m        "Get:28 http://archive.ubuntu.com/ubuntu bionic/main amd64 mlocate amd64 0.26-2ubuntu3.1 [49.0 kB]", [0m
+[0;33m        "Get:29 http://archive.ubuntu.com/ubuntu bionic/main amd64 psmisc amd64 23.1-1 [51.5 kB]", [0m
+[0;33m        "Get:30 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 wget amd64 1.19.4-1ubuntu2.1 [316 kB]", [0m
+[0;33m        "Get:31 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]", [0m
+[0;33m        "Get:32 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]", [0m
+[0;33m        "Get:33 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]", [0m
+[0;33m        "Get:34 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]", [0m
+[0;33m        "Get:35 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]", [0m
+[0;33m        "Get:36 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4-config all 4.90.1-1ubuntu1 [240 kB]", [0m
+[0;33m        "Get:37 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4-base amd64 4.90.1-1ubuntu1 [897 kB]", [0m
+[0;33m        "Get:38 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4-daemon-light amd64 4.90.1-1ubuntu1 [476 kB]", [0m
+[0;33m        "Get:39 http://archive.ubuntu.com/ubuntu bionic/main amd64 exim4 all 4.90.1-1ubuntu1 [7212 B]", [0m
+[0;33m        "Get:40 http://archive.ubuntu.com/ubuntu bionic/main amd64 fonts-dejavu-core all 2.37-1 [1041 kB]", [0m
+[0;33m        "Get:41 http://archive.ubuntu.com/ubuntu bionic/main amd64 fontconfig-config all 2.12.6-0ubuntu2 [55.8 kB]", [0m
+[0;33m        "Get:42 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnghttp2-14 amd64 1.30.0-1ubuntu1 [77.8 kB]", [0m
+[0;33m        "Get:43 http://archive.ubuntu.com/ubuntu bionic/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-1 [54.2 kB]", [0m
+[0;33m        "Get:44 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl3-gnutls amd64 7.58.0-2ubuntu3.3 [212 kB]", [0m
+[0;33m        "Get:45 http://archive.ubuntu.com/ubuntu bionic/main amd64 liberror-perl all 0.17025-1 [22.8 kB]", [0m
+[0;33m        "Get:46 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git-man all 1:2.17.1-1ubuntu0.3 [803 kB]", [0m
+[0;33m        "Get:47 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git amd64 1:2.17.1-1ubuntu0.3 [3898 kB]", [0m
+[0;33m        "Get:48 http://archive.ubuntu.com/ubuntu bionic/main amd64 htop amd64 2.1.0-3 [80.0 kB]", [0m
+[0;33m        "Get:49 http://archive.ubuntu.com/ubuntu bionic/main amd64 libapr1 amd64 1.6.3-2 [90.9 kB]", [0m
+[0;33m        "Get:50 http://archive.ubuntu.com/ubuntu bionic/main amd64 libaprutil1 amd64 1.6.1-2 [84.4 kB]", [0m
+[0;33m        "Get:51 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl4 amd64 7.58.0-2ubuntu3.3 [214 kB]", [0m
+[0;33m        "Get:52 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfreetype6 amd64 2.8.1-2ubuntu2 [335 kB]", [0m
+[0;33m        "Get:53 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfontconfig1 amd64 2.12.6-0ubuntu2 [137 kB]", [0m
+[0;33m        "Get:54 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2194 B]", [0m
+[0;33m        "Get:55 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjbig0 amd64 2.1-3.1build1 [26.7 kB]", [0m
+[0;33m        "Get:56 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtiff5 amd64 4.0.9-5 [152 kB]", [0m
+[0;33m        "Get:57 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwebp6 amd64 0.6.1-2 [185 kB]", [0m
+[0;33m        "Get:58 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxpm4 amd64 1:3.5.12-1 [34.0 kB]", [0m
+[0;33m        "Get:59 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgd3 amd64 2.2.5-4ubuntu0.2 [119 kB]", [0m
+[0;33m        "Get:60 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx-common all 1.14.0-0ubuntu1.1 [37.3 kB]", [0m
+[0;33m        "Get:61 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-geoip amd64 1.14.0-0ubuntu1.1 [11.1 kB]", [0m
+[0;33m        "Get:62 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-image-filter amd64 1.14.0-0ubuntu1.1 [14.4 kB]", [0m
+[0;33m        "Get:63 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxslt1.1 amd64 1.1.29-5 [150 kB]", [0m
+[0;33m        "Get:64 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-xslt-filter amd64 1.14.0-0ubuntu1.1 [12.9 kB]", [0m
+[0;33m        "Get:65 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-mail amd64 1.14.0-0ubuntu1.1 [41.7 kB]", [0m
+[0;33m        "Get:66 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libnginx-mod-stream amd64 1.14.0-0ubuntu1.1 [63.5 kB]", [0m
+[0;33m        "Get:67 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcre16-3 amd64 2:8.39-9 [147 kB]", [0m
+[0;33m        "Get:68 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcre32-3 amd64 2:8.39-9 [138 kB]", [0m
+[0;33m        "Get:69 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcrecpp0v5 amd64 2:8.39-9 [15.3 kB]", [0m
+[0;33m        "Get:70 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpcre3-dev amd64 2:8.39-9 [537 kB]", [0m
+[0;33m        "Get:71 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libserf-1-1 amd64 1.3.9-6 [44.4 kB]", [0m
+[0;33m        "Get:72 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsodium23 amd64 1.0.16-2 [143 kB]", [0m
+[0;33m        "Get:73 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libsvn1 amd64 1.9.7-4ubuntu1 [1183 kB]", [0m
+[0;33m        "Get:74 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]", [0m
+[0;33m        "Get:75 http://archive.ubuntu.com/ubuntu bionic/universe amd64 mercurial-common all 4.5.3-1ubuntu2 [2198 kB]", [0m
+[0;33m        "Get:76 http://archive.ubuntu.com/ubuntu bionic/universe amd64 mercurial amd64 4.5.3-1ubuntu2 [189 kB]", [0m
+[0;33m        "Get:77 http://archive.ubuntu.com/ubuntu bionic/main amd64 net-tools amd64 1.60+git20161116.90da8a0-1ubuntu1 [194 kB]", [0m
+[0;33m        "Get:78 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx-core amd64 1.14.0-0ubuntu1.1 [413 kB]", [0m
+[0;33m        "Get:79 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 nginx all 1.14.0-0ubuntu1.1 [3588 B]", [0m
+[0;33m        "Get:80 http://archive.ubuntu.com/ubuntu bionic/main amd64 php-common all 1:60ubuntu1 [12.1 kB]", [0m
+[0;33m        "Get:81 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-common amd64 7.2.10-0ubuntu0.18.04.1 [878 kB]", [0m
+[0;33m        "Get:82 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-json amd64 7.2.10-0ubuntu0.18.04.1 [18.8 kB]", [0m
+[0;33m        "Get:83 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-opcache amd64 7.2.10-0ubuntu0.18.04.1 [165 kB]", [0m
+[0;33m        "Get:84 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-readline amd64 7.2.10-0ubuntu0.18.04.1 [12.1 kB]", [0m
+[0;33m        "Get:85 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-cli amd64 7.2.10-0ubuntu0.18.04.1 [1405 kB]", [0m
+[0;33m        "Get:86 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 php7.2-fpm amd64 7.2.10-0ubuntu0.18.04.1 [1409 kB]", [0m
+[0;33m        "Get:87 http://archive.ubuntu.com/ubuntu bionic/universe amd64 php-apcu amd64 5.1.9+4.0.11-1build1 [48.1 kB]", [0m
+[0;33m        "Get:88 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2 all 7.2.10-0ubuntu0.18.04.1 [9248 B]", [0m
+[0;33m        "Get:89 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-curl amd64 7.2.10-0ubuntu0.18.04.1 [28.9 kB]", [0m
+[0;33m        "Get:90 http://archive.ubuntu.com/ubuntu bionic/main amd64 shtool all 2.0.8-9 [121 kB]", [0m
+[0;33m        "Get:91 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-dev amd64 7.2.10-0ubuntu0.18.04.1 [555 kB]", [0m
+[0;33m        "Get:92 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-gd amd64 7.2.10-0ubuntu0.18.04.1 [27.1 kB]", [0m
+[0;33m        "Get:93 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 php7.2-mbstring amd64 7.2.10-0ubuntu0.18.04.1 [483 kB]", [0m
+[0;33m        "Get:94 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 php7.2-mysql amd64 7.2.10-0ubuntu0.18.04.1 [118 kB]", [0m
+[0;33m        "Get:95 http://archive.ubuntu.com/ubuntu bionic/main amd64 ssl-cert all 1.0.39 [17.0 kB]", [0m
+[0;33m        "Get:96 http://archive.ubuntu.com/ubuntu bionic/universe amd64 subversion amd64 1.9.7-4ubuntu1 [834 kB]", [0m
+[0;33m        "Fetched 34.6 MB in 3s (13.5 MB/s)", [0m
+[0;33m        "Selecting previously unselected package multiarch-support.", [0m
+[0;33m        "(Reading database ... ", [0m
+[0;33m        "(Reading database ... 5%", [0m
+[0;33m        "(Reading database ... 10%", [0m
+[0;33m        "(Reading database ... 15%", [0m
+[0;33m        "(Reading database ... 20%", [0m
+[0;33m        "(Reading database ... 25%", [0m
+[0;33m        "(Reading database ... 30%", [0m
+[0;33m        "(Reading database ... 35%", [0m
+[0;33m        "(Reading database ... 40%", [0m
+[0;33m        "(Reading database ... 45%", [0m
+[0;33m        "(Reading database ... 50%", [0m
+[0;33m        "(Reading database ... 55%", [0m
+[0;33m        "(Reading database ... 60%", [0m
+[0;33m        "(Reading database ... 65%", [0m
+[0;33m        "(Reading database ... 70%", [0m
+[0;33m        "(Reading database ... 75%", [0m
+[0;33m        "(Reading database ... 80%", [0m
+[0;33m        "(Reading database ... 85%", [0m
+[0;33m        "(Reading database ... 90%", [0m
+[0;33m        "(Reading database ... 95%", [0m
+[0;33m        "(Reading database ... 100%", [0m
+[0;33m        "(Reading database ... 20702 files and directories currently installed.)", [0m
+[0;33m        "Preparing to unpack .../multiarch-support_2.27-3ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking multiarch-support (2.27-3ubuntu1) ...", [0m
+[0;33m        "Setting up multiarch-support (2.27-3ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package libxau6:amd64.", [0m
+[0;33m        "(Reading database ... ", [0m
+[0;33m        "(Reading database ... 5%", [0m
+[0;33m        "(Reading database ... 10%", [0m
+[0;33m        "(Reading database ... 15%", [0m
+[0;33m        "(Reading database ... 20%", [0m
+[0;33m        "(Reading database ... 25%", [0m
+[0;33m        "(Reading database ... 30%", [0m
+[0;33m        "(Reading database ... 35%", [0m
+[0;33m        "(Reading database ... 40%", [0m
+[0;33m        "(Reading database ... 45%", [0m
+[0;33m        "(Reading database ... 50%", [0m
+[0;33m        "(Reading database ... 55%", [0m
+[0;33m        "(Reading database ... 60%", [0m
+[0;33m        "(Reading database ... 65%", [0m
+[0;33m        "(Reading database ... 70%", [0m
+[0;33m        "(Reading database ... 75%", [0m
+[0;33m        "(Reading database ... 80%", [0m
+[0;33m        "(Reading database ... 85%", [0m
+[0;33m        "(Reading database ... 90%", [0m
+[0;33m        "(Reading database ... 95%", [0m
+[0;33m        "(Reading database ... 100%", [0m
+[0;33m        "(Reading database ... 20705 files and directories currently installed.)", [0m
+[0;33m        "Preparing to unpack .../00-libxau6_1%3a1.0.8-1_amd64.deb ...", [0m
+[0;33m        "Unpacking libxau6:amd64 (1:1.0.8-1) ...", [0m
+[0;33m        "Selecting previously unselected package libjpeg-turbo8:amd64.", [0m
+[0;33m        "Preparing to unpack .../01-libjpeg-turbo8_1.5.2-0ubuntu5.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package apt-utils.", [0m
+[0;33m        "Preparing to unpack .../02-apt-utils_1.6.3ubuntu0.1_amd64.deb ...", [0m
+[0;33m        "Unpacking apt-utils (1.6.3ubuntu0.1) ...", [0m
+[0;33m        "Selecting previously unselected package libmagic-mgc.", [0m
+[0;33m        "Preparing to unpack .../03-libmagic-mgc_1%3a5.32-2ubuntu0.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libmagic-mgc (1:5.32-2ubuntu0.1) ...", [0m
+[0;33m        "Selecting previously unselected package libmagic1:amd64.", [0m
+[0;33m        "Preparing to unpack .../04-libmagic1_1%3a5.32-2ubuntu0.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libmagic1:amd64 (1:5.32-2ubuntu0.1) ...", [0m
+[0;33m        "Selecting previously unselected package file.", [0m
+[0;33m        "Preparing to unpack .../05-file_1%3a5.32-2ubuntu0.1_amd64.deb ...", [0m
+[0;33m        "Unpacking file (1:5.32-2ubuntu0.1) ...", [0m
+[0;33m        "Selecting previously unselected package libelf1:amd64.", [0m
+[0;33m        "Preparing to unpack .../06-libelf1_0.170-0.4_amd64.deb ...", [0m
+[0;33m        "Unpacking libelf1:amd64 (0.170-0.4) ...", [0m
+[0;33m        "Selecting previously unselected package libmnl0:amd64.", [0m
+[0;33m        "Preparing to unpack .../07-libmnl0_1.0.4-2_amd64.deb ...", [0m
+[0;33m        "Unpacking libmnl0:amd64 (1.0.4-2) ...", [0m
+[0;33m        "Selecting previously unselected package iproute2.", [0m
+[0;33m        "Preparing to unpack .../08-iproute2_4.15.0-2ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking iproute2 (4.15.0-2ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package libbsd0:amd64.", [0m
+[0;33m        "Preparing to unpack .../09-libbsd0_0.8.7-1_amd64.deb ...", [0m
+[0;33m        "Unpacking libbsd0:amd64 (0.8.7-1) ...", [0m
+[0;33m        "Selecting previously unselected package libicu60:amd64.", [0m
+[0;33m        "Preparing to unpack .../10-libicu60_60.2-3ubuntu3_amd64.deb ...", [0m
+[0;33m        "Unpacking libicu60:amd64 (60.2-3ubuntu3) ...", [0m
+[0;33m        "Selecting previously unselected package libxml2:amd64.", [0m
+[0;33m        "Preparing to unpack .../11-libxml2_2.9.4+dfsg1-6.1ubuntu1.2_amd64.deb ...", [0m
+[0;33m        "Unpacking libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.2) ...", [0m
+[0;33m        "Selecting previously unselected package tzdata.", [0m
+[0;33m        "Preparing to unpack .../12-tzdata_2018e-0ubuntu0.18.04_all.deb ...", [0m
+[0;33m        "Unpacking tzdata (2018e-0ubuntu0.18.04) ...", [0m
+[0;33m        "Selecting previously unselected package libedit2:amd64.", [0m
+[0;33m        "Preparing to unpack .../13-libedit2_3.1-20170329-1_amd64.deb ...", [0m
+[0;33m        "Unpacking libedit2:amd64 (3.1-20170329-1) ...", [0m
+[0;33m        "Selecting previously unselected package libgeoip1:amd64.", [0m
+[0;33m        "Preparing to unpack .../14-libgeoip1_1.6.12-1_amd64.deb ...", [0m
+[0;33m        "Unpacking libgeoip1:amd64 (1.6.12-1) ...", [0m
+[0;33m        "Selecting previously unselected package libkrb5support0:amd64.", [0m
+[0;33m        "Preparing to unpack .../15-libkrb5support0_1.16-2build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libkrb5support0:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Selecting previously unselected package libk5crypto3:amd64.", [0m
+[0;33m        "Preparing to unpack .../16-libk5crypto3_1.16-2build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libk5crypto3:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Selecting previously unselected package libkeyutils1:amd64.", [0m
+[0;33m        "Preparing to unpack .../17-libkeyutils1_1.5.9-9.2ubuntu2_amd64.deb ...", [0m
+[0;33m        "Unpacking libkeyutils1:amd64 (1.5.9-9.2ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package libkrb5-3:amd64.", [0m
+[0;33m        "Preparing to unpack .../18-libkrb5-3_1.16-2build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libkrb5-3:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Selecting previously unselected package libgssapi-krb5-2:amd64.", [0m
+[0;33m        "Preparing to unpack .../19-libgssapi-krb5-2_1.16-2build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libgssapi-krb5-2:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Selecting previously unselected package libpng16-16:amd64.", [0m
+[0;33m        "Preparing to unpack .../20-libpng16-16_1.6.34-1ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package libpsl5:amd64.", [0m
+[0;33m        "Preparing to unpack .../21-libpsl5_0.19.1-5build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libpsl5:amd64 (0.19.1-5build1) ...", [0m
+[0;33m        "Selecting previously unselected package libxdmcp6:amd64.", [0m
+[0;33m        "Preparing to unpack .../22-libxdmcp6_1%3a1.1.2-3_amd64.deb ...", [0m
+[0;33m        "Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...", [0m
+[0;33m        "Selecting previously unselected package libxcb1:amd64.", [0m
+[0;33m        "Preparing to unpack .../23-libxcb1_1.13-1_amd64.deb ...", [0m
+[0;33m        "Unpacking libxcb1:amd64 (1.13-1) ...", [0m
+[0;33m        "Selecting previously unselected package libx11-data.", [0m
+[0;33m        "Preparing to unpack .../24-libx11-data_2%3a1.6.4-3ubuntu0.1_all.deb ...", [0m
+[0;33m        "Unpacking libx11-data (2:1.6.4-3ubuntu0.1) ...", [0m
+[0;33m        "Selecting previously unselected package libx11-6:amd64.", [0m
+[0;33m        "Preparing to unpack .../25-libx11-6_2%3a1.6.4-3ubuntu0.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libx11-6:amd64 (2:1.6.4-3ubuntu0.1) ...", [0m
+[0;33m        "Selecting previously unselected package mlocate.", [0m
+[0;33m        "Preparing to unpack .../26-mlocate_0.26-2ubuntu3.1_amd64.deb ...", [0m
+[0;33m        "Unpacking mlocate (0.26-2ubuntu3.1) ...", [0m
+[0;33m        "Selecting previously unselected package psmisc.", [0m
+[0;33m        "Preparing to unpack .../27-psmisc_23.1-1_amd64.deb ...", [0m
+[0;33m        "Unpacking psmisc (23.1-1) ...", [0m
+[0;33m        "Selecting previously unselected package wget.", [0m
+[0;33m        "Preparing to unpack .../28-wget_1.19.4-1ubuntu2.1_amd64.deb ...", [0m
+[0;33m        "Unpacking wget (1.19.4-1ubuntu2.1) ...", [0m
+[0;33m        "Selecting previously unselected package libsigsegv2:amd64.", [0m
+[0;33m        "Preparing to unpack .../29-libsigsegv2_2.12-1_amd64.deb ...", [0m
+[0;33m        "Unpacking libsigsegv2:amd64 (2.12-1) ...", [0m
+[0;33m        "Selecting previously unselected package m4.", [0m
+[0;33m        "Preparing to unpack .../30-m4_1.4.18-1_amd64.deb ...", [0m
+[0;33m        "Unpacking m4 (1.4.18-1) ...", [0m
+[0;33m        "Selecting previously unselected package autoconf.", [0m
+[0;33m        "Preparing to unpack .../31-autoconf_2.69-11_all.deb ...", [0m
+[0;33m        "Unpacking autoconf (2.69-11) ...", [0m
+[0;33m        "Selecting previously unselected package autotools-dev.", [0m
+[0;33m        "Preparing to unpack .../32-autotools-dev_20180224.1_all.deb ...", [0m
+[0;33m        "Unpacking autotools-dev (20180224.1) ...", [0m
+[0;33m        "Selecting previously unselected package automake.", [0m
+[0;33m        "Preparing to unpack .../33-automake_1%3a1.15.1-3ubuntu2_all.deb ...", [0m
+[0;33m        "Unpacking automake (1:1.15.1-3ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package exim4-config.", [0m
+[0;33m        "Preparing to unpack .../34-exim4-config_4.90.1-1ubuntu1_all.deb ...", [0m
+[0;33m        "Unpacking exim4-config (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package exim4-base.", [0m
+[0;33m        "Preparing to unpack .../35-exim4-base_4.90.1-1ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking exim4-base (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package exim4-daemon-light.", [0m
+[0;33m        "Preparing to unpack .../36-exim4-daemon-light_4.90.1-1ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking exim4-daemon-light (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package exim4.", [0m
+[0;33m        "Preparing to unpack .../37-exim4_4.90.1-1ubuntu1_all.deb ...", [0m
+[0;33m        "Unpacking exim4 (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package fonts-dejavu-core.", [0m
+[0;33m        "Preparing to unpack .../38-fonts-dejavu-core_2.37-1_all.deb ...", [0m
+[0;33m        "Unpacking fonts-dejavu-core (2.37-1) ...", [0m
+[0;33m        "Selecting previously unselected package fontconfig-config.", [0m
+[0;33m        "Preparing to unpack .../39-fontconfig-config_2.12.6-0ubuntu2_all.deb ...", [0m
+[0;33m        "Unpacking fontconfig-config (2.12.6-0ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package libnghttp2-14:amd64.", [0m
+[0;33m        "Preparing to unpack .../40-libnghttp2-14_1.30.0-1ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package librtmp1:amd64.", [0m
+[0;33m        "Preparing to unpack .../41-librtmp1_2.4+20151223.gitfa8646d.1-1_amd64.deb ...", [0m
+[0;33m        "Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...", [0m
+[0;33m        "Selecting previously unselected package libcurl3-gnutls:amd64.", [0m
+[0;33m        "Preparing to unpack .../42-libcurl3-gnutls_7.58.0-2ubuntu3.3_amd64.deb ...", [0m
+[0;33m        "Unpacking libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.3) ...", [0m
+[0;33m        "Selecting previously unselected package liberror-perl.", [0m
+[0;33m        "Preparing to unpack .../43-liberror-perl_0.17025-1_all.deb ...", [0m
+[0;33m        "Unpacking liberror-perl (0.17025-1) ...", [0m
+[0;33m        "Selecting previously unselected package git-man.", [0m
+[0;33m        "Preparing to unpack .../44-git-man_1%3a2.17.1-1ubuntu0.3_all.deb ...", [0m
+[0;33m        "Unpacking git-man (1:2.17.1-1ubuntu0.3) ...", [0m
+[0;33m        "Selecting previously unselected package git.", [0m
+[0;33m        "Preparing to unpack .../45-git_1%3a2.17.1-1ubuntu0.3_amd64.deb ...", [0m
+[0;33m        "Unpacking git (1:2.17.1-1ubuntu0.3) ...", [0m
+[0;33m        "Selecting previously unselected package htop.", [0m
+[0;33m        "Preparing to unpack .../46-htop_2.1.0-3_amd64.deb ...", [0m
+[0;33m        "Unpacking htop (2.1.0-3) ...", [0m
+[0;33m        "Selecting previously unselected package libapr1:amd64.", [0m
+[0;33m        "Preparing to unpack .../47-libapr1_1.6.3-2_amd64.deb ...", [0m
+[0;33m        "Unpacking libapr1:amd64 (1.6.3-2) ...", [0m
+[0;33m        "Selecting previously unselected package libaprutil1:amd64.", [0m
+[0;33m        "Preparing to unpack .../48-libaprutil1_1.6.1-2_amd64.deb ...", [0m
+[0;33m        "Unpacking libaprutil1:amd64 (1.6.1-2) ...", [0m
+[0;33m        "Selecting previously unselected package libcurl4:amd64.", [0m
+[0;33m        "Preparing to unpack .../49-libcurl4_7.58.0-2ubuntu3.3_amd64.deb ...", [0m
+[0;33m        "Unpacking libcurl4:amd64 (7.58.0-2ubuntu3.3) ...", [0m
+[0;33m        "Selecting previously unselected package libfreetype6:amd64.", [0m
+[0;33m        "Preparing to unpack .../50-libfreetype6_2.8.1-2ubuntu2_amd64.deb ...", [0m
+[0;33m        "Unpacking libfreetype6:amd64 (2.8.1-2ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package libfontconfig1:amd64.", [0m
+[0;33m        "Preparing to unpack .../51-libfontconfig1_2.12.6-0ubuntu2_amd64.deb ...", [0m
+[0;33m        "Unpacking libfontconfig1:amd64 (2.12.6-0ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package libjpeg8:amd64.", [0m
+[0;33m        "Preparing to unpack .../52-libjpeg8_8c-2ubuntu8_amd64.deb ...", [0m
+[0;33m        "Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...", [0m
+[0;33m        "Selecting previously unselected package libjbig0:amd64.", [0m
+[0;33m        "Preparing to unpack .../53-libjbig0_2.1-3.1build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libjbig0:amd64 (2.1-3.1build1) ...", [0m
+[0;33m        "Selecting previously unselected package libtiff5:amd64.", [0m
+[0;33m        "Preparing to unpack .../54-libtiff5_4.0.9-5_amd64.deb ...", [0m
+[0;33m        "Unpacking libtiff5:amd64 (4.0.9-5) ...", [0m
+[0;33m        "Selecting previously unselected package libwebp6:amd64.", [0m
+[0;33m        "Preparing to unpack .../55-libwebp6_0.6.1-2_amd64.deb ...", [0m
+[0;33m        "Unpacking libwebp6:amd64 (0.6.1-2) ...", [0m
+[0;33m        "Selecting previously unselected package libxpm4:amd64.", [0m
+[0;33m        "Preparing to unpack .../56-libxpm4_1%3a3.5.12-1_amd64.deb ...", [0m
+[0;33m        "Unpacking libxpm4:amd64 (1:3.5.12-1) ...", [0m
+[0;33m        "Selecting previously unselected package libgd3:amd64.", [0m
+[0;33m        "Preparing to unpack .../57-libgd3_2.2.5-4ubuntu0.2_amd64.deb ...", [0m
+[0;33m        "Unpacking libgd3:amd64 (2.2.5-4ubuntu0.2) ...", [0m
+[0;33m        "Selecting previously unselected package nginx-common.", [0m
+[0;33m        "Preparing to unpack .../58-nginx-common_1.14.0-0ubuntu1.1_all.deb ...", [0m
+[0;33m        "Unpacking nginx-common (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package libnginx-mod-http-geoip.", [0m
+[0;33m        "Preparing to unpack .../59-libnginx-mod-http-geoip_1.14.0-0ubuntu1.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libnginx-mod-http-geoip (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package libnginx-mod-http-image-filter.", [0m
+[0;33m        "Preparing to unpack .../60-libnginx-mod-http-image-filter_1.14.0-0ubuntu1.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libnginx-mod-http-image-filter (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package libxslt1.1:amd64.", [0m
+[0;33m        "Preparing to unpack .../61-libxslt1.1_1.1.29-5_amd64.deb ...", [0m
+[0;33m        "Unpacking libxslt1.1:amd64 (1.1.29-5) ...", [0m
+[0;33m        "Selecting previously unselected package libnginx-mod-http-xslt-filter.", [0m
+[0;33m        "Preparing to unpack .../62-libnginx-mod-http-xslt-filter_1.14.0-0ubuntu1.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package libnginx-mod-mail.", [0m
+[0;33m        "Preparing to unpack .../63-libnginx-mod-mail_1.14.0-0ubuntu1.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libnginx-mod-mail (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package libnginx-mod-stream.", [0m
+[0;33m        "Preparing to unpack .../64-libnginx-mod-stream_1.14.0-0ubuntu1.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libnginx-mod-stream (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package libpcre16-3:amd64.", [0m
+[0;33m        "Preparing to unpack .../65-libpcre16-3_2%3a8.39-9_amd64.deb ...", [0m
+[0;33m        "Unpacking libpcre16-3:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Selecting previously unselected package libpcre32-3:amd64.", [0m
+[0;33m        "Preparing to unpack .../66-libpcre32-3_2%3a8.39-9_amd64.deb ...", [0m
+[0;33m        "Unpacking libpcre32-3:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Selecting previously unselected package libpcrecpp0v5:amd64.", [0m
+[0;33m        "Preparing to unpack .../67-libpcrecpp0v5_2%3a8.39-9_amd64.deb ...", [0m
+[0;33m        "Unpacking libpcrecpp0v5:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Selecting previously unselected package libpcre3-dev:amd64.", [0m
+[0;33m        "Preparing to unpack .../68-libpcre3-dev_2%3a8.39-9_amd64.deb ...", [0m
+[0;33m        "Unpacking libpcre3-dev:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Selecting previously unselected package libserf-1-1:amd64.", [0m
+[0;33m        "Preparing to unpack .../69-libserf-1-1_1.3.9-6_amd64.deb ...", [0m
+[0;33m        "Unpacking libserf-1-1:amd64 (1.3.9-6) ...", [0m
+[0;33m        "Selecting previously unselected package libsodium23:amd64.", [0m
+[0;33m        "Preparing to unpack .../70-libsodium23_1.0.16-2_amd64.deb ...", [0m
+[0;33m        "Unpacking libsodium23:amd64 (1.0.16-2) ...", [0m
+[0;33m        "Selecting previously unselected package libsvn1:amd64.", [0m
+[0;33m        "Preparing to unpack .../71-libsvn1_1.9.7-4ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking libsvn1:amd64 (1.9.7-4ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package libtool.", [0m
+[0;33m        "Preparing to unpack .../72-libtool_2.4.6-2_all.deb ...", [0m
+[0;33m        "Unpacking libtool (2.4.6-2) ...", [0m
+[0;33m        "Selecting previously unselected package mercurial-common.", [0m
+[0;33m        "Preparing to unpack .../73-mercurial-common_4.5.3-1ubuntu2_all.deb ...", [0m
+[0;33m        "Unpacking mercurial-common (4.5.3-1ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package mercurial.", [0m
+[0;33m        "Preparing to unpack .../74-mercurial_4.5.3-1ubuntu2_amd64.deb ...", [0m
+[0;33m        "Unpacking mercurial (4.5.3-1ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package net-tools.", [0m
+[0;33m        "Preparing to unpack .../75-net-tools_1.60+git20161116.90da8a0-1ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking net-tools (1.60+git20161116.90da8a0-1ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package nginx-core.", [0m
+[0;33m        "Preparing to unpack .../76-nginx-core_1.14.0-0ubuntu1.1_amd64.deb ...", [0m
+[0;33m        "Unpacking nginx-core (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package nginx.", [0m
+[0;33m        "Preparing to unpack .../77-nginx_1.14.0-0ubuntu1.1_all.deb ...", [0m
+[0;33m        "Unpacking nginx (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Selecting previously unselected package php-common.", [0m
+[0;33m        "Preparing to unpack .../78-php-common_1%3a60ubuntu1_all.deb ...", [0m
+[0;33m        "Unpacking php-common (1:60ubuntu1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-common.", [0m
+[0;33m        "Preparing to unpack .../79-php7.2-common_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-common (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-json.", [0m
+[0;33m        "Preparing to unpack .../80-php7.2-json_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-json (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-opcache.", [0m
+[0;33m        "Preparing to unpack .../81-php7.2-opcache_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-opcache (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-readline.", [0m
+[0;33m        "Preparing to unpack .../82-php7.2-readline_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-readline (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-cli.", [0m
+[0;33m        "Preparing to unpack .../83-php7.2-cli_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-cli (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-fpm.", [0m
+[0;33m        "Preparing to unpack .../84-php7.2-fpm_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-fpm (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php-apcu.", [0m
+[0;33m        "Preparing to unpack .../85-php-apcu_5.1.9+4.0.11-1build1_amd64.deb ...", [0m
+[0;33m        "Unpacking php-apcu (5.1.9+4.0.11-1build1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2.", [0m
+[0;33m        "Preparing to unpack .../86-php7.2_7.2.10-0ubuntu0.18.04.1_all.deb ...", [0m
+[0;33m        "Unpacking php7.2 (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-curl.", [0m
+[0;33m        "Preparing to unpack .../87-php7.2-curl_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-curl (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package shtool.", [0m
+[0;33m        "Preparing to unpack .../88-shtool_2.0.8-9_all.deb ...", [0m
+[0;33m        "Unpacking shtool (2.0.8-9) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-dev.", [0m
+[0;33m        "Preparing to unpack .../89-php7.2-dev_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-dev (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-gd.", [0m
+[0;33m        "Preparing to unpack .../90-php7.2-gd_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-gd (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-mbstring.", [0m
+[0;33m        "Preparing to unpack .../91-php7.2-mbstring_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-mbstring (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package php7.2-mysql.", [0m
+[0;33m        "Preparing to unpack .../92-php7.2-mysql_7.2.10-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking php7.2-mysql (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package ssl-cert.", [0m
+[0;33m        "Preparing to unpack .../93-ssl-cert_1.0.39_all.deb ...", [0m
+[0;33m        "Unpacking ssl-cert (1.0.39) ...", [0m
+[0;33m        "Selecting previously unselected package subversion.", [0m
+[0;33m        "Preparing to unpack .../94-subversion_1.9.7-4ubuntu1_amd64.deb ...", [0m
+[0;33m        "Unpacking subversion (1.9.7-4ubuntu1) ...", [0m
+[0;33m        "Setting up libedit2:amd64 (3.1-20170329-1) ...", [0m
+[0;33m        "Setting up libapr1:amd64 (1.6.3-2) ...", [0m
+[0;33m        "Setting up git-man (1:2.17.1-1ubuntu0.3) ...", [0m
+[0;33m        "Setting up libicu60:amd64 (60.2-3ubuntu3) ...", [0m
+[0;33m        "Setting up psmisc (23.1-1) ...", [0m
+[0;33m        "Setting up libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...", [0m
+[0;33m        "Setting up exim4-config (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "Adding system-user for exim (v4)", [0m
+[0;33m        "Processing triggers for mime-support (3.60ubuntu1) ...", [0m
+[0;33m        "Setting up libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up liberror-perl (0.17025-1) ...", [0m
+[0;33m        "Setting up libjbig0:amd64 (2.1-3.1build1) ...", [0m
+[0;33m        "Setting up libsigsegv2:amd64 (2.12-1) ...", [0m
+[0;33m        "Setting up fonts-dejavu-core (2.37-1) ...", [0m
+[0;33m        "Setting up apt-utils (1.6.3ubuntu0.1) ...", [0m
+[0;33m        "Setting up libpsl5:amd64 (0.19.1-5build1) ...", [0m
+[0;33m        "Setting up tzdata (2018e-0ubuntu0.18.04) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Current default time zone: 'Etc/UTC'", [0m
+[0;33m        "Local time is now:      Sat Oct 20 11:33:55 UTC 2018.", [0m
+[0;33m        "Universal Time is now:  Sat Oct 20 11:33:55 UTC 2018.", [0m
+[0;33m        "Run 'dpkg-reconfigure tzdata' if you wish to change it.", [0m
+[0;33m        "", [0m
+[0;33m        "Setting up libelf1:amd64 (0.170-0.4) ...", [0m
+[0;33m        "Setting up shtool (2.0.8-9) ...", [0m
+[0;33m        "Setting up nginx-common (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service -> /lib/systemd/system/nginx.service.", [0m
+[0;33m        "Setting up mlocate (0.26-2ubuntu3.1) ...", [0m
+[0;33m        "update-alternatives: using /usr/bin/mlocate to provide /usr/bin/locate (locate) in auto mode", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/locate.1.gz because associated file /usr/share/man/man1/mlocate.1.gz (of link group locate) doesn't exist", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man8/updatedb.8.gz because associated file /usr/share/man/man8/updatedb.mlocate.8.gz (of link group locate) doesn't exist", [0m
+[0;33m        "Adding group `mlocate' (GID 108) ...", [0m
+[0;33m        "Done.", [0m
+[0;33m        "Setting up ssl-cert (1.0.39) ...", [0m
+[0;33m        "Setting up libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...", [0m
+[0;33m        "Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...", [0m
+[0;33m        "Setting up m4 (1.4.18-1) ...", [0m
+[0;33m        "Setting up libgeoip1:amd64 (1.6.12-1) ...", [0m
+[0;33m        "Setting up exim4-base (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "exim: DB upgrade, deleting hints-db", [0m
+[0;33m        "Setting up libbsd0:amd64 (0.8.7-1) ...", [0m
+[0;33m        "Setting up libkrb5support0:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Setting up libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.2) ...", [0m
+[0;33m        "Setting up libfreetype6:amd64 (2.8.1-2ubuntu2) ...", [0m
+[0;33m        "Setting up libmagic-mgc (1:5.32-2ubuntu0.1) ...", [0m
+[0;33m        "Setting up libmagic1:amd64 (1:5.32-2ubuntu0.1) ...", [0m
+[0;33m        "Setting up libxslt1.1:amd64 (1.1.29-5) ...", [0m
+[0;33m        "Setting up libsodium23:amd64 (1.0.16-2) ...", [0m
+[0;33m        "Setting up mercurial-common (4.5.3-1ubuntu2) ...", [0m
+[0;33m        "Setting up mercurial (4.5.3-1ubuntu2) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/mercurial/hgrc.d/hgext.rc with new version", [0m
+[0;33m        "Processing triggers for libc-bin (2.27-3ubuntu1) ...", [0m
+[0;33m        "Setting up autotools-dev (20180224.1) ...", [0m
+[0;33m        "Setting up libaprutil1:amd64 (1.6.1-2) ...", [0m
+[0;33m        "Setting up php-common (1:60ubuntu1) ...", [0m
+[0;33m        "Created symlink /etc/systemd/system/timers.target.wants/phpsessionclean.timer -> /lib/systemd/system/phpsessionclean.timer.", [0m
+[0;33m        "/usr/sbin/policy-rc.d returned 101, not running 'start phpsessionclean.timer'", [0m
+[0;33m        "Processing triggers for systemd (237-3ubuntu10.3) ...", [0m
+[0;33m        "Setting up wget (1.19.4-1ubuntu2.1) ...", [0m
+[0;33m        "Setting up libnginx-mod-mail (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Setting up libpcrecpp0v5:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Setting up libpcre32-3:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Setting up libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Setting up exim4-daemon-light (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "invoke-rc.d: policy-rc.d denied execution of start.", [0m
+[0;33m        "Initializing GnuTLS DH parameter file", [0m
+[0;33m        "Setting up libpcre16-3:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Setting up libxdmcp6:amd64 (1:1.1.2-3) ...", [0m
+[0;33m        "Setting up libkeyutils1:amd64 (1.5.9-9.2ubuntu2) ...", [0m
+[0;33m        "Setting up htop (2.1.0-3) ...", [0m
+[0;33m        "Setting up net-tools (1.60+git20161116.90da8a0-1ubuntu1) ...", [0m
+[0;33m        "Setting up libmnl0:amd64 (1.0.4-2) ...", [0m
+[0;33m        "Setting up libnginx-mod-http-geoip (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Setting up libx11-data (2:1.6.4-3ubuntu0.1) ...", [0m
+[0;33m        "Setting up libxau6:amd64 (1:1.0.8-1) ...", [0m
+[0;33m        "Setting up libwebp6:amd64 (0.6.1-2) ...", [0m
+[0;33m        "Setting up libjpeg8:amd64 (8c-2ubuntu8) ...", [0m
+[0;33m        "Setting up libk5crypto3:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Setting up libpcre3-dev:amd64 (2:8.39-9) ...", [0m
+[0;33m        "Setting up fontconfig-config (2.12.6-0ubuntu2) ...", [0m
+[0;33m        "Setting up php7.2-common (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/calendar.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/ctype.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/exif.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/fileinfo.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/ftp.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/gettext.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/iconv.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/pdo.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/phar.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/posix.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/shmop.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/sockets.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/sysvmsg.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/sysvsem.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/sysvshm.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/tokenizer.ini with new version", [0m
+[0;33m        "Setting up libnginx-mod-stream (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Setting up libtiff5:amd64 (4.0.9-5) ...", [0m
+[0;33m        "Setting up autoconf (2.69-11) ...", [0m
+[0;33m        "Setting up file (1:5.32-2ubuntu0.1) ...", [0m
+[0;33m        "Setting up iproute2 (4.15.0-2ubuntu1) ...", [0m
+[0;33m        "Setting up php7.2-mbstring (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/mbstring.ini with new version", [0m
+[0;33m        "Setting up php7.2-readline (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/readline.ini with new version", [0m
+[0;33m        "Setting up exim4 (4.90.1-1ubuntu1) ...", [0m
+[0;33m        "Setting up automake (1:1.15.1-3ubuntu2) ...", [0m
+[0;33m        "update-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist", [0m
+[0;33m        "Setting up php7.2-json (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/json.ini with new version", [0m
+[0;33m        "Setting up libkrb5-3:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Setting up libxcb1:amd64 (1.13-1) ...", [0m
+[0;33m        "Setting up php7.2-opcache (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/opcache.ini with new version", [0m
+[0;33m        "Setting up libtool (2.4.6-2) ...", [0m
+[0;33m        "Setting up php7.2-mysql (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/mysqlnd.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/mysqli.ini with new version", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/pdo_mysql.ini with new version", [0m
+[0;33m        "Setting up libfontconfig1:amd64 (2.12.6-0ubuntu2) ...", [0m
+[0;33m        "Setting up libx11-6:amd64 (2:1.6.4-3ubuntu0.1) ...", [0m
+[0;33m        "Setting up libgssapi-krb5-2:amd64 (1.16-2build1) ...", [0m
+[0;33m        "Setting up libserf-1-1:amd64 (1.3.9-6) ...", [0m
+[0;33m        "Setting up php7.2-cli (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "update-alternatives: using /usr/bin/php7.2 to provide /usr/bin/php (php) in auto mode", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/php.1.gz because associated file /usr/share/man/man1/php7.2.1.gz (of link group php) doesn't exist", [0m
+[0;33m        "update-alternatives: using /usr/bin/phar7.2 to provide /usr/bin/phar (phar) in auto mode", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/phar.1.gz because associated file /usr/share/man/man1/phar7.2.1.gz (of link group phar) doesn't exist", [0m
+[0;33m        "update-alternatives: using /usr/bin/phar.phar7.2 to provide /usr/bin/phar.phar (phar.phar) in auto mode", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/phar.phar.1.gz because associated file /usr/share/man/man1/phar.phar7.2.1.gz (of link group phar.phar) doesn't exist", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/cli/php.ini with new version", [0m
+[0;33m        "Setting up libxpm4:amd64 (1:3.5.12-1) ...", [0m
+[0;33m        "Setting up libsvn1:amd64 (1.9.7-4ubuntu1) ...", [0m
+[0;33m        "Setting up php7.2-dev (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "update-alternatives: using /usr/bin/php-config7.2 to provide /usr/bin/php-config (php-config) in auto mode", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/php-config.1.gz because associated file /usr/share/man/man1/php-config7.2.1.gz (of link group php-config) doesn't exist", [0m
+[0;33m        "update-alternatives: using /usr/bin/phpize7.2 to provide /usr/bin/phpize (phpize) in auto mode", [0m
+[0;33m        "update-alternatives: warning: skip creation of /usr/share/man/man1/phpize.1.gz because associated file /usr/share/man/man1/phpize7.2.1.gz (of link group phpize) doesn't exist", [0m
+[0;33m        "Setting up php-apcu (5.1.9+4.0.11-1build1) ...", [0m
+[0;33m        "Setting up php7.2-fpm (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/fpm/php.ini with new version", [0m
+[0;33m        "Created symlink /etc/systemd/system/multi-user.target.wants/php7.2-fpm.service -> /lib/systemd/system/php7.2-fpm.service.", [0m
+[0;33m        "invoke-rc.d: policy-rc.d denied execution of start.", [0m
+[0;33m        "Setting up libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.3) ...", [0m
+[0;33m        "Setting up libcurl4:amd64 (7.58.0-2ubuntu3.3) ...", [0m
+[0;33m        "Setting up libgd3:amd64 (2.2.5-4ubuntu0.2) ...", [0m
+[0;33m        "Setting up php7.2 (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up subversion (1.9.7-4ubuntu1) ...", [0m
+[0;33m        "Setting up git (1:2.17.1-1ubuntu0.3) ...", [0m
+[0;33m        "Setting up php7.2-gd (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/gd.ini with new version", [0m
+[0;33m        "Setting up php7.2-curl (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "", [0m
+[0;33m        "Creating config file /etc/php/7.2/mods-available/curl.ini with new version", [0m
+[0;33m        "Setting up libnginx-mod-http-image-filter (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Setting up nginx-core (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "invoke-rc.d: policy-rc.d denied execution of start.", [0m
+[0;33m        "Setting up nginx (1.14.0-0ubuntu1.1) ...", [0m
+[0;33m        "Processing triggers for libc-bin (2.27-3ubuntu1) ...", [0m
+[0;33m        "Processing triggers for systemd (237-3ubuntu10.3) ...", [0m
+[0;33m        "Processing triggers for php7.2-fpm (7.2.10-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "invoke-rc.d: policy-rc.d denied execution of restart."[0m
+[0;33m    ][0m
+[0;33m}[0m
+
+TASK [role_under_test : install packages (RHEL)] *******************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/main.yml:89[0m
+[0;36mskipping: [localhost] => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : install packages for mysql (Debian)] *******************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/local.yml:2[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035247.96-59519899887386 `" && echo ansible-tmp-1540035247.96-59519899887386="` echo /root/.ansible/tmp/ansible-tmp-1540035247.96-59519899887386 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/packaging/os/apt.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmpyiVa5H TO /root/.ansible/tmp/ansible-tmp-1540035247.96-59519899887386/AnsiballZ_apt.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035247.96-59519899887386/ /root/.ansible/tmp/ansible-tmp-1540035247.96-59519899887386/AnsiballZ_apt.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035247.96-59519899887386/AnsiballZ_apt.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035247.96-59519899887386/ > /dev/null 2>&1 && sleep 0'[0m
+[0;33mchanged: [localhost] => {[0m
+[0;33m    "cache_update_time": 1540035210, [0m
+[0;33m    "cache_updated": false, [0m
+[0;33m    "changed": true, [0m
+[0;33m    "diff": {}, [0m
+[0;33m    "invocation": {[0m
+[0;33m        "module_args": {[0m
+[0;33m            "allow_unauthenticated": false, [0m
+[0;33m            "autoclean": false, [0m
+[0;33m            "autoremove": false, [0m
+[0;33m            "cache_valid_time": 0, [0m
+[0;33m            "deb": null, [0m
+[0;33m            "default_release": null, [0m
+[0;33m            "dpkg_options": "force-confdef,force-confold", [0m
+[0;33m            "force": false, [0m
+[0;33m            "force_apt_get": false, [0m
+[0;33m            "install_recommends": null, [0m
+[0;33m            "name": [[0m
+[0;33m                "mysql-server-5.7", [0m
+[0;33m                "python-dev", [0m
+[0;33m                "libmysqlclient-dev"[0m
+[0;33m            ], [0m
+[0;33m            "only_upgrade": false, [0m
+[0;33m            "package": [[0m
+[0;33m                "mysql-server-5.7", [0m
+[0;33m                "python-dev", [0m
+[0;33m                "libmysqlclient-dev"[0m
+[0;33m            ], [0m
+[0;33m            "purge": false, [0m
+[0;33m            "state": "present", [0m
+[0;33m            "update_cache": true, [0m
+[0;33m            "upgrade": null[0m
+[0;33m        }[0m
+[0;33m    }, [0m
+[0;33m    "stderr": "", [0m
+[0;33m    "stderr_lines": [], [0m
+[0;33m    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nThe following additional packages will be installed:\n  libaio1 libcgi-fast-perl libcgi-pm-perl libencode-locale-perl\n  libevent-core-2.1-6 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl\n  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl\n  liblwp-mediatypes-perl libmysqlclient20 libnuma1 libtimedate-perl\n  liburi-perl libwrap0 mysql-client-5.7 mysql-client-core-5.7 mysql-common\n  mysql-server-core-5.7 zlib1g-dev\nSuggested packages:\n  libdata-dump-perl libipc-sharedcache-perl libwww-perl mailx tinyca\nThe following NEW packages will be installed:\n  libaio1 libcgi-fast-perl libcgi-pm-perl libencode-locale-perl\n  libevent-core-2.1-6 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl\n  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl\n  liblwp-mediatypes-perl libmysqlclient-dev libmysqlclient20 libnuma1\n  libtimedate-perl liburi-perl libwrap0 mysql-client-5.7 mysql-client-core-5.7\n  mysql-common mysql-server-5.7 mysql-server-core-5.7 zlib1g-dev\n0 upgraded, 25 newly installed, 0 to remove and 10 not upgraded.\nNeed to get 23.2 MB of archives.\nAfter this operation, 174 MB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 mysql-common all 5.8+1.0.4 [7308 B]\nGet:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libaio1 amd64 0.3.110-5 [6448 B]\nGet:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnuma1 amd64 2.0.11-2.1 [21.6 kB]\nGet:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-client-core-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [6985 kB]\nGet:5 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-client-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [2312 kB]\nGet:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwrap0 amd64 7.6.q-27 [46.3 kB]\nGet:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-server-core-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [7777 kB]\nGet:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libevent-core-2.1-6 amd64 2.1.8-stable-4build1 [85.9 kB]\nGet:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-server-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [3194 kB]\nGet:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhtml-tagset-perl all 3.20-3 [12.1 kB]\nGet:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 liburi-perl all 1.73-1 [77.2 kB]\nGet:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhtml-parser-perl amd64 3.72-3build1 [85.9 kB]\nGet:13 http://archive.ubuntu.com/ubuntu bionic/main amd64 libcgi-pm-perl all 4.38-1 [185 kB]\nGet:14 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfcgi-perl amd64 0.78-2build1 [32.8 kB]\nGet:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 libcgi-fast-perl all 1:2.13-1 [9940 B]\nGet:16 http://archive.ubuntu.com/ubuntu bionic/main amd64 libencode-locale-perl all 1.05-1 [12.3 kB]\nGet:17 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhtml-template-perl all 2.97-1 [59.0 kB]\nGet:18 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtimedate-perl all 2.3000-2 [37.5 kB]\nGet:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhttp-date-perl all 6.02-1 [10.4 kB]\nGet:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libio-html-perl all 1.001-1 [14.9 kB]\nGet:21 http://archive.ubuntu.com/ubuntu bionic/main amd64 liblwp-mediatypes-perl all 6.02-1 [21.7 kB]\nGet:22 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhttp-message-perl all 6.14-1 [72.1 kB]\nGet:23 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmysqlclient20 amd64 5.7.23-0ubuntu0.18.04.1 [818 kB]\nGet:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-0ubuntu2 [176 kB]\nGet:25 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmysqlclient-dev amd64 5.7.23-0ubuntu0.18.04.1 [1162 kB]\nPreconfiguring packages ...\nFetched 23.2 MB in 4s (6210 kB/s)\nSelecting previously unselected package mysql-common.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 26492 files and directories currently installed.)\r\nPreparing to unpack .../0-mysql-common_5.8+1.0.4_all.deb ...\r\nUnpacking mysql-common (5.8+1.0.4) ...\r\nSelecting previously unselected package libaio1:amd64.\r\nPreparing to unpack .../1-libaio1_0.3.110-5_amd64.deb ...\r\nUnpacking libaio1:amd64 (0.3.110-5) ...\r\nSelecting previously unselected package libnuma1:amd64.\r\nPreparing to unpack .../2-libnuma1_2.0.11-2.1_amd64.deb ...\r\nUnpacking libnuma1:amd64 (2.0.11-2.1) ...\r\nSelecting previously unselected package mysql-client-core-5.7.\r\nPreparing to unpack .../3-mysql-client-core-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking mysql-client-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package mysql-client-5.7.\r\nPreparing to unpack .../4-mysql-client-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking mysql-client-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package libwrap0:amd64.\r\nPreparing to unpack .../5-libwrap0_7.6.q-27_amd64.deb ...\r\nUnpacking libwrap0:amd64 (7.6.q-27) ...\r\nSelecting previously unselected package mysql-server-core-5.7.\r\nPreparing to unpack .../6-mysql-server-core-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking mysql-server-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package libevent-core-2.1-6:amd64.\r\nPreparing to unpack .../7-libevent-core-2.1-6_2.1.8-stable-4build1_amd64.deb ...\r\nUnpacking libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) ...\r\nSetting up mysql-common (5.8+1.0.4) ...\r\nupdate-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode\r\nSelecting previously unselected package mysql-server-5.7.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 26678 files and directories currently installed.)\r\nPreparing to unpack .../00-mysql-server-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking mysql-server-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package libhtml-tagset-perl.\r\nPreparing to unpack .../01-libhtml-tagset-perl_3.20-3_all.deb ...\r\nUnpacking libhtml-tagset-perl (3.20-3) ...\r\nSelecting previously unselected package liburi-perl.\r\nPreparing to unpack .../02-liburi-perl_1.73-1_all.deb ...\r\nUnpacking liburi-perl (1.73-1) ...\r\nSelecting previously unselected package libhtml-parser-perl.\r\nPreparing to unpack .../03-libhtml-parser-perl_3.72-3build1_amd64.deb ...\r\nUnpacking libhtml-parser-perl (3.72-3build1) ...\r\nSelecting previously unselected package libcgi-pm-perl.\r\nPreparing to unpack .../04-libcgi-pm-perl_4.38-1_all.deb ...\r\nUnpacking libcgi-pm-perl (4.38-1) ...\r\nSelecting previously unselected package libfcgi-perl.\r\nPreparing to unpack .../05-libfcgi-perl_0.78-2build1_amd64.deb ...\r\nUnpacking libfcgi-perl (0.78-2build1) ...\r\nSelecting previously unselected package libcgi-fast-perl.\r\nPreparing to unpack .../06-libcgi-fast-perl_1%3a2.13-1_all.deb ...\r\nUnpacking libcgi-fast-perl (1:2.13-1) ...\r\nSelecting previously unselected package libencode-locale-perl.\r\nPreparing to unpack .../07-libencode-locale-perl_1.05-1_all.deb ...\r\nUnpacking libencode-locale-perl (1.05-1) ...\r\nSelecting previously unselected package libhtml-template-perl.\r\nPreparing to unpack .../08-libhtml-template-perl_2.97-1_all.deb ...\r\nUnpacking libhtml-template-perl (2.97-1) ...\r\nSelecting previously unselected package libtimedate-perl.\r\nPreparing to unpack .../09-libtimedate-perl_2.3000-2_all.deb ...\r\nUnpacking libtimedate-perl (2.3000-2) ...\r\nSelecting previously unselected package libhttp-date-perl.\r\nPreparing to unpack .../10-libhttp-date-perl_6.02-1_all.deb ...\r\nUnpacking libhttp-date-perl (6.02-1) ...\r\nSelecting previously unselected package libio-html-perl.\r\nPreparing to unpack .../11-libio-html-perl_1.001-1_all.deb ...\r\nUnpacking libio-html-perl (1.001-1) ...\r\nSelecting previously unselected package liblwp-mediatypes-perl.\r\nPreparing to unpack .../12-liblwp-mediatypes-perl_6.02-1_all.deb ...\r\nUnpacking liblwp-mediatypes-perl (6.02-1) ...\r\nSelecting previously unselected package libhttp-message-perl.\r\nPreparing to unpack .../13-libhttp-message-perl_6.14-1_all.deb ...\r\nUnpacking libhttp-message-perl (6.14-1) ...\r\nSelecting previously unselected package libmysqlclient20:amd64.\r\nPreparing to unpack .../14-libmysqlclient20_5.7.23-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking libmysqlclient20:amd64 (5.7.23-0ubuntu0.18.04.1) ...\r\nSelecting previously unselected package zlib1g-dev:amd64.\r\nPreparing to unpack .../15-zlib1g-dev_1%3a1.2.11.dfsg-0ubuntu2_amd64.deb ...\r\nUnpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2) ...\r\nSelecting previously unselected package libmysqlclient-dev.\r\nPreparing to unpack .../16-libmysqlclient-dev_5.7.23-0ubuntu0.18.04.1_amd64.deb ...\r\nUnpacking libmysqlclient-dev (5.7.23-0ubuntu0.18.04.1) ...\r\nSetting up libhtml-tagset-perl (3.20-3) ...\r\nSetting up libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) ...\r\nSetting up libencode-locale-perl (1.05-1) ...\r\nSetting up libtimedate-perl (2.3000-2) ...\r\nSetting up libnuma1:amd64 (2.0.11-2.1) ...\r\nSetting up libio-html-perl (1.001-1) ...\r\nSetting up liblwp-mediatypes-perl (6.02-1) ...\r\nProcessing triggers for libc-bin (2.27-3ubuntu1) ...\r\nSetting up libaio1:amd64 (0.3.110-5) ...\r\nSetting up liburi-perl (1.73-1) ...\r\nProcessing triggers for systemd (237-3ubuntu10.3) ...\r\nSetting up libhtml-parser-perl (3.72-3build1) ...\r\nSetting up libcgi-pm-perl (4.38-1) ...\r\nSetting up libmysqlclient20:amd64 (5.7.23-0ubuntu0.18.04.1) ...\r\nSetting up mysql-client-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\nSetting up libfcgi-perl (0.78-2build1) ...\r\nSetting up libwrap0:amd64 (7.6.q-27) ...\r\nSetting up zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2) ...\r\nSetting up libhttp-date-perl (6.02-1) ...\r\nSetting up libhtml-template-perl (2.97-1) ...\r\nSetting up libmysqlclient-dev (5.7.23-0ubuntu0.18.04.1) ...\r\nSetting up mysql-server-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\nSetting up libcgi-fast-perl (1:2.13-1) ...\r\nSetting up libhttp-message-perl (6.14-1) ...\r\nSetting up mysql-client-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\nSetting up mysql-server-5.7 (5.7.23-0ubuntu0.18.04.1) ...\r\ninvoke-rc.d: policy-rc.d denied execution of stop.\r\nupdate-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode\r\nRenaming removed key_buffer and myisam-recover options (if present)\r\nCreated symlink /etc/systemd/system/multi-user.target.wants/mysql.service -> /lib/systemd/system/mysql.service.\r\ninvoke-rc.d: policy-rc.d denied execution of start.\r\nProcessing triggers for libc-bin (2.27-3ubuntu1) ...\r\nProcessing triggers for systemd (237-3ubuntu10.3) ...\r\n", [0m
+[0;33m    "stdout_lines": [[0m
+[0;33m        "Reading package lists...", [0m
+[0;33m        "Building dependency tree...", [0m
+[0;33m        "Reading state information...", [0m
+[0;33m        "The following additional packages will be installed:", [0m
+[0;33m        "  libaio1 libcgi-fast-perl libcgi-pm-perl libencode-locale-perl", [0m
+[0;33m        "  libevent-core-2.1-6 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl", [0m
+[0;33m        "  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl", [0m
+[0;33m        "  liblwp-mediatypes-perl libmysqlclient20 libnuma1 libtimedate-perl", [0m
+[0;33m        "  liburi-perl libwrap0 mysql-client-5.7 mysql-client-core-5.7 mysql-common", [0m
+[0;33m        "  mysql-server-core-5.7 zlib1g-dev", [0m
+[0;33m        "Suggested packages:", [0m
+[0;33m        "  libdata-dump-perl libipc-sharedcache-perl libwww-perl mailx tinyca", [0m
+[0;33m        "The following NEW packages will be installed:", [0m
+[0;33m        "  libaio1 libcgi-fast-perl libcgi-pm-perl libencode-locale-perl", [0m
+[0;33m        "  libevent-core-2.1-6 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl", [0m
+[0;33m        "  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl", [0m
+[0;33m        "  liblwp-mediatypes-perl libmysqlclient-dev libmysqlclient20 libnuma1", [0m
+[0;33m        "  libtimedate-perl liburi-perl libwrap0 mysql-client-5.7 mysql-client-core-5.7", [0m
+[0;33m        "  mysql-common mysql-server-5.7 mysql-server-core-5.7 zlib1g-dev", [0m
+[0;33m        "0 upgraded, 25 newly installed, 0 to remove and 10 not upgraded.", [0m
+[0;33m        "Need to get 23.2 MB of archives.", [0m
+[0;33m        "After this operation, 174 MB of additional disk space will be used.", [0m
+[0;33m        "Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 mysql-common all 5.8+1.0.4 [7308 B]", [0m
+[0;33m        "Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libaio1 amd64 0.3.110-5 [6448 B]", [0m
+[0;33m        "Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnuma1 amd64 2.0.11-2.1 [21.6 kB]", [0m
+[0;33m        "Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-client-core-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [6985 kB]", [0m
+[0;33m        "Get:5 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-client-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [2312 kB]", [0m
+[0;33m        "Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 libwrap0 amd64 7.6.q-27 [46.3 kB]", [0m
+[0;33m        "Get:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-server-core-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [7777 kB]", [0m
+[0;33m        "Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libevent-core-2.1-6 amd64 2.1.8-stable-4build1 [85.9 kB]", [0m
+[0;33m        "Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 mysql-server-5.7 amd64 5.7.23-0ubuntu0.18.04.1 [3194 kB]", [0m
+[0;33m        "Get:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhtml-tagset-perl all 3.20-3 [12.1 kB]", [0m
+[0;33m        "Get:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 liburi-perl all 1.73-1 [77.2 kB]", [0m
+[0;33m        "Get:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhtml-parser-perl amd64 3.72-3build1 [85.9 kB]", [0m
+[0;33m        "Get:13 http://archive.ubuntu.com/ubuntu bionic/main amd64 libcgi-pm-perl all 4.38-1 [185 kB]", [0m
+[0;33m        "Get:14 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfcgi-perl amd64 0.78-2build1 [32.8 kB]", [0m
+[0;33m        "Get:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 libcgi-fast-perl all 1:2.13-1 [9940 B]", [0m
+[0;33m        "Get:16 http://archive.ubuntu.com/ubuntu bionic/main amd64 libencode-locale-perl all 1.05-1 [12.3 kB]", [0m
+[0;33m        "Get:17 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhtml-template-perl all 2.97-1 [59.0 kB]", [0m
+[0;33m        "Get:18 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtimedate-perl all 2.3000-2 [37.5 kB]", [0m
+[0;33m        "Get:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhttp-date-perl all 6.02-1 [10.4 kB]", [0m
+[0;33m        "Get:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libio-html-perl all 1.001-1 [14.9 kB]", [0m
+[0;33m        "Get:21 http://archive.ubuntu.com/ubuntu bionic/main amd64 liblwp-mediatypes-perl all 6.02-1 [21.7 kB]", [0m
+[0;33m        "Get:22 http://archive.ubuntu.com/ubuntu bionic/main amd64 libhttp-message-perl all 6.14-1 [72.1 kB]", [0m
+[0;33m        "Get:23 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmysqlclient20 amd64 5.7.23-0ubuntu0.18.04.1 [818 kB]", [0m
+[0;33m        "Get:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-0ubuntu2 [176 kB]", [0m
+[0;33m        "Get:25 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmysqlclient-dev amd64 5.7.23-0ubuntu0.18.04.1 [1162 kB]", [0m
+[0;33m        "Preconfiguring packages ...", [0m
+[0;33m        "Fetched 23.2 MB in 4s (6210 kB/s)", [0m
+[0;33m        "Selecting previously unselected package mysql-common.", [0m
+[0;33m        "(Reading database ... ", [0m
+[0;33m        "(Reading database ... 5%", [0m
+[0;33m        "(Reading database ... 10%", [0m
+[0;33m        "(Reading database ... 15%", [0m
+[0;33m        "(Reading database ... 20%", [0m
+[0;33m        "(Reading database ... 25%", [0m
+[0;33m        "(Reading database ... 30%", [0m
+[0;33m        "(Reading database ... 35%", [0m
+[0;33m        "(Reading database ... 40%", [0m
+[0;33m        "(Reading database ... 45%", [0m
+[0;33m        "(Reading database ... 50%", [0m
+[0;33m        "(Reading database ... 55%", [0m
+[0;33m        "(Reading database ... 60%", [0m
+[0;33m        "(Reading database ... 65%", [0m
+[0;33m        "(Reading database ... 70%", [0m
+[0;33m        "(Reading database ... 75%", [0m
+[0;33m        "(Reading database ... 80%", [0m
+[0;33m        "(Reading database ... 85%", [0m
+[0;33m        "(Reading database ... 90%", [0m
+[0;33m        "(Reading database ... 95%", [0m
+[0;33m        "(Reading database ... 100%", [0m
+[0;33m        "(Reading database ... 26492 files and directories currently installed.)", [0m
+[0;33m        "Preparing to unpack .../0-mysql-common_5.8+1.0.4_all.deb ...", [0m
+[0;33m        "Unpacking mysql-common (5.8+1.0.4) ...", [0m
+[0;33m        "Selecting previously unselected package libaio1:amd64.", [0m
+[0;33m        "Preparing to unpack .../1-libaio1_0.3.110-5_amd64.deb ...", [0m
+[0;33m        "Unpacking libaio1:amd64 (0.3.110-5) ...", [0m
+[0;33m        "Selecting previously unselected package libnuma1:amd64.", [0m
+[0;33m        "Preparing to unpack .../2-libnuma1_2.0.11-2.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libnuma1:amd64 (2.0.11-2.1) ...", [0m
+[0;33m        "Selecting previously unselected package mysql-client-core-5.7.", [0m
+[0;33m        "Preparing to unpack .../3-mysql-client-core-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking mysql-client-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package mysql-client-5.7.", [0m
+[0;33m        "Preparing to unpack .../4-mysql-client-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking mysql-client-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package libwrap0:amd64.", [0m
+[0;33m        "Preparing to unpack .../5-libwrap0_7.6.q-27_amd64.deb ...", [0m
+[0;33m        "Unpacking libwrap0:amd64 (7.6.q-27) ...", [0m
+[0;33m        "Selecting previously unselected package mysql-server-core-5.7.", [0m
+[0;33m        "Preparing to unpack .../6-mysql-server-core-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking mysql-server-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package libevent-core-2.1-6:amd64.", [0m
+[0;33m        "Preparing to unpack .../7-libevent-core-2.1-6_2.1.8-stable-4build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) ...", [0m
+[0;33m        "Setting up mysql-common (5.8+1.0.4) ...", [0m
+[0;33m        "update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode", [0m
+[0;33m        "Selecting previously unselected package mysql-server-5.7.", [0m
+[0;33m        "(Reading database ... ", [0m
+[0;33m        "(Reading database ... 5%", [0m
+[0;33m        "(Reading database ... 10%", [0m
+[0;33m        "(Reading database ... 15%", [0m
+[0;33m        "(Reading database ... 20%", [0m
+[0;33m        "(Reading database ... 25%", [0m
+[0;33m        "(Reading database ... 30%", [0m
+[0;33m        "(Reading database ... 35%", [0m
+[0;33m        "(Reading database ... 40%", [0m
+[0;33m        "(Reading database ... 45%", [0m
+[0;33m        "(Reading database ... 50%", [0m
+[0;33m        "(Reading database ... 55%", [0m
+[0;33m        "(Reading database ... 60%", [0m
+[0;33m        "(Reading database ... 65%", [0m
+[0;33m        "(Reading database ... 70%", [0m
+[0;33m        "(Reading database ... 75%", [0m
+[0;33m        "(Reading database ... 80%", [0m
+[0;33m        "(Reading database ... 85%", [0m
+[0;33m        "(Reading database ... 90%", [0m
+[0;33m        "(Reading database ... 95%", [0m
+[0;33m        "(Reading database ... 100%", [0m
+[0;33m        "(Reading database ... 26678 files and directories currently installed.)", [0m
+[0;33m        "Preparing to unpack .../00-mysql-server-5.7_5.7.23-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking mysql-server-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package libhtml-tagset-perl.", [0m
+[0;33m        "Preparing to unpack .../01-libhtml-tagset-perl_3.20-3_all.deb ...", [0m
+[0;33m        "Unpacking libhtml-tagset-perl (3.20-3) ...", [0m
+[0;33m        "Selecting previously unselected package liburi-perl.", [0m
+[0;33m        "Preparing to unpack .../02-liburi-perl_1.73-1_all.deb ...", [0m
+[0;33m        "Unpacking liburi-perl (1.73-1) ...", [0m
+[0;33m        "Selecting previously unselected package libhtml-parser-perl.", [0m
+[0;33m        "Preparing to unpack .../03-libhtml-parser-perl_3.72-3build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libhtml-parser-perl (3.72-3build1) ...", [0m
+[0;33m        "Selecting previously unselected package libcgi-pm-perl.", [0m
+[0;33m        "Preparing to unpack .../04-libcgi-pm-perl_4.38-1_all.deb ...", [0m
+[0;33m        "Unpacking libcgi-pm-perl (4.38-1) ...", [0m
+[0;33m        "Selecting previously unselected package libfcgi-perl.", [0m
+[0;33m        "Preparing to unpack .../05-libfcgi-perl_0.78-2build1_amd64.deb ...", [0m
+[0;33m        "Unpacking libfcgi-perl (0.78-2build1) ...", [0m
+[0;33m        "Selecting previously unselected package libcgi-fast-perl.", [0m
+[0;33m        "Preparing to unpack .../06-libcgi-fast-perl_1%3a2.13-1_all.deb ...", [0m
+[0;33m        "Unpacking libcgi-fast-perl (1:2.13-1) ...", [0m
+[0;33m        "Selecting previously unselected package libencode-locale-perl.", [0m
+[0;33m        "Preparing to unpack .../07-libencode-locale-perl_1.05-1_all.deb ...", [0m
+[0;33m        "Unpacking libencode-locale-perl (1.05-1) ...", [0m
+[0;33m        "Selecting previously unselected package libhtml-template-perl.", [0m
+[0;33m        "Preparing to unpack .../08-libhtml-template-perl_2.97-1_all.deb ...", [0m
+[0;33m        "Unpacking libhtml-template-perl (2.97-1) ...", [0m
+[0;33m        "Selecting previously unselected package libtimedate-perl.", [0m
+[0;33m        "Preparing to unpack .../09-libtimedate-perl_2.3000-2_all.deb ...", [0m
+[0;33m        "Unpacking libtimedate-perl (2.3000-2) ...", [0m
+[0;33m        "Selecting previously unselected package libhttp-date-perl.", [0m
+[0;33m        "Preparing to unpack .../10-libhttp-date-perl_6.02-1_all.deb ...", [0m
+[0;33m        "Unpacking libhttp-date-perl (6.02-1) ...", [0m
+[0;33m        "Selecting previously unselected package libio-html-perl.", [0m
+[0;33m        "Preparing to unpack .../11-libio-html-perl_1.001-1_all.deb ...", [0m
+[0;33m        "Unpacking libio-html-perl (1.001-1) ...", [0m
+[0;33m        "Selecting previously unselected package liblwp-mediatypes-perl.", [0m
+[0;33m        "Preparing to unpack .../12-liblwp-mediatypes-perl_6.02-1_all.deb ...", [0m
+[0;33m        "Unpacking liblwp-mediatypes-perl (6.02-1) ...", [0m
+[0;33m        "Selecting previously unselected package libhttp-message-perl.", [0m
+[0;33m        "Preparing to unpack .../13-libhttp-message-perl_6.14-1_all.deb ...", [0m
+[0;33m        "Unpacking libhttp-message-perl (6.14-1) ...", [0m
+[0;33m        "Selecting previously unselected package libmysqlclient20:amd64.", [0m
+[0;33m        "Preparing to unpack .../14-libmysqlclient20_5.7.23-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libmysqlclient20:amd64 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Selecting previously unselected package zlib1g-dev:amd64.", [0m
+[0;33m        "Preparing to unpack .../15-zlib1g-dev_1%3a1.2.11.dfsg-0ubuntu2_amd64.deb ...", [0m
+[0;33m        "Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2) ...", [0m
+[0;33m        "Selecting previously unselected package libmysqlclient-dev.", [0m
+[0;33m        "Preparing to unpack .../16-libmysqlclient-dev_5.7.23-0ubuntu0.18.04.1_amd64.deb ...", [0m
+[0;33m        "Unpacking libmysqlclient-dev (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up libhtml-tagset-perl (3.20-3) ...", [0m
+[0;33m        "Setting up libevent-core-2.1-6:amd64 (2.1.8-stable-4build1) ...", [0m
+[0;33m        "Setting up libencode-locale-perl (1.05-1) ...", [0m
+[0;33m        "Setting up libtimedate-perl (2.3000-2) ...", [0m
+[0;33m        "Setting up libnuma1:amd64 (2.0.11-2.1) ...", [0m
+[0;33m        "Setting up libio-html-perl (1.001-1) ...", [0m
+[0;33m        "Setting up liblwp-mediatypes-perl (6.02-1) ...", [0m
+[0;33m        "Processing triggers for libc-bin (2.27-3ubuntu1) ...", [0m
+[0;33m        "Setting up libaio1:amd64 (0.3.110-5) ...", [0m
+[0;33m        "Setting up liburi-perl (1.73-1) ...", [0m
+[0;33m        "Processing triggers for systemd (237-3ubuntu10.3) ...", [0m
+[0;33m        "Setting up libhtml-parser-perl (3.72-3build1) ...", [0m
+[0;33m        "Setting up libcgi-pm-perl (4.38-1) ...", [0m
+[0;33m        "Setting up libmysqlclient20:amd64 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up mysql-client-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up libfcgi-perl (0.78-2build1) ...", [0m
+[0;33m        "Setting up libwrap0:amd64 (7.6.q-27) ...", [0m
+[0;33m        "Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2) ...", [0m
+[0;33m        "Setting up libhttp-date-perl (6.02-1) ...", [0m
+[0;33m        "Setting up libhtml-template-perl (2.97-1) ...", [0m
+[0;33m        "Setting up libmysqlclient-dev (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up mysql-server-core-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up libcgi-fast-perl (1:2.13-1) ...", [0m
+[0;33m        "Setting up libhttp-message-perl (6.14-1) ...", [0m
+[0;33m        "Setting up mysql-client-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "Setting up mysql-server-5.7 (5.7.23-0ubuntu0.18.04.1) ...", [0m
+[0;33m        "invoke-rc.d: policy-rc.d denied execution of stop.", [0m
+[0;33m        "update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode", [0m
+[0;33m        "Renaming removed key_buffer and myisam-recover options (if present)", [0m
+[0;33m        "Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service -> /lib/systemd/system/mysql.service.", [0m
+[0;33m        "invoke-rc.d: policy-rc.d denied execution of start.", [0m
+[0;33m        "Processing triggers for libc-bin (2.27-3ubuntu1) ...", [0m
+[0;33m        "Processing triggers for systemd (237-3ubuntu10.3) ..."[0m
+[0;33m    ][0m
+[0;33m}[0m
+
+TASK [role_under_test : install packages for mysql RHEL] ***********************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/local.yml:9[0m
+[0;36mskipping: [localhost] => {[0m
+[0;36m    "changed": false, [0m
+[0;36m    "skip_reason": "Conditional result was False"[0m
+[0;36m}[0m
+
+TASK [role_under_test : start mysql] *******************************************
+[1;30mtask path: /etc/ansible/roles/role_under_test/tasks/local.yml:16[0m
+[0;34m<localhost> ESTABLISH LOCAL CONNECTION FOR USER: root[0m
+[0;34m<localhost> EXEC /bin/sh -c 'echo ~root && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1540035273.05-222982946760798 `" && echo ansible-tmp-1540035273.05-222982946760798="` echo /root/.ansible/tmp/ansible-tmp-1540035273.05-222982946760798 `" ) && sleep 0'[0m
+[0;34mUsing module file /usr/local/lib/python2.7/dist-packages/ansible/modules/system/systemd.py[0m
+[0;34m<localhost> PUT /root/.ansible/tmp/ansible-local-50TbxOeD/tmpPAm8Ri TO /root/.ansible/tmp/ansible-tmp-1540035273.05-222982946760798/AnsiballZ_systemd.py[0m
+[0;34m<localhost> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1540035273.05-222982946760798/ /root/.ansible/tmp/ansible-tmp-1540035273.05-222982946760798/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1540035273.05-222982946760798/AnsiballZ_systemd.py && sleep 0'[0m
+[0;34m<localhost> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1540035273.05-222982946760798/ > /dev/null 2>&1 && sleep 0'[0m
+[0;31mfatal: [localhost]: FAILED! => {[0m
+[0;31m    "changed": false, [0m
+[0;31m    "invocation": {[0m
+[0;31m        "module_args": {[0m
+[0;31m            "daemon_reload": false, [0m
+[0;31m            "enabled": null, [0m
+[0;31m            "force": null, [0m
+[0;31m            "masked": null, [0m
+[0;31m            "name": "mysql", [0m
+[0;31m            "no_block": false, [0m
+[0;31m            "scope": null, [0m
+[0;31m            "state": "started", [0m
+[0;31m            "user": null[0m
+[0;31m        }[0m
+[0;31m    }, [0m
+[0;31m    "msg": "Unable to start service mysql: Job for mysql.service canceled.\n"[0m
+[0;31m}[0m
+
+PLAY RECAP *********************************************************************
+[0;31mlocalhost[0m                  : [0;32mok=11  [0m [0;33mchanged=3   [0m unreachable=0    [0;31mfailed=1   [0m
+

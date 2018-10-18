@@ -12,7 +12,7 @@
 - name: set facts based on defaults
   set_fact:
     "{{ item[8:] }}": "{{  vars[item[8:]] | default(vars[item]) }}"
-  when: item | match("^default_")
+  when: item is match("^default_")
   with_items:
     "{{ vars }}"
    
@@ -48,32 +48,49 @@
 - name: install repo for php7.1 Ubuntu 16
   apt_repository:
     repo: 'ppa:ondrej/php'
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") 
-      
-- name: install packages (Debian)
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" and ansible_distribution_major_version < "18") 
+
+- name: Add an Apt signing key, uses whichever key is at the URL
+  apt_key:
+    url: https://packages.sury.org/php/apt.gpg 
+    state: present
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9") 
+
+- name: install package (Debian 9)
   apt:
-    name: "{{ item }}"
+    name: "apt-transport-https"
     state: present
     update_cache: yes
-  with_items: "{{ dependencies_ubuntu }}"
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9") 
+
+#wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
+#echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
+- name: install repo for php7.2 Debian 9
+  apt_repository:
+    repo: "deb https://packages.sury.org/php/ stretch main"
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9") 
+
+- name: install packages (Debian)
+  apt:
+    name: "{{ phabricator_packages }}"
+    state: present
+    update_cache: yes
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "16") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version < "9") 
+        (ansible_distribution == "Debian") 
 
 - name: install packages Ubuntu16
   apt:
-    name: "{{ item }}"
+    name: "{{ phabricator_packages }}"
     state: present
     update_cache: yes
     install_recommends: no
-  with_items: "{{ dependencies_ubuntu16 }}"
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15") 
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" ) 
 
 - name: install packages (RHEL)
   yum:
-    name: "{{ item }}"
+    name: "{{ phabricator_packages }}"
     state: present
     update_cache: yes
-  with_items: "{{ dependencies_rhel }}"
   when: ansible_os_family == "RedHat"
 
 - name: install tools for local mysql

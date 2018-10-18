@@ -1,4 +1,32 @@
 ---
+default_phabricator_packages:
+  - htop
+  - mlocate
+  - epel-release
+  - nginx
+  - git
+  - php
+  - php-fpm
+  - php-cli
+  - php-mysql
+  - php-process
+  - php-devel
+  - php-gd
+  - php-pecl-apc
+  - php-pecl-json
+  - php-mbstring
+  - python-pip
+  - subversion
+  - mercurial
+  - wget
+  - libselinux-python
+
+default_phabricator_packages_local:
+  - mysql-server
+  - python-devel
+  - mysql-devel
+  - gcc
+
 default_users:
   web: apache
   vcs: phab-vcs

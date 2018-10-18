@@ -11,3 +11,9 @@ default_mysql_path: /etc/mysql/conf.d
 default_exim_service_name: exim4
 default_exim_config_file: /etc/exim4/update-exim4.conf.conf
 default_git_core_path: /usr/lib/git-core
+
+default_phabricator_packages_local:
+  - mysql-server
+  - python-dev
+  - libmysqlclient-dev
+

@@ -3,21 +3,22 @@ galaxy_info:
   author: sdarwin
   description: phabricator installer
   license: MIT
-  min_ansible_version: 2.2
+  min_ansible_version: 2.4
   platforms:
   - name: EL
     versions:
-    - 6
     - 7
   - name: Ubuntu
     versions:
     - precise
     - trusty
     - xenial
+    - bionic
   - name: Debian
     versions:
     - jessie
     - wheezy
+    - stretch
   categories:
     - development
     - system

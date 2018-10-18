@@ -1,7 +1,7 @@
 ---
 # vars file for phabricator
 
-dependencies_ubuntu:
+default_phabricator_packages:
   - htop
   - mlocate
   - git-core
@@ -24,35 +24,6 @@ dependencies_ubuntu:
   - wget
   - net-tools
 
-dependencies_ubuntu16:
-  - htop
-  - mlocate
-  - git-core
-  - nginx
-  - dpkg-dev
-  - php7.1
-  - php7.1-fpm
-  - php7.1-mysql
-  - php7.1-gd
-  - php7.1-dev
-  - php7.1-curl
-  - php7.1-cli
-  - php7.1-json
-  - php7.1-mbstring
-  - php7.1-apcu
-  - python-pip
-  - exim4
-  - subversion
-  - mercurial
-  - ssl-cert
-  - wget
-  - net-tools
-  
-dependencies_ubuntu_local:
-  - mysql-server
-  - python-dev
-  - libmysqlclient-dev
-
 dependencies_rhel:
   - htop
   - mlocate
@@ -73,18 +44,6 @@ dependencies_rhel:
   - subversion
   - mercurial
   - wget
-
-dependencies_rhel_local:
-  - mysql-server
-  - python-devel
-  - mysql-devel
-  - gcc
-
-dependencies_rhel7_local:
-  - mariadb-server
-  - python-devel
-  - mariadb-devel
-  - gcc
   
 repos:
   phabricator: https://github.com/phacility/phabricator.git

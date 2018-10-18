@@ -1,4 +1,28 @@
 ---
+default_phabricator_packages:
+  - htop
+  - mlocate
+  - git-core
+  - nginx
+  - dpkg-dev
+  - php7.1
+  - php7.1-fpm
+  - php7.1-mysql
+  - php7.1-gd
+  - php7.1-dev
+  - php7.1-curl
+  - php7.1-cli
+  - php7.1-json
+  - php7.1-mbstring
+  - php7.1-apcu
+  - python-pip
+  - exim4
+  - subversion
+  - mercurial
+  - ssl-cert
+  - wget
+  - net-tools
+
 default_php_sock: "unix:/var/run/php/php7.1-fpm.sock"
 default_php_path: /etc/php/7.1/fpm/conf.d
 default_php_service: php7.1-fpm

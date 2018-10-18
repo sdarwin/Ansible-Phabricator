@@ -1,0 +1,36 @@
+---
+default_phabricator_packages:
+  - apt-utils
+  - htop
+  - mlocate
+  - git-core
+  - nginx
+  - dpkg-dev
+  - php7.2
+  - php7.2-fpm
+  - php7.2-mysql
+  - php7.2-gd
+  - php7.2-dev
+  - php7.2-curl
+  - php7.2-cli
+  - php7.2-json
+  - php7.2-mbstring
+  - php7.2-apcu
+  - python-pip
+  - exim4
+  - subversion
+  - mercurial
+  - ssl-cert
+  - wget
+  - net-tools
+
+default_php_sock: "unix:/var/run/php/php7.2-fpm.sock"
+default_php_path: /etc/php/7.2/fpm/conf.d
+default_php_service: php7.2-fpm
+default_mysql_path: /etc/mysql/mysql.conf.d
+
+default_phabricator_packages_local:
+  - mysql-server-5.7
+  - python-dev
+  - libmysqlclient-dev
+

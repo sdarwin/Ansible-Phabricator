@@ -9,3 +9,10 @@ default_php_service: php-fpm
 default_mysql_service: mariadb
 default_mysql_path: /etc/my.cnf.d
 default_git_core_path: /usr/libexec/git-core
+
+default_phabricator_packages_local:
+  - mariadb-server
+  - python-devel
+  - mariadb-devel
+  - gcc
+
