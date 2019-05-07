@@ -44,7 +44,19 @@
   changed_when: False
   when: not((phabricator_metamta_default_address is undefined) or (phabricator_metamta_default_address is none) or (phabricator_metamta_default_address|trim == ''))
 
-- name: set metamta.domain
-  command: "{{ web_root }}/phabricator/bin/config set metamta.domain '{{ phabricator_metamta_domain }}'"
+#setting no longer supported in phabricator
+#- name: set metamta.domain
+#  command: "{{ web_root }}/phabricator/bin/config set metamta.domain '{{ phabricator_metamta_domain }}'"
+#  changed_when: False
+#  when: not((phabricator_metamta_domain is undefined) or (phabricator_metamta_domain is none) or (phabricator_metamta_domain|trim == ''))
+
+- name: create mailers.json, in order to configure mailers
+  template:
+    src: mailers.json.j2
+    dest: /tmp/mailers.json
+
+- name: set cluster.mailers
+  shell: "{{ web_root }}/phabricator/bin/config set --stdin cluster.mailers < /tmp/mailers.json"
   changed_when: False
-  when: not((phabricator_metamta_domain is undefined) or (phabricator_metamta_domain is none) or (phabricator_metamta_domain|trim == ''))
+
+
