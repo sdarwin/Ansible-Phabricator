@@ -15,7 +15,7 @@
   when: item is match("^default_")
   with_items:
     "{{ vars }}"
-   
+
 ##########
 
 #stop all services, in case of upgrade
@@ -25,7 +25,7 @@
     name: phabricator-phd
     state: stopped
   ignore_errors: yes
-  
+
 - name: stop nginx
   service:
     name: nginx
@@ -37,38 +37,38 @@
     name: "{{ php_service }}"
     state: stopped
   ignore_errors: yes
- 
+
 - name: fix test-kitchen
   file:
     path: /tmp/kitchen
     state: directory
     recurse: true
     mode: 0775
-      
+
 - name: install repo for php7.1 Ubuntu 16
   apt_repository:
     repo: 'ppa:ondrej/php'
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" and ansible_distribution_major_version < "18") 
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" and ansible_distribution_major_version < "18")
 
 - name: Add an Apt signing key, uses whichever key is at the URL
   apt_key:
-    url: https://packages.sury.org/php/apt.gpg 
+    url: https://packages.sury.org/php/apt.gpg
     state: present
-  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9") 
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9")
 
 - name: install package (Debian 9)
   apt:
     name: "apt-transport-https"
     state: present
     update_cache: yes
-  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9") 
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9")
 
 #wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
 #echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
 - name: install repo for php7.2 Debian 9
   apt_repository:
     repo: "deb https://packages.sury.org/php/ stretch main"
-  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9") 
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9")
 
 - name: install packages (Debian)
   apt:
@@ -76,7 +76,7 @@
     state: present
     update_cache: yes
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "16") or
-        (ansible_distribution == "Debian") 
+        (ansible_distribution == "Debian")
 
 - name: install packages Ubuntu16
   apt:
@@ -84,7 +84,7 @@
     state: present
     update_cache: yes
     install_recommends: no
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" ) 
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" )
 
 - name: install packages (RHEL)
   yum:
@@ -130,14 +130,15 @@
     owner: root
     group: root
     state: directory
-  
+
 - name: download phabricator from git repo
   git:
     repo: "{{ item.value }}"
     dest: "{{ web_root }}/{{ item.key }}"
+    version: master
     accept_hostkey: yes
   with_dict: "{{ repos }}"
-    
+
 - name: enable phabricator in nginx (Debian)
   template:
     src: phabricator.conf.j2
@@ -145,18 +146,19 @@
     owner: root
     group: root
     mode: 0644
-  when: ansible_os_family == "Debian" 
+  when: ansible_os_family == "Debian"
   notify: restart nginx
 
-- file:
+- name: enable website
+  file:
     src: /etc/nginx/sites-available/phabricator.conf
     dest: /etc/nginx/sites-enabled/phabricator.conf
     owner: root
     group: root
     state: link
-  when: ansible_os_family == "Debian" 
+  when: ansible_os_family == "Debian"
   notify: restart nginx
-  
+
 - name: enable phabricator in nginx (Redhat)
   template:
     src: phabricator.conf.j2
@@ -164,30 +166,33 @@
     owner: root
     group: root
     mode: 0644
-  when: ansible_os_family == "RedHat" 
+  when: ansible_os_family == "RedHat"
   notify: restart nginx
-   
+
 - name: create cert (Redhat)
   shell: /etc/ssl/certs/make-dummy-cert {{ phabricator_ssl_cert }} ; chmod 640 {{ phabricator_ssl_cert }} ; chgrp {{ users.web }} {{ phabricator_ssl_cert }}
   args:
     creates: "{{ phabricator_ssl_cert }}"
-  when: ansible_os_family == "RedHat" 
+  when: ansible_os_family == "RedHat"
   notify: restart nginx
-  
+
 - name: create key (Redhat)
-  shell: mkdir -p /etc/ssl/private ; cp -p {{ phabricator_ssl_cert }} {{ phabricator_ssl_key }}
+  shell: mkdir -p /etc/ssl/private ; cp -p {{ phabricator_ssl_cert }} {{ phabricator_ssl_key }} # noqa 302
   args:
     creates: "{{ phabricator_ssl_key }}"
-  when: ansible_os_family == "RedHat" 
+  when: ansible_os_family == "RedHat" # noqa 302
   notify: restart nginx
-  
+
 - name: enable php-fpm socket
   shell: |
-    /bin/sed -i s'/listen = 127.0.0.1:9000/listen = \/var\/run\/php-main.socket/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.owner = nobody/listen.owner = nginx/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.group = nobody/listen.group = nginx/' /etc/php-fpm.d/www.conf ; /bin/sed -i s'/;listen.mode = 0660/listen.mode = 0660/' /etc/php-fpm.d/www.conf ;
-  when: ansible_os_family == "RedHat" 
+    /bin/sed -i s'/listen = 127.0.0.1:9000/listen = \/var\/run\/php-main.socket/' /etc/php-fpm.d/www.conf ;
+    /bin/sed -i s'/;listen.owner = nobody/listen.owner = nginx/' /etc/php-fpm.d/www.conf ;
+    /bin/sed -i s'/;listen.group = nobody/listen.group = nginx/' /etc/php-fpm.d/www.conf ;
+    /bin/sed -i s'/;listen.mode = 0660/listen.mode = 0660/' /etc/php-fpm.d/www.conf ;
+  when: ansible_os_family == "RedHat" # noqa 303
   #notify: restart php-fpm
   changed_when: False
-  
+
 - name: add php.ini config
   template:
     src: php.ini.j2
@@ -203,7 +208,7 @@
     state: directory
     owner: root
     group: root
-    
+
 - name: add mysql.cnf config
   template:
     src: mysql.cnf.j2
@@ -221,7 +226,7 @@
     line: '!includedir /etc/my.cnf.d'
   when: ansible_os_family == "RedHat" and ansible_distribution_major_version < "7"
   notify: restart mysql
-    
+
 - name: add git binaries to path
   file:
     src: "{{ git_core_path }}/git-http-backend"
@@ -252,7 +257,7 @@
 
 - name: create local file storage
   file:
-    path: "{{ phabricator_local_disk_path }}" 
+    path: "{{ phabricator_local_disk_path }}"
     state: directory
     owner: "{{ users.web }}"
     group: "{{ users.web }}"
@@ -265,7 +270,7 @@
     owner: root
     group: root
     mode: 0644
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or 
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or
         (ansible_distribution == "Debian" and ansible_distribution_major_version < "8")
   notify: restart upstart phabricator-phd
 
@@ -278,7 +283,7 @@
     mode: 0644
   when: (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
   notify: restart upstart phabricator-phd
-  
+
 - name: add systemd template
   template:
     src: systemd.service.j2
@@ -298,7 +303,7 @@
     owner: root
     group: root
     mode: 0644
-  
+
 - name: exim internet email
   lineinfile:
     path: "{{ exim_config_file }}"
@@ -315,7 +320,7 @@
     line: "apc.stat=Off"
   when: (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
   notify: restart php-fpm
-  
+
 - name: apc config file slam
   lineinfile:
     path: "{{ php_path }}/apc.ini"
@@ -323,7 +328,7 @@
     line: "apc.slam_defense=Off"
   when: (ansible_os_family == "RedHat" and ansible_distribution_major_version  < "7")
   notify: restart php-fpm
- 
+
 - name: enable services on boot Centos7
   file:
     src: /usr/lib/systemd/system/{{ item }}
@@ -348,28 +353,30 @@
   with_items:
      - phabricator-phd.service
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
-          (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") 
-      
+          (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
+
 # End Section ##########
-  
+
 #start all services, in case they were stopped during upgrade
 
 - name: notify start nginx
   command: /bin/true
   notify: restart nginx
- 
+  changed_when: True
+
 - name: notify start php-fpm
   command: /bin/true
   notify: restart php-fpm
-           
+  changed_when: True
+
 - name: notify start upstart phabricator-phd
   command: /bin/true
   notify: restart upstart phabricator-phd
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or 
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or
         (ansible_distribution == "Debian" and ansible_distribution_major_version < "8") or
         (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
 
-- name: notify start systemd phabricator-phd        
+- name: notify start systemd phabricator-phd
   command: /bin/true
   notify: restart systemd phabricator-phd
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or

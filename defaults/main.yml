@@ -38,7 +38,7 @@ phabricator_auth_email_domains: ""
 phabricator_file_storage: local
 phabricator_local_disk_path: /opt/phabfiles
 
-phabricator_metamta_default_address: noreply@phab.example.com
+phabricator_metamta_default_address: "noreply@phab.example.com"
 phabricator_metamta_domain: phab.example.com
 
 phabricator_ssl_cert: /etc/ssl/certs/ssl-cert-snakeoil.pem

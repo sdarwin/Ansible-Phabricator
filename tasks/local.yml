@@ -4,20 +4,20 @@
     name: "{{ phabricator_packages_local }}"
     state: present
     update_cache: yes
-  when: ansible_os_family == "Debian" 
+  when: ansible_os_family == "Debian"
 
 - name: install packages for mysql RHEL
   yum:
     name: "{{ phabricator_packages_local }}"
     state: present
     update_cache: yes
-  when: ansible_os_family == "RedHat" 
-  
+  when: ansible_os_family == "RedHat"
+
 - name: start mysql
   service:
     name: "{{ mysql_service }}"
     state: started
-  
+
 - name: install required python module
   pip:
     name: MySQL-python
@@ -30,8 +30,9 @@
     state: present
 
 # Put SELinux in permissive mode, logging actions that would be blocked.
-- selinux:
+- name: permissive selinux
+  selinux:
     policy: targeted
     state: permissive
-  when: ansible_os_family == "RedHat" 
+  when: ansible_os_family == "RedHat"
   ignore_errors: yes

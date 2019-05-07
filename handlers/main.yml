@@ -14,18 +14,18 @@
     enabled: yes
 
 - name: restart upstart phabricator-phd
-  service: 
-    name: phabricator-phd 
-    state: restarted 
+  service:
+    name: phabricator-phd
+    state: restarted
     enabled: yes
-    
+
 - name: restart systemd phabricator-phd
-  systemd: 
-    name: phabricator-phd 
-    state: restarted 
+  systemd:
+    name: phabricator-phd
+    state: restarted
     daemon_reload: yes
     enabled: yes
-  
+
 - name: restart mysql
   service:
     name: "{{ mysql_service }}"
