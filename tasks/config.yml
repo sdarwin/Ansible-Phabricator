@@ -58,5 +58,3 @@
 - name: set cluster.mailers
   shell: "{{ web_root }}/phabricator/bin/config set --stdin cluster.mailers < /tmp/mailers.json"
   changed_when: False
-
-

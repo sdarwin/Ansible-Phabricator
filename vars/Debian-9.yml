@@ -32,4 +32,3 @@ default_php_sock: "unix:/var/run/php/php7.2-fpm.sock"
 default_php_path: /etc/php/7.2/fpm/conf.d
 default_php_service: php7.2-fpm
 default_mysql_path: /etc/mysql/mariadb.conf.d
-

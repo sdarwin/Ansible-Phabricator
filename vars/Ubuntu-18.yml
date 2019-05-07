@@ -33,4 +33,3 @@ default_phabricator_packages_local:
   - mysql-server-5.7
   - python-dev
   - libmysqlclient-dev
-

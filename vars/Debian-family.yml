@@ -16,4 +16,3 @@ default_phabricator_packages_local:
   - mysql-server
   - python-dev
   - libmysqlclient-dev
-

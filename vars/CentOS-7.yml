@@ -15,4 +15,3 @@ default_phabricator_packages_local:
   - python-devel
   - mariadb-devel
   - gcc
-

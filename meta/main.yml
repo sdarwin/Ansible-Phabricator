@@ -19,7 +19,7 @@ galaxy_info:
     - jessie
     - wheezy
     - stretch
-  categories:
+  galaxy_tags:
     - development
     - system
     - web
