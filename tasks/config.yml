@@ -13,6 +13,10 @@
   command: "{{ web_root }}/phabricator/bin/config set phabricator.base-uri '{{ phabricator_protocol }}://{{ server_url }}/'"
   changed_when: False
 
+- name: set repository default-local
+  command: "{{ web_root }}/phabricator/bin/config set  repository.default-local-path '{{ repository_path }}'"
+  changed_when: False
+
 - name: set daemon user
   command: "{{ web_root }}/phabricator/bin/config set phd.user '{{ users.daemon }}'"
   changed_when: False

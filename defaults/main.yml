@@ -7,6 +7,8 @@ phabricator_protocol: https
 server_url: phab.example.com
 
 web_root: /var/www
+# Set the path to the local repository
+repository_path: "/var/repo"
 
 database_config:
   user: phabricator
