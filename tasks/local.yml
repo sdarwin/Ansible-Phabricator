@@ -18,12 +18,18 @@
     name: "{{ mysql_service }}"
     state: started
 
+#if you don't have (Python 2.7 and Python 3.X), then this should be installed
+#- name: install required python module
+#  pip:
+#    name: MySQL-python
+
 - name: install required python module
   pip:
-    name: MySQL-python
+    name: PyMySQL
 
 - name: create mysql user
   mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
     name: "{{ database_config.user }}"
     password: "{{ database_config.pass }}"
     priv: "*.*:ALL,GRANT"

@@ -78,7 +78,7 @@
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "16") or
         (ansible_distribution == "Debian")
 
-- name: install packages Ubuntu16
+- name: install packages (Ubuntu)
   apt:
     name: "{{ phabricator_packages }}"
     state: present
