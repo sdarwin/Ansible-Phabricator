@@ -1,8 +1,12 @@
 ---
-default_phabricator_packages:
-  - htop
-  - mlocate
+default_phabricator_pre1_packages:
   - epel-release
+  - yum-utils
+
+default_phabricator_pre2_packages:
+  - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+default_phabricator_packages:
   - nginx
   - git
   - php
@@ -20,6 +24,8 @@ default_phabricator_packages:
   - mercurial
   - wget
   - libselinux-python
+  - htop
+  - mlocate
 
 default_phabricator_packages_local:
   - mysql-server
@@ -36,4 +42,5 @@ default_php_path: /etc/php.d/
 default_php_service: php-fpm
 default_mysql_service: mysqld
 default_mysql_path: /etc/my.cnf.d
+default_mysql_socket: /var/lib/mysql/mysql.sock 
 default_git_core_path: /usr/libexec/git-core

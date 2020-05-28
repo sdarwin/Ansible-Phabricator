@@ -8,6 +8,7 @@ default_php_path: /etc/php5/fpm/conf.d
 default_php_service: php5-fpm
 default_mysql_service: mysql
 default_mysql_path: /etc/mysql/conf.d
+default_mysql_socket: /var/run/mysqld/mysqld.sock
 default_exim_service_name: exim4
 default_exim_config_file: /etc/exim4/update-exim4.conf.conf
 default_git_core_path: /usr/lib/git-core

@@ -86,6 +86,24 @@
     install_recommends: no
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" )
 
+- name: install pre-requisite packages 1 (RHEL)
+  yum:
+    name: "{{ phabricator_pre1_packages }}"
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "RedHat"
+
+- name: install pre-requisite packages 2 (RHEL)
+  yum:
+    name: "{{ phabricator_pre2_packages }}"
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "RedHat"
+
+- name: enable remi
+  command: "sudo yum-config-manager --enable remi-php73"
+  when: ansible_os_family == "RedHat"
+
 - name: install packages (RHEL)
   yum:
     name: "{{ phabricator_packages }}"
@@ -238,6 +256,12 @@
 
 - name: include config
   include: config.yml
+
+- name: upgrade pip
+  pip: 
+    name: 
+      - pip
+    state: latest
 
 - name: install pygments for better syntax highlighting
   pip:
