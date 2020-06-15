@@ -3,57 +3,57 @@
 - name: configure db credentials
   command: "{{ web_root }}/phabricator/bin/config set mysql.{{ item.key }} '{{ item.value }}'"
   with_dict: "{{ database_config }}"
-  changed_when: False
+  changed_when: false
 
 - name: run phabricator db migrations
   command: "{{ web_root }}/phabricator/bin/storage upgrade --force"
-  changed_when: False
+  changed_when: false
 
 - name: configure base URI
   command: "{{ web_root }}/phabricator/bin/config set phabricator.base-uri '{{ phabricator_protocol }}://{{ server_url }}/'"
-  changed_when: False
+  changed_when: false
 
 - name: set repository default-local
   command: "{{ web_root }}/phabricator/bin/config set  repository.default-local-path '{{ repository_path }}'"
-  changed_when: False
+  changed_when: false
 
 - name: set daemon user
   command: "{{ web_root }}/phabricator/bin/config set phd.user '{{ users.daemon }}'"
-  changed_when: False
+  changed_when: false
 
 - name: set vcs user
   command: "{{ web_root }}/phabricator/bin/config set diffusion.ssh-user '{{ users.vcs }}'"
-  changed_when: False
+  changed_when: false
 
 - name: set http auth
   command: "{{ web_root }}/phabricator/bin/config set diffusion.allow-http-auth '{{ allow_http_auth }}'"
-  changed_when: False
+  changed_when: false
 
 - name: configue pygments highlighting
   command: "{{ web_root }}/phabricator/bin/config set pygments.enabled 'true'"
-  changed_when: False
+  changed_when: false
 
 - name: auth email domains
   command: "{{ web_root }}/phabricator/bin/config set auth.email-domains '{{ phabricator_auth_email_domains }}'"
-  changed_when: False
+  changed_when: false
   when: phabricator_auth_email_domains
-  #when: not((phabricator_auth_email_domains is undefined) or (phabricator_auth_email_domains is none) or (phabricator_auth_email_domains|trim == ''))
+  # when: not((phabricator_auth_email_domains is undefined) or (phabricator_auth_email_domains is none) or (phabricator_auth_email_domains|trim == ''))
 
 - name: file storage
   command: "{{ web_root }}/phabricator/bin/config set storage.local-disk.path '{{ phabricator_local_disk_path }}'"
-  changed_when: False
+  changed_when: false
   when: phabricator_file_storage == "local"
 
 - name: set metamta.default-address
-  command: "{{ web_root }}/phabricator/bin/config set metamta.default-address '{{ phabricator_metamta_default_address }}'" # noqa 602 204
-  changed_when: False
-  when: not((phabricator_metamta_default_address is undefined) or (phabricator_metamta_default_address is none) or (phabricator_metamta_default_address|trim == '')) # noqa 602 204
+  command: "{{ web_root }}/phabricator/bin/config set metamta.default-address '{{ phabricator_metamta_default_address }}'"  # noqa 602 204
+  changed_when: false
+  when: not((phabricator_metamta_default_address is undefined) or (phabricator_metamta_default_address is none) or (phabricator_metamta_default_address|trim == ''))  # noqa 602 204
 
-#setting no longer supported in phabricator
-#- name: set metamta.domain
-#  command: "{{ web_root }}/phabricator/bin/config set metamta.domain '{{ phabricator_metamta_domain }}'"
-#  changed_when: False
-#  when: not((phabricator_metamta_domain is undefined) or (phabricator_metamta_domain is none) or (phabricator_metamta_domain|trim == ''))
+# setting no longer supported in phabricator
+# - name: set metamta.domain
+#   command: "{{ web_root }}/phabricator/bin/config set metamta.domain '{{ phabricator_metamta_domain }}'"
+#   changed_when: false
+#   when: not((phabricator_metamta_domain is undefined) or (phabricator_metamta_domain is none) or (phabricator_metamta_domain|trim == ''))
 
 - name: create mailers.json, in order to configure mailers
   template:
@@ -62,4 +62,4 @@
 
 - name: set cluster.mailers
   shell: "{{ web_root }}/phabricator/bin/config set --stdin cluster.mailers < /tmp/mailers.json"
-  changed_when: False
+  changed_when: false

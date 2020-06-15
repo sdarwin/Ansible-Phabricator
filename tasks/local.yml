@@ -3,14 +3,14 @@
   apt:
     name: "{{ phabricator_packages_local }}"
     state: present
-    update_cache: yes
+    update_cache: true
   when: ansible_os_family == "Debian"
 
 - name: install packages for mysql RHEL
   yum:
     name: "{{ phabricator_packages_local }}"
     state: present
-    update_cache: yes
+    update_cache: true
   when: ansible_os_family == "RedHat"
 
 - name: start mysql
@@ -18,10 +18,10 @@
     name: "{{ mysql_service }}"
     state: started
 
-#if you don't have (Python 2.7 and Python 3.X), then this should be installed
-#- name: install required python module
-#  pip:
-#    name: MySQL-python
+# if you don't have (Python 2.7 and Python 3.X), then this should be installed
+# - name: install required python module
+#   pip:
+#     name: MySQL-python
 
 - name: install required python module
   pip:
@@ -41,4 +41,4 @@
     policy: targeted
     state: permissive
   when: ansible_os_family == "RedHat"
-  ignore_errors: yes
+  ignore_errors: true

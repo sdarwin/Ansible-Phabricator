@@ -42,5 +42,5 @@ default_php_path: /etc/php.d/
 default_php_service: php-fpm
 default_mysql_service: mysqld
 default_mysql_path: /etc/my.cnf.d
-default_mysql_socket: /var/lib/mysql/mysql.sock 
+default_mysql_socket: /var/lib/mysql/mysql.sock
 default_git_core_path: /usr/libexec/git-core

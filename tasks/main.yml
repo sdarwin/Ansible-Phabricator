@@ -18,25 +18,25 @@
 
 ##########
 
-#stop all services, in case of upgrade
+# stop all services, in case of upgrade
 
 - name: stop phabricator-phd
   service:
     name: phabricator-phd
     state: stopped
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: stop nginx
   service:
     name: nginx
     state: stopped
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: stop php-fpm
   service:
     name: "{{ php_service }}"
     state: stopped
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: fix test-kitchen
   file:
@@ -60,11 +60,11 @@
   apt:
     name: "apt-transport-https"
     state: present
-    update_cache: yes
+    update_cache: true
   when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "9")
 
-#wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
-#echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
+# wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
+# echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
 - name: install repo for php7.2 Debian 9
   apt_repository:
     repo: "deb https://packages.sury.org/php/ stretch main"
@@ -74,7 +74,7 @@
   apt:
     name: "{{ phabricator_packages }}"
     state: present
-    update_cache: yes
+    update_cache: true
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "16") or
         (ansible_distribution == "Debian")
 
@@ -82,22 +82,22 @@
   apt:
     name: "{{ phabricator_packages }}"
     state: present
-    update_cache: yes
-    install_recommends: no
+    update_cache: true
+    install_recommends: false
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" )
 
 - name: install pre-requisite packages 1 (RHEL)
   yum:
     name: "{{ phabricator_pre1_packages }}"
     state: present
-    update_cache: yes
+    update_cache: true
   when: ansible_os_family == "RedHat"
 
 - name: install pre-requisite packages 2 (RHEL)
   yum:
     name: "{{ phabricator_pre2_packages }}"
     state: present
-    update_cache: yes
+    update_cache: true
   when: ansible_os_family == "RedHat"
 
 - name: enable remi
@@ -108,7 +108,7 @@
   yum:
     name: "{{ phabricator_packages }}"
     state: present
-    update_cache: yes
+    update_cache: true
   when: ansible_os_family == "RedHat"
 
 - name: install tools for local mysql
@@ -154,7 +154,7 @@
     repo: "{{ item.value }}"
     dest: "{{ web_root }}/{{ item.key }}"
     version: master
-    accept_hostkey: yes
+    accept_hostkey: true
   with_dict: "{{ repos }}"
 
 - name: enable phabricator in nginx (Debian)
@@ -195,10 +195,10 @@
   notify: restart nginx
 
 - name: create key (Redhat)
-  shell: mkdir -p /etc/ssl/private ; cp -p {{ phabricator_ssl_cert }} {{ phabricator_ssl_key }} # noqa 302
+  shell: mkdir -p /etc/ssl/private ; cp -p {{ phabricator_ssl_cert }} {{ phabricator_ssl_key }}  # noqa 302
   args:
     creates: "{{ phabricator_ssl_key }}"
-  when: ansible_os_family == "RedHat" # noqa 302
+  when: ansible_os_family == "RedHat"  # noqa 302
   notify: restart nginx
 
 - name: enable php-fpm socket
@@ -207,9 +207,9 @@
     /bin/sed -i s'/;listen.owner = nobody/listen.owner = nginx/' /etc/php-fpm.d/www.conf ;
     /bin/sed -i s'/;listen.group = nobody/listen.group = nginx/' /etc/php-fpm.d/www.conf ;
     /bin/sed -i s'/;listen.mode = 0660/listen.mode = 0660/' /etc/php-fpm.d/www.conf ;
-  when: ansible_os_family == "RedHat" # noqa 303
-  #notify: restart php-fpm
-  changed_when: False
+  when: ansible_os_family == "RedHat"  # noqa 303
+  # notify: restart php-fpm
+  changed_when: false
 
 - name: add php.ini config
   template:
@@ -252,14 +252,14 @@
     owner: root
     group: root
     state: link
-  changed_when: False
+  changed_when: false
 
 - name: include config
   include: config.yml
 
-- name: upgrade pip
-  pip: 
-    name: 
+- name: upgrade pip  # noqa 403
+  pip:
+    name:
       - pip
     state: latest
 
@@ -274,10 +274,10 @@
     owner: "{{ users.daemon }}"
     group: "{{ users.daemon }}"
 
-#- name: start phabricator daemons
-#  command: "{{ web_root }}/phabricator/bin/phd restart"
-#  sudo_user: "{{ users.daemon }}"
-#  changed_when: False
+# - name: start phabricator daemons
+#   command: "{{ web_root }}/phabricator/bin/phd restart"
+#   sudo_user: "{{ users.daemon }}"
+#   changed_when: False
 
 - name: create local file storage
   file:
@@ -333,7 +333,7 @@
     path: "{{ exim_config_file }}"
     regexp: "^dc_eximconfig_configtype='local'"
     line: "dc_eximconfig_configtype='internet'"
-    backrefs: yes
+    backrefs: true
   when: ansible_os_family == "Debian"
   notify: restart exim
 
@@ -361,10 +361,10 @@
     group: root
     state: link
   with_items:
-     - nginx.service
-     - php-fpm.service
-     - phabricator-phd.service
-     - mariadb.service
+    - nginx.service
+    - php-fpm.service
+    - phabricator-phd.service
+    - mariadb.service
   when: (ansible_os_family == "RedHat" and ansible_distribution_major_version  > "6")
 
 - name: enable services on boot Debian
@@ -375,23 +375,23 @@
     group: root
     state: link
   with_items:
-     - phabricator-phd.service
+    - phabricator-phd.service
   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
           (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
 
 # End Section ##########
 
-#start all services, in case they were stopped during upgrade
+# start all services, in case they were stopped during upgrade
 
 - name: notify start nginx
   command: /bin/true
   notify: restart nginx
-  changed_when: True
+  changed_when: true
 
 - name: notify start php-fpm
   command: /bin/true
   notify: restart php-fpm
-  changed_when: True
+  changed_when: true
 
 - name: notify start upstart phabricator-phd
   command: /bin/true

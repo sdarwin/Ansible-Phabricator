@@ -1,7 +1,7 @@
 ---
 # defaults file for phabricator
 
-#change phabricator_protocol to http if you prefer not to use ssl. certificate settings are further in this file.
+# change phabricator_protocol to http if you prefer not to use ssl. certificate settings are further in this file.
 phabricator_protocol: https
 
 server_url: phab.example.com
@@ -31,12 +31,12 @@ permissions:
   web: "ALL=(phab-daemon) SETENV:NOPASSWD: /usr/lib/git-core/git-http-backend"
 allow_http_auth: "true"
 
-#This variable is optional, but recommended, to restrict who can register.
-#phabricator_auth_email_domains: '[ "example.com","example2.com" ]'
+# This variable is optional, but recommended, to restrict who can register.
+# phabricator_auth_email_domains: '[ "example.com","example2.com" ]'
 phabricator_auth_email_domains: ""
 
-#set phabricator_file_storage to "mysql", "local", "s3", "custom". 
-#only "local" is currently supported, although "mysql" will also work because that is the phabricator default setting.
+# set phabricator_file_storage to "mysql", "local", "s3", "custom".
+# only "local" is currently supported, although "mysql" will also work because that is the phabricator default setting.
 phabricator_file_storage: local
 phabricator_local_disk_path: /opt/phabfiles
 

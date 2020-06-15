@@ -2,42 +2,41 @@
 sudo: required
 
 services:
-  - docker  
+  - docker
 
 before_install:
   # Pull container.
-  #- 'docker pull geerlingguy/docker-$distro-ansible:latest'
+  # - 'docker pull geerlingguy/docker-$distro-ansible:latest'
   - 'docker pull sdarwin/${distro}-ansible:latest'
-  
+
 env:
   # PHABRICATOR
   - distro: centos7
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     playbook: test.yml
-  #- distro: centos6
-  #  init: /sbin/init
-  #  run_opts: "--privileged"
-  #  playbook: test.yml
+  # - distro: centos6
+  #   init: /sbin/init
+  #   run_opts: "--privileged"
+  #   playbook: test.yml
   - distro: debian9
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     playbook: test.yml
-  - distro: trusty  
-  #- distro: ubuntu1404
+  # - distro: ubuntu1404
+  - distro: trusty
     init: /sbin/init
     run_opts: "--privileged"
     playbook: test.yml
+  # - distro: bionic
+  #   init: /lib/systemd/systemd
+  #   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  #   playbook: test.yml
+  # - distro: ubuntu1604
   - distro: xenial
-  #- distro: ubuntu1604
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     playbook: test.yml
-  #- distro: bionic
-  #  init: /lib/systemd/systemd
-  #  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  #  playbook: test.yml
-
 
 script:
   - container_id=$(mktemp)
@@ -46,10 +45,10 @@ script:
 
   # upgrade pip
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm pip install --upgrade pip'
-  
+
   # upgrade ansible
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm pip install ansible --upgrade'
-  
+
   # Ansible syntax check.
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook --extra-vars ''${ansible_vars}'' /etc/ansible/roles/role_under_test/tests/${playbook} --syntax-check'
 
@@ -59,12 +58,12 @@ script:
   - printf "finished main exec"
 
   # Check if website is running
-  - 'docker exec "$(cat ${container_id})" env TERM=xterm env ANSIBLE_FORCE_COLOR=1 wget --no-check-certificate --header=''Host: phab.example.com'' -O - -o /dev/null https://localhost | grep ''Welcome to Phabricator'' '
-  
+  - 'docker exec "$(cat ${container_id})" env TERM=xterm env ANSIBLE_FORCE_COLOR=1 wget --no-check-certificate --header=''Host: phab.example.com'' -O - -o /dev/null https://localhost | grep ''Welcome to Phabricator'' '  # yamllint disable-line
+
   # Test role idempotence.
-  #- idempotence=$(mktemp)
-  #- 'sudo docker exec "$(cat ${container_id})" ansible-playbook --extra-vars ''${ansible_vars}'' #/etc/ansible/roles/role_under_test/tests/${playbook} | tee -a ${idempotence}'
-  #- >
+  # - idempotence=$(mktemp)
+  # - 'sudo docker exec "$(cat ${container_id})" ansible-playbook --extra-vars ''${ansible_vars}'' #/etc/ansible/roles/role_under_test/tests/${playbook} | tee -a ${idempotence}'
+  # - >
   #  tail ${idempotence}
   #  | grep -q 'changed=0.*failed=0'
   #  && (echo 'Idempotence test: pass' && exit 0)
@@ -76,4 +75,3 @@ after_success:
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
-  
