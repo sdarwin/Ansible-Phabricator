@@ -3,9 +3,6 @@ default_phabricator_pre1_packages:
   - epel-release
   - yum-utils
 
-default_phabricator_pre2_packages:
-  - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-
 default_phabricator_packages:
   - nginx
   - git
@@ -19,7 +16,6 @@ default_phabricator_packages:
   - php-pecl-apc
   - php-pecl-json
   - php-mbstring
-  - python-pip
   - subversion
   - mercurial
   - wget
@@ -29,7 +25,6 @@ default_phabricator_packages:
 
 default_phabricator_packages_local:
   - mysql-server
-  - python-devel
   - mysql-devel
   - gcc
 
@@ -44,3 +39,9 @@ default_mysql_service: mysqld
 default_mysql_path: /etc/my.cnf.d
 default_mysql_socket: /var/lib/mysql/mysql.sock
 default_git_core_path: /usr/libexec/git-core
+
+default_phab_python_packages:
+  - python3-pip
+  - python3-setuptools
+
+make_dummy_cert_path: /etc/ssl/certs/make-dummy-cert

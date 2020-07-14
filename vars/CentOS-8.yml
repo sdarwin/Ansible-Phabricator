@@ -1,0 +1,45 @@
+---
+default_users:
+  web: apache
+  vcs: phab-vcs
+  daemon: phab-daemon
+default_php_sock: "unix:/var/run/php-fpm/www.sock"
+default_php_path: /etc/php.d/
+default_php_service: php-fpm
+default_mysql_service: mariadb
+default_mysql_path: /etc/my.cnf.d
+default_git_core_path: /usr/libexec/git-core
+
+default_phabricator_packages_local:
+  - mariadb-server
+  - mariadb-devel
+  - gcc
+
+default_phabricator_pre2_packages:
+  - http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+
+default_phab_python_packages:
+  - python3-pip
+  - python3-setuptools
+
+default_phabricator_packages:
+  - nginx
+  - git
+  - php
+  - php-fpm
+  - php-cli
+  - php-mysqlnd
+  - php-process
+  - php-devel
+  - php-gd
+  - php-pecl-apcu
+  - php-pecl-json
+  - php-mbstring
+  - subversion
+  - mercurial
+  - wget
+  - python3-libselinux
+  - htop
+  - mlocate
+
+make_dummy_cert_path: /usr/bin/make-dummy-cert

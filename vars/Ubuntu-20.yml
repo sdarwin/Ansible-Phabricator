@@ -17,13 +17,16 @@ default_phabricator_packages:
   - php7.4-mbstring
   - php7.4-apcu
   - php7.4-zip
-  - python3-pip
   - exim4
   - subversion
   - mercurial
   - ssl-cert
   - wget
   - net-tools
+
+default_phab_python_packages:
+  - python3-pip
+  - python3-setuptools
 
 default_php_sock: "unix:/var/run/php/php7.4-fpm.sock"
 default_php_path: /etc/php/7.4/fpm/conf.d

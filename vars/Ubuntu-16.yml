@@ -15,7 +15,6 @@ default_phabricator_packages:
   - php7.1-json
   - php7.1-mbstring
   - php7.1-apcu
-  - python-pip
   - exim4
   - subversion
   - mercurial
@@ -27,3 +26,9 @@ default_php_sock: "unix:/var/run/php/php7.1-fpm.sock"
 default_php_path: /etc/php/7.1/fpm/conf.d
 default_php_service: php7.1-fpm
 default_mysql_path: /etc/mysql/mysql.conf.d
+
+default_phab_python_packages:
+  - python-pip
+  - python-setuptools
+  - python3-pip
+  - python3-setuptools
