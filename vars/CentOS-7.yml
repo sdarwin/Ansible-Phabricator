@@ -12,6 +12,14 @@ default_git_core_path: /usr/libexec/git-core
 
 default_phabricator_packages_local:
   - mariadb-server
-  - python-devel
   - mariadb-devel
   - gcc
+
+default_phabricator_pre2_packages:
+  - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+default_phab_python_packages:
+  - python-pip
+  - python-setuptools
+  - python3-pip
+  - python3-setuptools

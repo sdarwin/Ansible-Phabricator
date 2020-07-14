@@ -47,7 +47,7 @@
 - name: install repo for php7.1 Ubuntu 16
   apt_repository:
     repo: 'ppa:ondrej/php'
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" and ansible_distribution_major_version < "18")
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int > 15 and ansible_distribution_major_version|int < 18)
 
 - name: Add an Apt signing key, uses whichever key is at the URL
   apt_key:
@@ -74,7 +74,7 @@
     name: "{{ phabricator_packages }}"
     state: present
     update_cache: true
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "16") or
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 16) or
         (ansible_distribution == "Debian")
 
 - name: install packages (Ubuntu)
@@ -83,7 +83,7 @@
     state: present
     update_cache: true
     install_recommends: false
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "15" )
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int > 15 )
 
 - name: install pre-requisite packages 1 (RHEL)
   yum:
@@ -99,9 +99,22 @@
     update_cache: true
   when: ansible_os_family == "RedHat"
 
+  # required for libedit-devel package
+- name: enable PowerTools
+  changed_when: false
+  args:
+    warn: false
+  shell:
+    cmd: dnf config-manager --set-enabled PowerTools  # noqa 305
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution_major_version|int > 7
+
 - name: enable remi
   command: "sudo yum-config-manager --enable remi-php73"
-  when: ansible_os_family == "RedHat"
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution_major_version|int < 8
 
 - name: install packages (RHEL)
   yum:
@@ -109,6 +122,11 @@
     state: present
     update_cache: true
   when: ansible_os_family == "RedHat"
+
+- name: Install phab python packages
+  package:
+    name: "{{ phab_python_packages }}"
+    state: present
 
 - name: install tools for local mysql
   include: local.yml
@@ -187,7 +205,7 @@
   notify: restart nginx
 
 - name: create cert (Redhat)
-  shell: /etc/ssl/certs/make-dummy-cert {{ phabricator_ssl_cert }} ; chmod 640 {{ phabricator_ssl_cert }} ; chgrp {{ users.web }} {{ phabricator_ssl_cert }}
+  shell: "{{ make_dummy_cert_path }} {{ phabricator_ssl_cert }} ; chmod 640 {{ phabricator_ssl_cert }} ; chgrp {{ users.web }} {{ phabricator_ssl_cert }}"
   args:
     creates: "{{ phabricator_ssl_cert }}"
   when: ansible_os_family == "RedHat"
@@ -241,7 +259,7 @@
     regexp: 'includedir /etc/my.cnf.d'
     insertafter: 'EOF'
     line: '!includedir /etc/my.cnf.d'
-  when: ansible_os_family == "RedHat" and ansible_distribution_major_version < "7"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int < 7
   notify: restart mysql
 
 - name: add git binaries to path
@@ -293,8 +311,8 @@
     owner: root
     group: root
     mode: 0644
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version < "8")
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 15) or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version|int < 8)
   notify: restart upstart phabricator-phd
 
 - name: add upstart template Centos6
@@ -304,7 +322,7 @@
     owner: root
     group: root
     mode: 0644
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version|int < 7)
   notify: restart upstart phabricator-phd
 
 - name: add systemd template
@@ -314,9 +332,9 @@
     owner: root
     group: root
     mode: 0644
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
-          (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") or
-          (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int > 14) or
+          (ansible_distribution == "Debian" and ansible_distribution_major_version|int > 7) or
+          (ansible_os_family == "RedHat" and ansible_distribution_major_version|int > 6)
   notify: restart systemd phabricator-phd
 
 - name: add  preamble.php template
@@ -341,7 +359,7 @@
     path: "{{ php_path }}/apc.ini"
     regexp: "^apc.stat"
     line: "apc.stat=Off"
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version|int < 7)
   notify: restart php-fpm
 
 - name: apc config file slam
@@ -349,7 +367,7 @@
     path: "{{ php_path }}/apc.ini"
     regexp: "^apc.slam_defense"
     line: "apc.slam_defense=Off"
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version  < "7")
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version|int  < 7)
   notify: restart php-fpm
 
 - name: enable services on boot Centos7
@@ -364,7 +382,7 @@
     - php-fpm.service
     - phabricator-phd.service
     - mariadb.service
-  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version  > "6")
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version|int  > 6)
 
 - name: enable services on boot Debian
   file:
@@ -375,8 +393,8 @@
     state: link
   with_items:
     - phabricator-phd.service
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
-          (ansible_distribution == "Debian" and ansible_distribution_major_version > "7")
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int > 14) or
+          (ansible_distribution == "Debian" and ansible_distribution_major_version|int > 7)
 
 # End Section ##########
 
@@ -395,13 +413,13 @@
 - name: notify start upstart phabricator-phd
   command: /bin/true
   notify: restart upstart phabricator-phd
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version < "15") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version < "8") or
-        (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int < 15) or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version|int < 8) or
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version|int < 7)
 
 - name: notify start systemd phabricator-phd
   command: /bin/true
   notify: restart systemd phabricator-phd
-  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version > "14") or
-        (ansible_distribution == "Debian" and ansible_distribution_major_version > "7") or
-        (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
+  when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version|int > 14) or
+        (ansible_distribution == "Debian" and ansible_distribution_major_version|int > 7) or
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version|int > 6)

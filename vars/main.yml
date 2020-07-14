@@ -16,7 +16,6 @@ default_phabricator_packages:
   - php-apc
   - php5-cli
   - php5-json
-  - python-pip
   - exim4
   - subversion
   - mercurial
@@ -40,7 +39,6 @@ dependencies_rhel:
   - php-pecl-apc
   - php-pecl-json
   - php-mbstring
-  - python-pip
   - subversion
   - mercurial
   - wget

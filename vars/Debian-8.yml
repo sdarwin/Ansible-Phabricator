@@ -1,2 +1,6 @@
 ---
-# Debian 8 variables
+default_phab_python_packages:
+  - python-pip
+  - python-setuptools
+  - python3-pip
+  - python3-setuptools

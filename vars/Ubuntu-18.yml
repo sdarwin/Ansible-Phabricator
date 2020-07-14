@@ -17,7 +17,6 @@ default_phabricator_packages:
   - php7.2-mbstring
   - php7.2-apcu
   - php7.2-zip
-  - python-pip
   - exim4
   - subversion
   - mercurial
@@ -34,3 +33,9 @@ default_phabricator_packages_local:
   - mysql-server-5.7
   - python-dev
   - libmysqlclient-dev
+
+default_phab_python_packages:
+  - python-pip
+  - python-setuptools
+  - python3-pip
+  - python3-setuptools
