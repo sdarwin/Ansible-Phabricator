@@ -59,6 +59,7 @@
   template:
     src: mailers.json.j2
     dest: /tmp/mailers.json
+    mode: 0644
 
 - name: set cluster.mailers
   shell: "{{ web_root }}/phabricator/bin/config set --stdin cluster.mailers < /tmp/mailers.json"

@@ -16,7 +16,9 @@ default_phabricator_packages_local:
   - gcc
 
 default_phabricator_pre2_packages:
-  - http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  # GPG key not validating. Was remi actually required for CentOS 8? Replace with dummy package for now.
+  # - https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  - htop
 
 default_phab_python_packages:
   - python3-pip

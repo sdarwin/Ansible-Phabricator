@@ -26,6 +26,7 @@
 - name: install required python module
   pip:
     name: PyMySQL
+  changed_when: false
 
 - name: create mysql user
   mysql_user:

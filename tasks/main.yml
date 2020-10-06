@@ -95,12 +95,23 @@
     update_cache: true
   when: ansible_os_family == "RedHat"
 
-- name: install pre-requisite packages 2 (RHEL)
+- name: install pre-requisite packages 2 (RHEL) < 8
   yum:
     name: "{{ phabricator_pre2_packages }}"
     state: present
     update_cache: true
-  when: ansible_os_family == "RedHat"
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution_major_version|int < 8
+
+- name: install pre-requisite packages 2 (RHEL) > 7
+  dnf:
+    name: "{{ phabricator_pre2_packages }}"
+    state: present
+    update_cache: true
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution_major_version|int > 7
 
   # required for libedit-devel package
 - name: enable PowerTools
@@ -167,6 +178,7 @@
     path: "{{ web_root }}"
     owner: root
     group: root
+    mode: 0755
     state: directory
 
 - name: download phabricator from git repo
@@ -246,6 +258,7 @@
     state: directory
     owner: root
     group: root
+    mode: 0755
 
 - name: add mysql.cnf config
   template:
@@ -282,10 +295,12 @@
     name:
       - pip
     state: latest
+  changed_when: false
 
 - name: install pygments for better syntax highlighting
   pip:
     name: pygments
+  changed_when: false
 
 - name: Creates repo directory
   file:
@@ -293,6 +308,7 @@
     state: directory
     owner: "{{ users.daemon }}"
     group: "{{ users.daemon }}"
+    mode: 0755
 
 # - name: start phabricator daemons
 #   command: "{{ web_root }}/phabricator/bin/phd restart"
@@ -305,6 +321,7 @@
     state: directory
     owner: "{{ users.web }}"
     group: "{{ users.web }}"
+    mode: 0755
   when: phabricator_file_storage == "local"
 
 - name: add upstart template
