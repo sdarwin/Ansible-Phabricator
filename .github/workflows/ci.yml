@@ -75,7 +75,23 @@ jobs:
         run: pip3 install ansible molecule[docker] docker
 
       - name: Run Molecule tests.
-        run: molecule test
+        run: |
+          molecule --debug dependency
+          molecule --debug lint
+          molecule --debug cleanup
+          molecule --debug destroy
+          molecule --debug syntax
+          molecule --debug create
+          molecule --debug prepare
+          molecule --debug converge
+          # The role is not currently idempotent. It runs a phab upgrade every time, stopping/starting services in the process.
+          # - molecule --debug idempotence
+          # molecule side_effect does not exist
+          # - molecule --debug side_effect
+          molecule --debug verify
+          molecule --debug cleanup
+          molecule --debug destroy
+
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
