@@ -47,6 +47,13 @@
     recurse: true
     mode: 0775
 
+- name: upgrade pip  # noqa 403
+  pip:
+    name:
+      - pip
+    state: latest
+  changed_when: false
+
 - name: install repo for php7.1 Ubuntu 16
   apt_repository:
     repo: 'ppa:ondrej/php'
@@ -114,12 +121,12 @@
     - ansible_distribution_major_version|int > 7
 
   # required for libedit-devel package
-- name: enable PowerTools
+- name: enable powertools
   changed_when: false
   args:
     warn: false
   shell:
-    cmd: dnf config-manager --set-enabled PowerTools  # noqa 305
+    cmd: dnf config-manager --set-enabled powertools  # noqa 305
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution_major_version|int > 7
@@ -289,13 +296,6 @@
 
 - name: include config
   include: config.yml
-
-- name: upgrade pip  # noqa 403
-  pip:
-    name:
-      - pip
-    state: latest
-  changed_when: false
 
 - name: install pygments for better syntax highlighting
   pip:
