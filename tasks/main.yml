@@ -47,13 +47,6 @@
     recurse: true
     mode: 0775
 
-- name: upgrade pip  # noqa 403
-  pip:
-    name:
-      - pip
-    state: latest
-  changed_when: false
-
 - name: install repo for php7.1 Ubuntu 16
   apt_repository:
     repo: 'ppa:ondrej/php'
@@ -126,7 +119,7 @@
   args:
     warn: false
   shell:
-    cmd: dnf config-manager --set-enabled powertools  # noqa 305
+    cmd: dnf config-manager --set-enabled powertools || dnf config-manager --set-enabled PowerTools || true  # noqa 305
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution_major_version|int > 7
@@ -148,6 +141,13 @@
   package:
     name: "{{ phab_python_packages }}"
     state: present
+
+- name: upgrade pip  # noqa 403
+  pip:
+    name:
+      - "{{ phabricator_pip }}"
+    state: latest
+  changed_when: false
 
 - name: install tools for local mysql
   include: local.yml

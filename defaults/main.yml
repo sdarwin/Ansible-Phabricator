@@ -53,3 +53,6 @@ phabricator_mailers: |
   "type": "sendmail"
   }
   ]
+
+phabricator_pip: pip
+

@@ -1,0 +1,286 @@
+---
+timestamp: 2021-04-09 20:54:55 UTC
+kitchen_version: 2.11.2
+plugins:
+  driver:
+    Ec2:
+      class: Kitchen::Driver::Ec2
+      version: 3.8.0
+      api_version: 2
+  provisioner:
+    AnsiblePlaybook:
+      class: Kitchen::Provisioner::AnsiblePlaybook
+      version: 
+      api_version: 
+  transport:
+    Ssh:
+      class: Kitchen::Transport::Ssh
+      version: 2.11.2
+      api_version: 1
+  verifier:
+    Busser:
+      class: Kitchen::Verifier::Busser
+      version: 2.11.2
+      api_version: 1
+loader:
+  process_erb: true
+  process_local: true
+  process_global: true
+  global_config: 
+  project_config:
+    filename: "/opt/github/Ansible-Phabricator/.kitchen.yml"
+    raw_data:
+      driver:
+        name: ec2
+        region: ca-central-1
+        subnet_id: subnet-99e681e2
+        security_group_ids:
+        - sg-24901f4c
+        aws_ssh_key_id: testkitchen
+        instance_type: t2.xlarge
+      transport:
+        ssh_key: "/amaz/testkitchen.pem"
+        connection_timeout: 10
+        connection_retries: 5
+        max_ssh_sessions: 6
+      platforms:
+      - name: ubuntu-18.04
+        driver:
+          image_id: ami-0427e8367e3770df1
+        transport:
+          username: ubuntu
+      provisioner:
+        name: ansible_playbook
+        roles_path: "../"
+        hosts: test-kitchen
+        require_ansible_repo: true
+        ansible_verbose: true
+        ansible_version: latest
+        require_chef_for_busser: false
+      suites:
+      - name: default
+  local_config: 
+  combined_config:
+    filename: 
+    raw_data:
+      driver:
+        name: ec2
+        region: ca-central-1
+        subnet_id: subnet-99e681e2
+        security_group_ids:
+        - sg-24901f4c
+        aws_ssh_key_id: testkitchen
+        instance_type: t2.xlarge
+      transport:
+        ssh_key: "/amaz/testkitchen.pem"
+        connection_timeout: 10
+        connection_retries: 5
+        max_ssh_sessions: 6
+      platforms:
+      - name: ubuntu-18.04
+        driver:
+          image_id: ami-0427e8367e3770df1
+        transport:
+          username: ubuntu
+      provisioner:
+        name: ansible_playbook
+        roles_path: "../"
+        hosts: test-kitchen
+        require_ansible_repo: true
+        ansible_verbose: true
+        ansible_version: latest
+        require_chef_for_busser: false
+      suites:
+      - name: default
+instances:
+  default-ubuntu-1804:
+    platform:
+      os_type: unix
+      shell_type: bourne
+    state_file:
+      hostname: ec2-15-223-47-148.ca-central-1.compute.amazonaws.com
+      last_action: create
+      last_error: Errno::ENOENT
+      server_id: i-05748e8e2dafa9068
+    driver:
+      associate_public_ip: 
+      availability_zone: 
+      aws_access_key_id: 
+      aws_secret_access_key: 
+      aws_session_token: 
+      aws_ssh_key_id: testkitchen
+      block_duration_minutes: 
+      ebs_optimized: false
+      http_proxy: 
+      iam_profile_name: 
+      image_id: ami-0427e8367e3770df1
+      image_search: 
+      instance_initiated_shutdown_behavior: 
+      instance_type: t2.xlarge
+      interface: 
+      kitchen_root: "/opt/github/Ansible-Phabricator"
+      log_level: :info
+      name: ec2
+      pre_create_command: 
+      private_ip_address: 
+      region: ca-central-1
+      retry_limit: 3
+      retryable_sleep: 5
+      retryable_tries: 60
+      security_group_cidr_ip: 0.0.0.0/0
+      security_group_filter: 
+      security_group_ids:
+      - sg-24901f4c
+      shared_credentials_profile: 
+      skip_cost_warning: false
+      spot_price: 
+      spot_wait: 60
+      ssl_verify_peer: true
+      subnet_id: subnet-99e681e2
+      tags:
+        created-by: test-kitchen
+      tenancy: default
+      test_base_path: "/opt/github/Ansible-Phabricator/test/integration"
+      user_data: 
+      username: 
+    provisioner:
+      additional_copy_path: 
+      additional_copy_role_path: false
+      additional_ssh_private_keys: 
+      ansible_apt_repo: ppa:ansible/ansible
+      ansible_binary_path: 
+      ansible_cfg_overwrite: true
+      ansible_cfg_path: 
+      ansible_check: false
+      ansible_connection: local
+      ansible_diff: false
+      ansible_host_key_checking: true
+      ansible_inventory: 
+      ansible_inventory_file: 
+      ansible_limit: 
+      ansible_omnibus_remote_path: "/opt/ansible"
+      ansible_omnibus_url: https://raw.githubusercontent.com/neillturner/omnibus-ansible/master/ansible_install.sh
+      ansible_platform: ''
+      ansible_playbook_command: 
+      ansible_sles_repo: http://download.opensuse.org/repositories/systemsmanagement/openSUSE_Leap_15.2/systemsmanagement.repo
+      ansible_source_rev: 
+      ansible_source_url: git://github.com/ansible/ansible.git
+      ansible_sudo: true
+      ansible_vault_password_file: 
+      ansible_verbose: true
+      ansible_verbosity: 1
+      ansible_version: latest
+      ansible_yum_repo: 
+      ansiblefile_path: 
+      callback_plugins_path: 
+      chef_bootstrap_url: https://www.chef.io/chef/install.sh
+      command_prefix: 
+      custom_post_install_command: 
+      custom_post_play_command: 
+      custom_pre_install_command: 
+      custom_pre_play_command: 
+      debug: 
+      downloads: {}
+      enable_yum_epel: false
+      env_vars: {}
+      extra_vars: {}
+      extra_vars_file: 
+      filter_plugins_path: 
+      ftp_proxy: 
+      galaxy_ignore_certs: false
+      group_vars_path: 
+      host_vars_path: 
+      hosts: test-kitchen
+      http_proxy: 
+      https_proxy: 
+      idempotency_skip_tags: []
+      idempotency_tags: []
+      idempotency_test: 
+      ignore_ansible_cfg: false
+      ignore_extensions_from_root:
+      - ".pyc"
+      ignore_paths_from_root: []
+      keep_playbook_path: false
+      kerberos_conf_file: 
+      kitchen_root: "/opt/github/Ansible-Phabricator"
+      library_plugins_path: 
+      lookup_plugins_path: 
+      max_retries: 1
+      modules_path: 
+      name: ansible_playbook
+      no_proxy: 
+      playbook: "/opt/github/Ansible-Phabricator/default.yml"
+      python_sles_repo: http://download.opensuse.org/repositories/devel:/languages:/python/openSUSE_Leap_15.2/devel:languages:python.repo
+      recursive_additional_copy_path: 
+      require_ansible_omnibus: false
+      require_ansible_repo: true
+      require_ansible_source: false
+      require_chef_for_busser: false
+      require_pip: false
+      require_pip3: false
+      require_ruby_for_busser: false
+      require_windows_support: false
+      requirements_collection_path: false
+      requirements_path: false
+      retry_on_exit_code: []
+      role_name: 
+      roles_path: "../"
+      root_path: "/tmp/kitchen"
+      shell_command: sh
+      show_command_output: false
+      ssh_known_hosts: 
+      sudo: true
+      sudo_command: sudo -E
+      tags: []
+      test_base_path: "/opt/github/Ansible-Phabricator/test/integration"
+      update_package_repos: true
+      uploads: {}
+      wait_for_retry: 30
+    transport:
+      compression: false
+      compression_level: 0
+      connection_retries: 5
+      connection_retry_sleep: 1
+      connection_timeout: 10
+      keepalive: true
+      keepalive_interval: 60
+      keepalive_maxcount: 3
+      kitchen_root: "/opt/github/Ansible-Phabricator"
+      log_level: :info
+      max_ssh_sessions: 6
+      max_wait_until_ready: 600
+      name: ssh
+      port: 22
+      ssh_gateway: 
+      ssh_gateway_port: 22
+      ssh_gateway_username: 
+      ssh_http_proxy: 
+      ssh_http_proxy_password: 
+      ssh_http_proxy_port: 
+      ssh_http_proxy_user: 
+      ssh_key: "/amaz/testkitchen.pem"
+      test_base_path: "/opt/github/Ansible-Phabricator/test/integration"
+      username: ubuntu
+    verifier:
+      busser_bin: "/tmp/verifier/bin/busser"
+      chef_omnibus_root: "/opt/chef"
+      command_prefix: 
+      debug: 
+      ftp_proxy: 
+      http_proxy: 
+      https_proxy: 
+      kitchen_root: "/opt/github/Ansible-Phabricator"
+      log_level: :info
+      name: busser
+      root_path: "/tmp/verifier"
+      ruby_bindir: "/opt/chef/embedded/bin"
+      sudo: true
+      sudo_command: sudo -E
+      suite_name: default
+      test_base_path: "/opt/github/Ansible-Phabricator/test/integration"
+      version: busser
+    lifecycle_hooks:
+      debug: 
+      kitchen_root: "/opt/github/Ansible-Phabricator"
+      log_level: :info
+      test_base_path: "/opt/github/Ansible-Phabricator/test/integration"
