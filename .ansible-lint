@@ -1,11 +1,9 @@
 ---
 skip_list:
   - '106'
-# temporary. remove most of this
 warn_list:  # or 'skip_list' to silence them completely
-  - command-instead-of-module  # Using command rather than module
-  - command-instead-of-shell  # Use shell only when shell functionality is required
   - empty-string-compare  # Don't compare to empty string
-  - no-changed-when  # Commands should not change things if nothing needs doing
-  - yaml  # Violations reported by yamllint
-
+#  - command-instead-of-module  # Using command rather than module
+#  - command-instead-of-shell  # Use shell only when shell functionality is required
+#  - no-changed-when  # Commands should not change things if nothing needs doing
+#  - yaml  # Violations reported by yamllint

@@ -13,12 +13,12 @@
     update_cache: true
   when: ansible_os_family == "RedHat"
 
-- name: check services
-  shell: systemctl
-  register: systemctloutput
-
-- name: print service output
-  debug: var=systemctloutput.stdout_lines
+# - name: check services
+#   shell: systemctl
+#   register: systemctloutput
+# 
+# - name: print service output
+#   debug: var=systemctloutput.stdout_lines
 
 - name: start mysql
   service:

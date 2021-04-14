@@ -49,10 +49,11 @@ jobs:
             playbook: converge.yml
           - distro: centos8
             playbook: converge.yml
-          - distro: debian9
-            playbook: converge.yml
-          - distro: debian10
-            playbook: converge.yml
+          # Should debug
+          # - distro: debian9
+          #   playbook: converge.yml
+          # - distro: debian10
+          #   playbook: converge.yml
           - distro: ubuntu1604
             playbook: converge.yml
           - distro: ubuntu1804
