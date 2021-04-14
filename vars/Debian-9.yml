@@ -31,9 +31,12 @@ default_php_sock: "unix:/var/run/php/php7.2-fpm.sock"
 default_php_path: /etc/php/7.2/fpm/conf.d
 default_php_service: php7.2-fpm
 default_mysql_path: /etc/mysql/mariadb.conf.d
+default_mysql_service: mariadb
 
 default_phab_python_packages:
   - python-pip
   - python-setuptools
   - python3-pip
   - python3-setuptools
+
+phabricator_pip: "pip==20.3.4"

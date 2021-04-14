@@ -1,0 +1,100 @@
+---
+name: CI
+'on':
+  pull_request:
+  push:
+    branches:
+      - master
+      - develop
+  schedule:
+    - cron: "0 4 * * 3"
+
+defaults:
+  run:
+    working-directory: 'sdarwin.phabricator'
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+        with:
+          path: 'sdarwin.phabricator'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install yamllint ansible-lint ansible
+
+      - name: Lint code.
+        run: |
+          set -e
+          yamllint .
+          ansible-lint
+
+  molecule:
+    name: Molecule
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - distro: centos7
+            playbook: converge.yml
+          - distro: centos8
+            playbook: converge.yml
+          # Should debug
+          # - distro: debian9
+          #   playbook: converge.yml
+          # - distro: debian10
+          #   playbook: converge.yml
+          - distro: ubuntu1604
+            playbook: converge.yml
+          - distro: ubuntu1804
+            playbook: converge.yml
+          - distro: ubuntu2004
+            playbook: converge.yml
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+        with:
+          path: 'sdarwin.phabricator'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install ansible molecule[docker] docker
+
+      - name: Run Molecule tests.
+        run: |
+          molecule --debug dependency
+          molecule --debug lint
+          molecule --debug cleanup
+          molecule --debug destroy
+          molecule --debug syntax
+          molecule --debug create
+          molecule --debug prepare
+          molecule --debug converge
+          # The role is not currently idempotent. It runs a phab upgrade every time, stopping/starting services in the process.
+          # - molecule --debug idempotence
+          # molecule side_effect does not exist
+          # - molecule --debug side_effect
+          molecule --debug verify
+          molecule --debug cleanup
+          molecule --debug destroy
+
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+          MOLECULE_PLAYBOOK: ${{ matrix.playbook }}
