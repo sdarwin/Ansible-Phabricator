@@ -16,7 +16,7 @@
 # - name: check services
 #   shell: systemctl
 #   register: systemctloutput
-# 
+#
 # - name: print service output
 #   debug: var=systemctloutput.stdout_lines
 
