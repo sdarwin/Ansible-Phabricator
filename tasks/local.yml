@@ -50,4 +50,4 @@
     policy: targeted
     state: permissive
   when: ansible_os_family == "RedHat"
-  ignore_errors: true
+  failed_when: false

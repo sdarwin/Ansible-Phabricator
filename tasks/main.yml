@@ -26,19 +26,19 @@
   service:
     name: phabricator-phd
     state: stopped
-  ignore_errors: true
+  failed_when: false
 
 - name: stop nginx
   service:
     name: nginx
     state: stopped
-  ignore_errors: true
+  failed_when: false
 
 - name: stop php-fpm
   service:
     name: "{{ php_service }}"
     state: stopped
-  ignore_errors: true
+  failed_when: false
 
 - name: fix test-kitchen
   file:

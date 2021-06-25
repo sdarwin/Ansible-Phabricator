@@ -7,7 +7,7 @@ name: CI
       - master
       - develop
   schedule:
-    - cron: "0 4 15,28 * *"
+    - cron: "0 4 2 * *"
 
 defaults:
   run:
@@ -50,10 +50,10 @@ jobs:
           - distro: centos8
             playbook: converge.yml
           # Need to debug debian9 and 10
-          - distro: debian9
-            playbook: converge.yml
-          - distro: debian10
-            playbook: converge.yml
+          # - distro: debian9
+          #   playbook: converge.yml
+          # - distro: debian10
+          #   playbook: converge.yml
           # ubuntu1604 is end of life.
           # Would continue to support it, but the ondrej ppa does not have php7.x
           # - distro: ubuntu1604
