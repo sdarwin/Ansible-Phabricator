@@ -49,13 +49,15 @@ jobs:
             playbook: converge.yml
           - distro: centos8
             playbook: converge.yml
-          # Should debug
-          # - distro: debian9
-          #   playbook: converge.yml
-          # - distro: debian10
-          #   playbook: converge.yml
-          - distro: ubuntu1604
+          # Need to debug debian9 and 10
+          - distro: debian9
             playbook: converge.yml
+          - distro: debian10
+            playbook: converge.yml
+          # ubuntu1604 is end of life.
+          # Would continue to support it, but the ondrej ppa does not have php7.x
+          # - distro: ubuntu1604
+          #  playbook: converge.yml
           - distro: ubuntu1804
             playbook: converge.yml
           - distro: ubuntu2004
