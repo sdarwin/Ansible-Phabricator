@@ -158,6 +158,12 @@
     name: "{{ item.value }}"
   with_dict: "{{ users }}"
 
+- name: add www-data to phab-daemon group
+  user:
+    name: "{{ users.web }}"
+    groups: "phab-daemon"
+    append: true
+
 - name: config sudoers file vcs
   lineinfile:
     dest: /etc/sudoers
