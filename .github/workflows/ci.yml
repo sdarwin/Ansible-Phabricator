@@ -27,7 +27,7 @@ jobs:
       - name: Symlink role
         run: |
           pwd
-          ls -al 
+          ls -al
           mkdir -p /home/runner/.ansible/roles
           ln -s ../sdarwin.phabricator /home/runner/.ansible/roles/sdarwin.phabricator
           ls -al /home/runner/.ansible/roles
@@ -83,7 +83,7 @@ jobs:
       - name: Symlink role
         run: |
           pwd
-          ls -al 
+          ls -al
           mkdir -p /home/runner/.ansible/roles
           ln -s ../sdarwin.phabricator /home/runner/.ansible/roles/sdarwin.phabricator
           ls -al /home/runner/.ansible/roles
