@@ -28,9 +28,9 @@ jobs:
         run: |
           pwd
           ls -al 
-          mkdir -p /etc/ansible/roles
-          ln -s sdarwin.phabricator /etc/ansible/roles/sdarwin.phabricator
-          ls -al /etc/ansible/roles
+          mkdir -p /home/runner/.ansible/roles
+          ln -s ../sdarwin.phabricator /home/runner/.ansible/roles/sdarwin.phabricator
+          ls -al /home/runner/.ansible/roles
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
@@ -84,9 +84,9 @@ jobs:
         run: |
           pwd
           ls -al 
-          mkdir -p /etc/ansible/roles
-          ln -s sdarwin.phabricator /etc/ansible/roles/sdarwin.phabricator
-          ls -al /etc/ansible/roles
+          mkdir -p /home/runner/.ansible/roles
+          ln -s ../sdarwin.phabricator /home/runner/.ansible/roles/sdarwin.phabricator
+          ls -al /home/runner/.ansible/roles
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
