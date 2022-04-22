@@ -23,6 +23,15 @@ jobs:
         with:
           path: 'sdarwin.phabricator'
 
+      # 2022, ansible-lint isn't finding the role
+      - name: Symlink role
+        run: |
+          pwd
+          ls -al 
+          mkdir -p /etc/ansible/roles
+          ln -s sdarwin.phabricator /etc/ansible/roles/sdarwin.phabricator
+          ls -al /etc/ansible/roles
+
       - name: Set up Python 3.
         uses: actions/setup-python@v2
         with:
@@ -69,6 +78,15 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: 'sdarwin.phabricator'
+
+      # 2022, ansible-lint isn't finding the role
+      - name: Symlink role
+        run: |
+          pwd
+          ls -al 
+          mkdir -p /etc/ansible/roles
+          ln -s sdarwin.phabricator /etc/ansible/roles/sdarwin.phabricator
+          ls -al /etc/ansible/roles
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
