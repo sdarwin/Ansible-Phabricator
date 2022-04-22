@@ -28,7 +28,7 @@ mysql_cnf_config:
 sudo_group: root
 permissions:
   vcs: "ALL=(phab-daemon) SETENV:NOPASSWD: /usr/lib/git-core/git-upload-pack, /usr/lib/git-core/git-receive-pack, /usr/lib/git-core/git-http-backend"
-  web: "ALL=(phab-daemon) SETENV:NOPASSWD: /usr/lib/git-core/git-http-backend"
+  web: "ALL=(phab-daemon) SETENV:NOPASSWD: /usr/lib/git-core/git-http-backend, /usr/bin/git"
 allow_http_auth: "true"
 
 # This variable is optional, but recommended, to restrict who can register.
