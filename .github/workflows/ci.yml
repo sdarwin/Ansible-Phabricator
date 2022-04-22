@@ -29,7 +29,7 @@ jobs:
           pwd
           ls -al
           mkdir -p /home/runner/.ansible/roles
-          ln -s ../sdarwin.phabricator /home/runner/.ansible/roles/sdarwin.phabricator
+          ln -s $(pwd) /home/runner/.ansible/roles/sdarwin.phabricator
           ls -al /home/runner/.ansible/roles
 
       - name: Set up Python 3.
@@ -85,7 +85,7 @@ jobs:
           pwd
           ls -al
           mkdir -p /home/runner/.ansible/roles
-          ln -s ../sdarwin.phabricator /home/runner/.ansible/roles/sdarwin.phabricator
+          ln -s $(pwd) /home/runner/.ansible/roles/sdarwin.phabricator || true
           ls -al /home/runner/.ansible/roles
 
       - name: Set up Python 3.
